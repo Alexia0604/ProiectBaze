@@ -1,5 +1,5 @@
-﻿--DROP TABLE IF EXISTS BibliotecaElectronica
---CREATE DATABASE BibliotecaElectronica
+﻿DROP TABLE IF EXISTS BibliotecaElectronica
+CREATE DATABASE BibliotecaElectronica
 --ON PRIMARY
 --(
 --Name = BibliotecaElectronica1,
@@ -54,11 +54,13 @@ CREATE TABLE Persoana (
 
 -- Tabela Cititor
 CREATE TABLE Cititor (
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY IDENTITY ,
     ID_Persoana INT FOREIGN KEY REFERENCES Persoana(ID),
     DataInregistrare DATE NOT NULL,
     NrCartiImprumutate INT DEFAULT 0
 );
+
+
 
 -- Tabela Bibliotecar
 CREATE TABLE Bibliotecar (
@@ -173,10 +175,10 @@ VALUES
 ('Georgescu', 'Elena', 'elenag', HASHBYTES('SHA2_256', 'parola999'), 'elena.g@example.com', '0701234567', 'Str. Libertății, Nr. 20', '1995-05-17');
 
 -- Populare tabel Cititor
-INSERT INTO Cititor (ID, ID_Persoana, DataInregistrare, NrCartiImprumutate)
+INSERT INTO Cititor ( ID_Persoana, DataInregistrare, NrCartiImprumutate)
 VALUES 
-(1, 1, GETDATE(), 2),
-(2, 2, GETDATE(), 1);
+( 1, GETDATE(), 2),
+( 2, GETDATE(), 1);
 
 -- Populare tabel Bibliotecar
 INSERT INTO Bibliotecar (ID, ID_Persoana, DataAngajare)
@@ -187,6 +189,8 @@ VALUES
 INSERT INTO Administrator (ID, ID_Persoana)
 VALUES 
 (1, 4);
+
+select * from Persoana where ID=4
 
 -- Populare tabel Stoc
 INSERT INTO Stoc (ID_Carte, NrExemplare)
@@ -270,4 +274,19 @@ UPDATE Carte
 SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\marele_gatsby.jpeg' 
 WHERE Titlu = 'Calatoria fantastica';
 
-select * from carte
+
+select * from Cititor
+
+select * from Persoana
+
+INSERT INTO Persoana (Nume, Prenume, Username, Parola, Email, Telefon, Adresa, DataNasterii)
+VALUES 
+('Sofianu', 'Gabriela', 'gabsof', 'parola', 'gabsofianu@gmail.com', '0712345678', 'Str. Exemplu, Nr. 1', '1985-07-14')
+
+select * from Persoana
+
+INSERT INTO Cititor (ID_Persoana, DataInregistrare, NrCartiImprumutate)
+VALUES 
+( 4, GETDATE(), 2)
+
+set identity_insert Cititor ON

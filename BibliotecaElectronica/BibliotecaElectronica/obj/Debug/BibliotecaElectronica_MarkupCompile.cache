@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\
 BibliotecaElectronica
 none
 false
 DEBUG;TRACE
-C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\BibliotecaElectronica\BibliotecaElectronica\App.xaml
-2-1586803593
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\App.xaml
+4382452458
 
-71262385591
-17877924469
-MainAppWindow.xaml;MainWindow.xaml;
+9-695599824
+1719288308
+MainWindow.xaml;RegisterWindow.xaml;RegisterWindow2.xaml;View\UserControls\ClearableTextBox.xaml;
 
-False
+True
 

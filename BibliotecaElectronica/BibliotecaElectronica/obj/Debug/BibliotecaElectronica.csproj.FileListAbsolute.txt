@@ -24,3 +24,35 @@ C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\BibliotecaE
 C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.exe
 C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.pdb
 C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\App.baml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\BibliotecaElectronica.exe.config
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\BibliotecaElectronica.exe
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\BibliotecaElectronica.pdb
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\MaterialDesignColors.dll
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\MaterialDesignColors.pdb
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.csproj.AssemblyReference.cache
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\MainWindow.baml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\App.baml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\MainWindow.g.cs
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\App.g.cs
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica_MarkupCompile.cache
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.g.resources
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.Properties.Resources.resources
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.csproj.GenerateResource.cache
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.csproj.CoreCompileInputs.cache
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.csproj.CopyComplete
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.exe
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica.pdb
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\RegisterWindow.g.cs
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\BibliotecaElectronica_MarkupCompile.lref
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\RegisterWindow.baml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\View\UserControls\ClearableTextBox.g.cs
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\View\UserControls\ClearableTextBox.baml
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\RegisterWindow2.g.cs
+C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\RegisterWindow2.baml
