@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BibliotecaElectronica.View.UserControls
 {
@@ -22,17 +10,25 @@ namespace BibliotecaElectronica.View.UserControls
             InitializeComponent();
         }
 
-        private string placeHolder;
+        // Definește DependencyProperty pentru PlaceHolder
+        public static readonly DependencyProperty PlaceHolderProperty =
+            DependencyProperty.Register("PlaceHolder", typeof(string), typeof(ClearableTextBox), new PropertyMetadata(string.Empty));
 
         public string PlaceHolder
-        { get { return placeHolder; }
-            set 
-            {
-                placeHolder= value;
-                tbPlaceHolder.Text=placeHolder;
-            }
+        {
+            get { return (string)GetValue(PlaceHolderProperty); }
+            set { SetValue(PlaceHolderProperty, value); }
         }
 
+        // Definește DependencyProperty pentru Text (pentru a putea prelua textul introdus)
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(ClearableTextBox), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -42,12 +38,8 @@ namespace BibliotecaElectronica.View.UserControls
 
         private void txtInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtInput.Text))
-            {
-                tbPlaceHolder.Visibility = Visibility.Visible;
-            }
-            else
-                tbPlaceHolder.Visibility = Visibility.Hidden;
+            // Actualizează proprietatea Text la fiecare modificare
+            Text = txtInput.Text;
         }
     }
 }
