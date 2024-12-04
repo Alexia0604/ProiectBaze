@@ -110,13 +110,19 @@
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\AccountException.cs" />
+    <Compile Include="Exceptions\DataBaseException.cs" />
     <Compile Include="Exceptions\EmailException.cs" />
+    <Compile Include="Exceptions\NoUsernameOrPasswordException.cs" />
     <Compile Include="Exceptions\SignInException.cs" />
     <Compile Include="Exceptions\SignInWrongCredentialsException.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Administrator.cs" />
+    <Compile Include="Model\BibliotecarModel.cs" />
+    <Compile Include="Model\CititorModel.cs" />
     <Compile Include="Model\ClientRepository.cs" />
+    <Compile Include="Model\PersoanaModel.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="Utilities\Utility.cs" />
     <Compile Include="ViewModel\CreateAccountViewModel.cs" />

@@ -23,12 +23,12 @@ namespace BibliotecaElectronica.Commands
         }
         public override void Execute(object parameter)
         {
-            ClientRepository clientRepository = new ClientRepository();
             try
             {
-                clientRepository.CreateAccount(_createAccountViewModel.LastName, _createAccountViewModel.FirstName,
+                CititorModel cititor=new CititorModel();
+                cititor.CreateAccount(_createAccountViewModel.LastName, _createAccountViewModel.FirstName,
                     _createAccountViewModel.Address, _createAccountViewModel.Phone, _createAccountViewModel.Email);
-                _navigationStore.CurrentViewModel = new CreateAccountViewModel2(_navigationStore,clientRepository);
+                _navigationStore.CurrentViewModel = new CreateAccountViewModel2(_navigationStore,cititor);
             }
             catch(AccountException ex)
             {

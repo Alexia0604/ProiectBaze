@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaElectronica.Exceptions
 {
-    internal class SignInWrongCredentialsException : Exception
+    public class SignInWrongCredentialsException : Exception
     {
         public SignInWrongCredentialsException()
         {

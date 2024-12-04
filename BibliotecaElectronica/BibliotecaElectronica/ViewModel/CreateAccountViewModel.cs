@@ -88,13 +88,11 @@ namespace BibliotecaElectronica.ViewModel
         public ICommand ContinueCreatingAccountCommand { get; }
 
         public ICommand ClearTextBoxCommand { get; }
-
         public CreateAccountViewModel(Stores.NavigationStore navigationStore)
         {
             ContinueCreatingAccountCommand = new ContinueCreatingAccountCommand(navigationStore,this);
             BackToLoginCommand = new BackToLoginCommand(navigationStore);
             ClearTextBoxCommand = new RelayCommand<string>(ClearText);
-
         }
 
         private void ClearText(string textBoxName)

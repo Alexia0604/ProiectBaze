@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
 using System.Windows.Controls;
+using System.Text.RegularExpressions;
+
 
 
 namespace BibliotecaElectronica.Utilities
 {
     public class Utility
     {
+        public bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
         public void gotFocus(object sender)
         {
             TextBox txt = sender as TextBox;

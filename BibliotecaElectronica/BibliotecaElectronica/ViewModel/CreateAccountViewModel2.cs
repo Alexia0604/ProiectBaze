@@ -12,7 +12,7 @@ namespace BibliotecaElectronica.ViewModel
 {
     public class CreateAccountViewModel2 : ViewModelBase
     {
-        private ClientRepository Client;
+        private PersoanaModel Client;
         private string _username="Username";
         
         public string Username2 { 
@@ -44,11 +44,12 @@ namespace BibliotecaElectronica.ViewModel
         public ICommand RegisterCommand { get; }
         public ICommand ClearTextBoxCommand { get; }
 
-        public CreateAccountViewModel2(Stores.NavigationStore navigationStore,ClientRepository client)
+        public CreateAccountViewModel2(Stores.NavigationStore navigationStore,CititorModel client)
         {
             Client = client;
             ClearTextBoxCommand = new RelayCommand<string>(ClearText);
             BackToCreateAccountCommand =new BackToCreateAccountCommand(navigationStore);
+            RegisterCommand=new RegisterCommand(this,client);
         }
 
         private void ClearText(string textBoxName)

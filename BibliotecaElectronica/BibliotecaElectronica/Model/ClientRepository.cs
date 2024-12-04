@@ -23,7 +23,7 @@ namespace BibliotecaElectronica.Model
             return Regex.IsMatch(email, pattern);
         }
 
-        public Persoana LoginClient(string _username, string _password, string _role)
+        public BibliotecaElectronica.Persoana LoginClient(string _username, string _password, string _role)
         {
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
@@ -38,7 +38,7 @@ namespace BibliotecaElectronica.Model
 
                     case "Client":
                         var client = db.Cititors.SingleOrDefault(c => c.ID_Persoana == user.ID);
-                        if (user != null)
+                        if (client != null)
                             return user;
                         throw new SignInException();
 
@@ -58,7 +58,7 @@ namespace BibliotecaElectronica.Model
             }
         }
 
-        public Cititor CreateAccount(string _nume,string _prenume, string _adresa,string _telefon,string _email)
+        public BibliotecaElectronica.Cititor CreateAccount(string _nume,string _prenume, string _adresa,string _telefon,string _email)
         {
             if (_nume == "Nume" || _prenume == "Prenume" || _telefon == "Telefon" || _email == "Email" ||
                _nume == string.Empty || _prenume == string.Empty || _telefon == string.Empty || _email == string.Empty)
@@ -66,9 +66,9 @@ namespace BibliotecaElectronica.Model
 
             if(!IsValidEmail(_email))
                 throw new EmailException();
-            
-            Cititor cititor = new Cititor();
-            cititor.Persoana = new Persoana();
+
+            BibliotecaElectronica.Cititor cititor = new BibliotecaElectronica.Cititor();
+            cititor.Persoana = new BibliotecaElectronica.Persoana();
             cititor.Persoana.Nume = _nume;
             cititor.Persoana.Prenume = _prenume;
             cititor.Persoana.Adresa = _adresa;
