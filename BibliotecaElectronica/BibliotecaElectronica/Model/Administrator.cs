@@ -17,12 +17,12 @@ namespace BibliotecaElectronica.Model
         {
             IDAdmin = idAdmin;
         }
-        public AdministratorModel(string _nume, string _prenume, string _adresa, string _telefon, string _email) : base(_nume, _prenume,
-          _adresa, _telefon, _email)
+        public AdministratorModel(string _nume, string _prenume, string _adresa, string _telefon, string _email,DateTime birthdate) : base(_nume, _prenume,
+          _adresa, _telefon, _email,birthdate)
         { }
 
         public AdministratorModel() { }
-        public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email)
+        public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate)
         {
             if (_nume == "Nume" || _prenume == "Prenume" || _telefon == "Telefon" || _email == "Email" ||
               _nume == string.Empty || _prenume == string.Empty || _telefon == string.Empty || _email == string.Empty)
@@ -32,8 +32,13 @@ namespace BibliotecaElectronica.Model
             if (!u.IsValidEmail(_email))
                 throw new EmailException();
 
-            AdministratorModel admin = new AdministratorModel(_nume, _prenume, _adresa, _telefon, _email);
-            return admin;
+            LastName = _nume;
+            FirstName = _prenume;
+            Address = _adresa;
+            Phone = _telefon;
+            Email = _email;
+            BirthDate = birthDate;
+            return this;
         }
 
         public override PersoanaModel LoginClient(string _username, string _password)

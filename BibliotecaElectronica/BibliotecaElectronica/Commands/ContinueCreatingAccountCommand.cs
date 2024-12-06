@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BibliotecaElectronica.Utilities;
 
 namespace BibliotecaElectronica.Commands
 {
@@ -23,11 +24,15 @@ namespace BibliotecaElectronica.Commands
         }
         public override void Execute(object parameter)
         {
+            Utility u=new Utility();
+
+            DateTime birthDate=new DateTime(_createAccountViewModel.Year,u.getMonthByName(_createAccountViewModel.Month),_createAccountViewModel.Day);
+           
             try
             {
                 CititorModel cititor=new CititorModel();
                 cititor.CreateAccount(_createAccountViewModel.LastName, _createAccountViewModel.FirstName,
-                    _createAccountViewModel.Address, _createAccountViewModel.Phone, _createAccountViewModel.Email);
+                    _createAccountViewModel.Address, _createAccountViewModel.Phone, _createAccountViewModel.Email,birthDate);
                 _navigationStore.CurrentViewModel = new CreateAccountViewModel2(_navigationStore,cititor);
             }
             catch(AccountException ex)

@@ -20,11 +20,11 @@ namespace BibliotecaElectronica.Model
             IDBibliotecar = idBibliotecar;
         }
 
-        public BibliotecarModel(string _nume, string _prenume, string _adresa, string _telefon, string _email) : base(_nume, _prenume,
-         _adresa, _telefon, _email)
+        public BibliotecarModel(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate) : base(_nume, _prenume,
+         _adresa, _telefon, _email, birthDate)
         { }
         public BibliotecarModel() { }
-        public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email)
+        public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate)
         {
             if (_nume == "Nume" || _prenume == "Prenume" || _telefon == "Telefon" || _email == "Email" ||
              _nume == string.Empty || _prenume == string.Empty || _telefon == string.Empty || _email == string.Empty)
@@ -33,9 +33,14 @@ namespace BibliotecaElectronica.Model
             Utility u = new Utility();
             if (!u.IsValidEmail(_email))
                 throw new EmailException();
+            LastName = _nume;
+            FirstName = _prenume;
+            Address = _adresa;
+            Phone = _telefon;
+            Email = _email;
+            BirthDate = birthDate;
 
-            BibliotecarModel bibliotecar = new BibliotecarModel(_nume, _prenume, _adresa, _telefon, _email);
-            return bibliotecar;
+            return this;
         }
 
         public override PersoanaModel LoginClient(string _username, string _password)

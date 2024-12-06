@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using BibliotecaElectronica.Utilities;
-
-
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace BibliotecaElectronica.ViewModel
 {
@@ -84,12 +84,78 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
+        private int _day = 1;
+        public int Day
+        {
+            get { return _day; }
+            set
+            {
+                _day = value;
+                OnPropertyChanged(nameof(Day));
+            }
+        }
+        private string _month = "Ianuarie";
+        public string Month
+        {
+            get { return _month; }
+            set
+            {
+                _month = value;
+                OnPropertyChanged(nameof(Month));
+            }
+
+        }
+
+        private int _year=2024;
+        public int Year
+        {
+            get { return _year; }
+            set
+            {
+                _year = value;
+                OnPropertyChanged(nameof(Year));
+            }
+        }
+
+        private readonly ObservableCollection<int> _days;
+
+        public IEnumerable<int> Days => _days;
+
+        private readonly ObservableCollection<string> _months;
+
+        public IEnumerable<string> Months => _months;
+
+        private readonly ObservableCollection<int> _years;
+        public IEnumerable<int> Years => _years;
+
         public ICommand BackToLoginCommand { get; }
         public ICommand ContinueCreatingAccountCommand { get; }
 
         public ICommand ClearTextBoxCommand { get; }
+      
+        
         public CreateAccountViewModel(Stores.NavigationStore navigationStore)
         {
+            _days= new ObservableCollection<int>();
+            for (int i = 1; i <= 31; i++)
+            {
+                _days.Add(i);
+            }
+
+            _months = new ObservableCollection<string>();
+            string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+            for (int i = 0; i < months.Length - 1; i++)  // Ultimul element este gol
+            {
+                _months.Add(months[i]);
+            }
+
+            _years = new ObservableCollection<int>();
+            int currentYear = DateTime.Now.Year;
+            for (int i = currentYear; i >= 1960; i--)
+            {
+                _years.Add(i);
+            }
+
             ContinueCreatingAccountCommand = new ContinueCreatingAccountCommand(navigationStore,this);
             BackToLoginCommand = new BackToLoginCommand(navigationStore);
             ClearTextBoxCommand = new RelayCommand<string>(ClearText);

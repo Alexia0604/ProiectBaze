@@ -46,6 +46,8 @@
                     <Button x:Name="btnClear1"  Height="40" Content="X" Margin="10" Width="30" HorizontalAlignment="Right"
                      Foreground="LightGray" Background="Transparent"  BorderThickness="0" FontSize="16" Style="{x:Null}" Cursor="Arrow" Command="{Binding ClearTextBoxCommand}" CommandParameter="Username" />
                 </Grid>
+
+
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="55*"/>

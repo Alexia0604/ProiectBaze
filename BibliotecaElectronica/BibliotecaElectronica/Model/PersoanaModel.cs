@@ -35,16 +35,17 @@ namespace BibliotecaElectronica.Model
             BirthDate = birthdate;
         }
 
-        public PersoanaModel(string _nume, string _prenume, string _adresa, string _telefon, string _email)
+        public PersoanaModel(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate)
         {
             LastName = _nume;
             FirstName = _prenume;
             Address = _adresa;
             Phone = _telefon;
             Email = _email;
+            BirthDate = birthDate;
         }
         public abstract PersoanaModel LoginClient(string _username, string _password);
-        public abstract PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email);
+        public abstract PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email,DateTime birthDate);
 
         public void setPassword(string _password)
         {

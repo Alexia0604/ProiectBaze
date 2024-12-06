@@ -49,7 +49,7 @@ namespace BibliotecaElectronica.ViewModel
             Client = client;
             ClearTextBoxCommand = new RelayCommand<string>(ClearText);
             BackToCreateAccountCommand =new BackToCreateAccountCommand(navigationStore);
-            RegisterCommand=new RegisterCommand(this,client);
+            RegisterCommand=new RegisterCommand(navigationStore,this,client);
         }
 
         private void ClearText(string textBoxName)

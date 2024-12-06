@@ -26,7 +26,8 @@ namespace BibliotecaElectronica.View
         {
             InitializeComponent();
         }
-
+      
+          
         private void txtLastName_GotFocus(object sender, RoutedEventArgs e)
         {
             var u = new Utility();

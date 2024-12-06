@@ -29,8 +29,8 @@ namespace BibliotecaElectronica.Model
             this.registerDate = registerDate;
             this.nrOfBooks = nrOfBooks;
         }
-        public CititorModel(string _nume,string _prenume,string _adresa,string _telefon, string _email): base(_nume,_prenume,
-            _adresa, _telefon, _email)
+        public CititorModel(string _nume,string _prenume,string _adresa,string _telefon, string _email, DateTime birthDate): base(_nume,_prenume,
+            _adresa, _telefon, _email,birthDate)
         { }
         
         public CititorModel() { }
@@ -58,7 +58,7 @@ namespace BibliotecaElectronica.Model
             }
         }
 
-        public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email)
+        public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate)
         {
             if (_nume == "Nume" || _prenume == "Prenume" || _telefon == "Telefon" || _email == "Email" ||
                _nume == string.Empty || _prenume == string.Empty || _telefon == string.Empty || _email == string.Empty)
@@ -73,6 +73,8 @@ namespace BibliotecaElectronica.Model
             Address = _adresa;
             Phone = _telefon;
             Email = _email;
+            BirthDate = birthDate;
+
             return this;
         }
 
@@ -81,7 +83,7 @@ namespace BibliotecaElectronica.Model
             if (this.Username == "Username" || this.Password == "Parolă" ||
                 this.Username == string.Empty || this.Password == string.Empty)
                 throw new NoUsernameOrPasswordException();
-
+            
             Cititor cititor_db = new Cititor { DataInregistrare=DateTime.Now, NrCartiImprumutate=0};
             Persoana persoana = new Persoana
             {
