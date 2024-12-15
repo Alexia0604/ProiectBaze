@@ -118,6 +118,9 @@
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\ContinueCreatingAccountCommand.cs" />
     <Compile Include="Commands\CreateAccountCommand.cs" />
+    <Compile Include="Commands\CustomerClickButtonCommand.cs" />
+    <Compile Include="Commands\HomeClickButtonCommand.cs" />
+    <Compile Include="Commands\ProductsClickButtonCommand.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\SignInCommand.cs" />
@@ -135,21 +138,43 @@
     </Compile>
     <Compile Include="Model\Administrator.cs" />
     <Compile Include="Model\BibliotecarModel.cs" />
+    <Compile Include="Model\CarteModel.cs" />
     <Compile Include="Model\CititorModel.cs" />
     <Compile Include="Model\ClientRepository.cs" />
     <Compile Include="Model\PersoanaModel.cs" />
+    <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Utilities\Btn.cs" />
     <Compile Include="Utilities\Utility.cs" />
+    <Compile Include="ViewModel\CartiViewModel.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModel\CreateAccountViewModel.cs" />
     <Compile Include="ViewModel\CreateAccountViewModel2.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\CartiView.xaml.cs">
+      <DependentUpon>CartiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClientView.xaml.cs">
+      <DependentUpon>ClientView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateAccountView.xaml.cs">
       <DependentUpon>CreateAccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateAccountView2.xaml.cs">
       <DependentUpon>CreateAccountView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditableField.xaml.cs">
+      <DependentUpon>EditableField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -169,11 +194,47 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Text.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CartiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CreateAccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CreateAccountView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditableField.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,6 +265,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Rubik-Medium.ttf" />
+    <Resource Include="Fonts\Rubik-Regular.ttf" />
     <None Include="BibliotecaElectronicaClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>BibliotecaElectronicaClasses.designer.cs</LastGenOutput>
@@ -242,7 +305,23 @@
   <ItemGroup>
     <Resource Include="Images\HideEyeIcon.png.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\img_customer.png" />
+    <Resource Include="View\img_home.png" />
+    <Resource Include="View\img_order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\product_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\img_carte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\img_edit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

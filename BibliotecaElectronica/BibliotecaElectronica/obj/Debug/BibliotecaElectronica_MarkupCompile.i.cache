@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\
+C:\Users\draga\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\obj\Debug\
 BibliotecaElectronica
 none
 false
 DEBUG;TRACE
-C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\App.xaml
-61899105186
+C:\Users\draga\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\App.xaml
+15369183557
 
-38-1696700298
-33170105449
-Components\BindablePasswordBox.xaml;MainWindow.xaml;View\CreateAccountView.xaml;View\CreateAccountView2.xaml;View\LoginView.xaml;View\UserControls\ClearableTextBox.xaml;
+531715332609
+33617739759
+Components\BindablePasswordBox.xaml;MainWindow.xaml;Styles\Button.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;View\CartiView.xaml;View\ClientView.xaml;View\CreateAccountView.xaml;View\CreateAccountView2.xaml;View\CustomerView.xaml;View\EditableField.xaml;View\HomeView.xaml;View\LoginView.xaml;View\UserControls\ClearableTextBox.xaml;
 
-True
+False
 

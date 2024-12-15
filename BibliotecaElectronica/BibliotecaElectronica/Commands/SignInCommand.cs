@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BibliotecaElectronica.Stores;
 
 
 namespace BibliotecaElectronica.Commands
@@ -18,10 +19,12 @@ namespace BibliotecaElectronica.Commands
     public class SignInCommand : CommandBase
     {
         private readonly LoginViewModel _loginViewModel;
+        private readonly NavigationStore _navigationStore;
 
-        public SignInCommand(LoginViewModel loginViewModel)
+        public SignInCommand(LoginViewModel loginViewModel, NavigationStore navigationStore)
         {
             _loginViewModel = loginViewModel;
+            _navigationStore = navigationStore;
         }
 
         public override void Execute(object parameter)
@@ -36,18 +39,31 @@ namespace BibliotecaElectronica.Commands
                         administrator.LoginClient(_loginViewModel.Username, _loginViewModel.Password);
                         MessageBox.Show($"Bine ai venit, {_loginViewModel.Username}!",
                         $"Conectare {_loginViewModel.SelectedRole} reușită!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        //_navigationStore.CurrentViewModel=new ClientViewModel(_navigationStore);
+
                         break;
+
                     case "Bibliotecar":
                         BibliotecarModel bibliotecar = new BibliotecarModel();
                         bibliotecar.LoginClient(_loginViewModel.Username, _loginViewModel.Password);
                         MessageBox.Show($"Bine ai venit, {_loginViewModel.Username}!",
                         $"Conectare {_loginViewModel.SelectedRole} reușită!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        //_navigationStore.CurrentViewModel=new ClientViewModel(_navigationStore);
+
                         break;
                     case "Client":
                         CititorModel cititor = new CititorModel();
                         cititor.LoginClient(_loginViewModel.Username, _loginViewModel.Password);
                         MessageBox.Show($"Bine ai venit, {_loginViewModel.Username}!",
                         $"Conectare {_loginViewModel.SelectedRole} reușită!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        _navigationStore.CurrentViewModel = new ClientViewModel(_navigationStore,cititor);
+
+
+                        //_navigationStore.CurrentViewModel = new CreateAccountViewModel(_navigationStore);
+
                         break;
 
 

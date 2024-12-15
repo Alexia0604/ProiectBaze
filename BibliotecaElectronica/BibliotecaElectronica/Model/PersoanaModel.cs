@@ -19,7 +19,56 @@ namespace BibliotecaElectronica.Model
         protected string Phone;
         protected DateTime BirthDate;
 
+
         protected BibliotecaElectronicaClassesDataContext db = new BibliotecaElectronicaClassesDataContext();
+
+        public int IdPerson
+        {
+            get => idPerson;
+            set => idPerson = value;
+        }
+
+        public string Nume
+        {
+            get => LastName;
+            set => LastName = value;
+        }
+
+        public string Prenume
+        {
+            get => FirstName;
+            set => FirstName = value;
+        }
+
+        public string EmailAddress
+        {
+            get => Email;
+            set => Email = value;
+        }
+
+        public string Adresa
+        {
+            get => Address;
+            set => Address = value;
+        }
+
+        public string Telefon
+        {
+            get => Phone;
+            set => Phone = value;
+        }
+
+        public DateTime DataNasterii
+        {
+            get => BirthDate;
+            set => BirthDate = value;
+        }
+
+        public string NumeUtilizator
+        {
+            get => Username;
+            set => Username = value;
+        }
 
         public PersoanaModel() { }
         public PersoanaModel(int id, string lastname, string firstname, string username, string password, string email, string phone, string address, DateTime birthdate)

@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\view\\cartiview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\view\\cartiview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\model\\persoanamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\model\\persoanamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\viewmodel\\cartiviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\viewmodel\\cartiviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\model\\cartemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\model\\cartemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartiView.xaml",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\View\\CartiView.xaml",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\View\\CartiView.xaml",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\View\\CartiView.xaml",
+              "RelativeToolTip": "BibliotecaElectronica\\View\\CartiView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-15T19:11:55.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PersoanaModel.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\Model\\PersoanaModel.cs",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\Model\\PersoanaModel.cs",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\Model\\PersoanaModel.cs",
+              "RelativeToolTip": "BibliotecaElectronica\\Model\\PersoanaModel.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T18:56:27.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CarteModel.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\Model\\CarteModel.cs",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\Model\\CarteModel.cs",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\Model\\CarteModel.cs",
+              "RelativeToolTip": "BibliotecaElectronica\\Model\\CarteModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T18:24:26.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartiViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\ViewModel\\CartiViewModel.cs",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\ViewModel\\CartiViewModel.cs",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\ViewModel\\CartiViewModel.cs",
+              "RelativeToolTip": "BibliotecaElectronica\\ViewModel\\CartiViewModel.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAIAwwFkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-15T18:23:26.829Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

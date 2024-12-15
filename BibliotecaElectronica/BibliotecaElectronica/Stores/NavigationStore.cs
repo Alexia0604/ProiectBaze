@@ -26,6 +26,5 @@ namespace BibliotecaElectronica.Stores
             CurrentViewModelChanged?.Invoke();
         }
 
- 
     }
 }
