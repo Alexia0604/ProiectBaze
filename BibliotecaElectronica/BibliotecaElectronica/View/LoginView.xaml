@@ -47,8 +47,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
                     <Image Source="account1.png" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
                     <TextBox x:Name="txtUsername" Width="280" Height="35" Margin="5" Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}" Foreground="Gray" 
-                         BorderBrush="#cccccc" Tag="Username"  Background="White" Padding="5" FontFamily="Calibri Light" FontSize="18" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus"
-                          />
+                         BorderBrush="#cccccc" Tag="Username"  Background="White" Padding="5" FontFamily="Calibri Light" FontSize="18" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" />
                 </StackPanel>
 
                 <!-- Password Field -->
