@@ -39,18 +39,28 @@ namespace BibliotecaElectronica.Model
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
             {
-                
+
                 var reader_db = db.Cititors.SingleOrDefault(c => c.ID_Persoana == user.ID);
-                if ( reader_db!= null)
+                if (reader_db != null)
                 {
-                    CititorModel reader = new CititorModel(reader_db.ID, reader_db.DataInregistrare, reader_db.NrCartiImprumutate,
-                        reader_db.ID_Persoana.GetValueOrDefault(), reader_db.Persoana.Nume, reader_db.Persoana.Prenume, reader_db.Persoana.Username,
-                        reader_db.Persoana.Parola, reader_db.Persoana.Email, reader_db.Persoana.Adresa,reader_db.Persoana.Telefon, reader_db.Persoana.DataNasterii.GetValueOrDefault());
-                 
-                    return reader;
+                    this.idReader = reader_db.ID;
+                    this.registerDate = reader_db.DataInregistrare;
+                    this.nrOfBooks = reader_db.NrCartiImprumutate;
+                    this.idPerson = reader_db.ID_Persoana.GetValueOrDefault();
+                    this.FirstName = reader_db.Persoana.Prenume;
+                    this.LastName = reader_db.Persoana.Nume;
+                    this.Password = reader_db.Persoana.Parola;
+                    this.Email = reader_db.Persoana.Email;
+                    this.Address = reader_db.Persoana.Adresa;
+                    this.Phone = reader_db.Persoana.Telefon;
+                    this.BirthDate = reader_db.Persoana.DataNasterii.GetValueOrDefault();
+                    this.NumeUtilizator = reader_db.Persoana.Username;
+
+
+                    return this;
                 }
                 else
-                  throw new SignInException();
+                    throw new SignInException();
             }
             else
             {

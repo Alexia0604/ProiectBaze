@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\gabso\OneDrive\Desktop\ProiectBaze\BibliotecaElectronica\BibliotecaElectronica\App.xaml
-61899105186
+191967049967
 
-37385388320
-33170105449
-Components\BindablePasswordBox.xaml;MainWindow.xaml;View\CreateAccountView.xaml;View\CreateAccountView2.xaml;View\LoginView.xaml;View\UserControls\ClearableTextBox.xaml;
+771547534770
+35-2085127788
+Components\BindablePasswordBox.xaml;MainWindow.xaml;Model\NotificareModel.xaml;Styles\Button.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;View\CartiView.xaml;View\ClientView.xaml;View\CreateAccountView.xaml;View\CreateAccountView2.xaml;View\CustomerView.xaml;View\DetaliiCarteView.xaml;View\EditableField.xaml;View\HomeView.xaml;View\InboxView.xaml;View\LoginView.xaml;View\OrdersView.xaml;View\UserControls\ClearableTextBox.xaml;
 
 False
 

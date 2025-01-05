@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using BibliotecaElectronica.Services;
 
 
 namespace BibliotecaElectronica.ViewModel
@@ -82,11 +83,11 @@ namespace BibliotecaElectronica.ViewModel
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         
-        public LoginViewModel(Stores.NavigationStore navigationStore) 
+        public LoginViewModel(NavigationStore navigationStore) 
         {
 
            _roles = new ObservableCollection<string> { "Client", "Bibliotecar","Administrator" };
-            SignInCommand = new SignInCommand(this);
+            SignInCommand = new SignInCommand(this,navigationStore);
             CreateAccountCommand = new CreateAccountCommand(navigationStore);
         }
 

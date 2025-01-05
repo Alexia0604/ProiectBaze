@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace BibliotecaElectronica.Model
 {
-    public abstract class PersoanaModel
+    public abstract class PersoanaModel : INotifyPropertyChanged
+
     {
         protected int idPerson;
         protected string LastName; //nume
@@ -19,7 +22,56 @@ namespace BibliotecaElectronica.Model
         protected string Phone;
         protected DateTime BirthDate;
 
+
         protected BibliotecaElectronicaClassesDataContext db = new BibliotecaElectronicaClassesDataContext();
+
+        public int IdPerson
+        {
+            get => idPerson;
+            set => idPerson = value;
+        }
+
+        public string Nume
+        {
+            get => LastName;
+            set => LastName = value;
+        }
+
+        public string Prenume
+        {
+            get => FirstName;
+            set => FirstName = value;
+        }
+
+        public string EmailAddress
+        {
+            get => Email;
+            set => Email = value;
+        }
+
+        public string Adresa
+        {
+            get => Address;
+            set => Address = value;
+        }
+
+        public string Telefon
+        {
+            get => Phone;
+            set => Phone = value;
+        }
+
+        public DateTime DataNasterii
+        {
+            get => BirthDate;
+            set => BirthDate = value;
+        }
+
+        public string NumeUtilizator
+        {
+            get => Username;
+            set => Username = value;
+        }
 
         public PersoanaModel() { }
         public PersoanaModel(int id, string lastname, string firstname, string username, string password, string email, string phone, string address, DateTime birthdate)
@@ -56,5 +108,31 @@ namespace BibliotecaElectronica.Model
             Username = _username;
         }
         public virtual bool AdaugaClient() { return true; }
+
+        private int _nrNotificariNecitite;
+        public int NrNotificariNecitite
+        {
+            set
+            {
+                _nrNotificariNecitite = value;
+                OnPropertyChanged(nameof(NrNotificariNecitite));
+            }
+            get
+            {
+                return _nrNotificariNecitite;
+            }
+        }
+
+        public int getClientID()
+        {
+            int id=db.Cititors.Where(c=>c.ID_Persoana==this.idPerson).FirstOrDefault().ID;
+            return id;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

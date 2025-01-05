@@ -91,8 +91,10 @@ CREATE TABLE Carte (
     ID_Categorie INT FOREIGN KEY REFERENCES Categorie(ID)
 );
 
+
+
 ALTER TABLE Carte
-ADD Imagine NVARCHAR(255);
+ADD Imagine VARBINARY(max);
 
 -- Tabela Stoc
 CREATE TABLE Stoc (
@@ -112,18 +114,12 @@ CREATE TABLE Imprumut (
     Stare NVARCHAR(50) NOT NULL DEFAULT 'Activ' -- Exemplu: 'Activ', 'Finalizat', 'Intarziat'
 );
 
--- Tabela Tip_Notificare
-CREATE TABLE Tip_Notificare (
-    ID INT PRIMARY KEY IDENTITY,
-    Mesaj NVARCHAR(500) NOT NULL -- Mesajul specific fiecărui tip de notificare
-);
-
--- Tabela Notificare
 CREATE TABLE Notificare (
     ID INT PRIMARY KEY IDENTITY,
     ID_Cititor INT FOREIGN KEY REFERENCES Cititor(ID),
-    ID_Tip_Notificare INT FOREIGN KEY REFERENCES Tip_Notificare(ID), -- Asociere cu Tip_Notificare
-    DataTrimitere DATE NOT NULL,
+    Tip_Notificare NVARCHAR(100) NOT NULL, -- Tipul notificării (ex: "Returnare întârziată")
+    Mesaj NVARCHAR(500) NOT NULL, -- Mesajul notificării
+    DataTrimitere DATE NOT NULL, -- Data trimiterii notificării
     Stare NVARCHAR(50) NOT NULL DEFAULT 'Necitit' -- Exemplu: 'Necitit', 'Citit'
 );
 
@@ -234,46 +230,6 @@ VALUES
 (1, 5, 3, 'Interesantă, dar nu este genul meu preferat.', GETDATE() - 10);
 
 
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\marele_gatsby.jpeg' 
-WHERE Titlu = 'Marele Gatsby';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\1984.jpeg' 
-WHERE Titlu = '1984';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Harry Potter și Piatra Filozofală.jpg' 
-WHERE Titlu = 'Harry Potter și Piatra Filozofală';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Sapiens O scurta istorie a omenirii.jpg' 
-WHERE Titlu = 'Sapiens: O scurta istorie a omenirii';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Arta subtila a nepasarii.webp' 
-WHERE Titlu = 'Arta subtila a nepasarii';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Aventurile lui Sherlock Holmes.webp' 
-WHERE Titlu = 'Sherlock Holmes: Aventurile';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Cei trei muschetari.jpg' 
-WHERE Titlu = 'Cei trei mușchetari';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Calatoria fantastica.webp' 
-WHERE Titlu = 'Steve Jobs: Biografie';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\Doamna Bovary.webp' 
-WHERE Titlu = 'Doamna Bovary';
-
-UPDATE Carte 
-SET Imagine = 'C:\Users\draga\Desktop\Anul 3\Sem I\Aplicatii baze de date\aplicatie\marele_gatsby.jpeg' 
-WHERE Titlu = 'Calatoria fantastica';
-
 
 select * from Cititor
 
@@ -290,3 +246,318 @@ VALUES
 ( 4, GETDATE(), 2)
 
 set identity_insert Cititor ON
+
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Marele Gatsby' AS Titlu,
+    'F. Scott Fitzgerald' AS Autor,
+    1925 AS AnPublicare,
+    '978-0743273565' AS ISBN,
+    1 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\marele_gatsby.jpeg', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    '1984' AS Titlu,
+    'George Orwell' AS Autor,
+    1949 AS AnPublicare,
+    '978-0451524935' AS ISBN,
+    1 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\1984.jpeg', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Harry Potter și Piatra Filozofală' AS Titlu,
+    'J.K. Rowling' AS Autor,
+    1997 AS AnPublicare,
+    '978-0439708180' AS ISBN,
+    4 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Harry Potter și Piatra Filozofală.jpg', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Sapiens: O scurtă istorie a omenirii' AS Titlu,
+    'Yuval Noah Harari' AS Autor,
+    2011 AS AnPublicare,
+    '978-0062316110' AS ISBN,
+    6 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Sapiens O scurta istorie a omenirii.jpg', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Arta subtilă a nepăsării' AS Titlu,
+    'Mark Manson' AS Autor,
+    2016 AS AnPublicare,
+    '978-0062457714' AS ISBN,
+    7 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Arta subtila a nepasarii.webp', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Sherlock Holmes: Aventurile' AS Titlu,
+    'Arthur Conan Doyle' AS Autor,
+    1892 AS AnPublicare,
+    '978-0141034355' AS ISBN,
+    8 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Aventurile lui Sherlock Holmes.webp', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Cei trei mușchetari' AS Titlu,
+    'Alexandre Dumas' AS Autor,
+    1844 AS AnPublicare,
+    '978-0199538461' AS ISBN,
+    9 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Cei trei muschetari.jpg', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Steve Jobs: Biografie' AS Titlu,
+    'Walter Isaacson' AS Autor,
+    2011 AS AnPublicare,
+    '978-1451648539' AS ISBN,
+    10 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Steve Jobs Biografie.jpg', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Doamna Bovary' AS Titlu,
+    'Gustave Flaubert' AS Autor,
+    1856 AS AnPublicare,
+    '978-1853260780' AS ISBN,
+    3 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Doamna Bovary.webp', SINGLE_BLOB) AS ImageData;
+
+INSERT INTO Carte (Titlu, Autor, AnPublicare, ISBN, ID_Categorie, Imagine)
+SELECT 
+    'Călătoria fantastică' AS Titlu,
+    'Isaac Asimov' AS Autor,
+    1966 AS AnPublicare,
+    '978-0553275728' AS ISBN,
+    5 AS ID_Categorie,
+    BulkColumn AS Imagine
+FROM OPENROWSET(BULK 'C:\Users\gabso\OneDrive\Desktop\ProiectBaze\Calatoria fantastica.webp', SINGLE_BLOB) AS ImageData;
+
+
+INSERT INTO Persoana (Nume, Prenume, Username, Parola, Email, Telefon, Adresa, DataNasterii)
+VALUES 
+('a', 'a', 'a', 'a', 'a', 'a', 'Str. Exemplu, Nr. 1', '1985-07-14')
+
+select * from Cititor
+
+Alter TRIGGER trg_UpdateNrCartiImprumutate
+ON Imprumut
+AFTER INSERT
+AS
+BEGIN
+    -- Actualizează numărul de cărți împrumutate pentru fiecare cititor
+   UPDATE Cititor
+    SET NrCartiImprumutate = NrCartiImprumutate + (
+        SELECT COUNT(*) 
+        FROM Inserted 
+        WHERE Inserted.ID_Cititor = Cititor.ID
+    )
+    WHERE ID IN (
+        SELECT ID_Cititor 
+        FROM Inserted
+    );
+END;
+
+INSERT INTO Imprumut (ID_Cititor, ID_Carte, DataImprumut, TermenLimita, DataReturnare, Stare)
+VALUES 
+(13, 8, GETDATE() - 10, GETDATE() + 20, NULL, 'Activ'),
+(13, 9, GETDATE() - 15, GETDATE() + 15, GETDATE() - 5, 'Activ'),
+(13, 10, GETDATE() - 5, GETDATE() + 25, NULL, 'Activ');
+
+
+select * from carte
+
+CREATE PROCEDURE SetFinalizatPentruImprumuturiFinalizate
+AS
+BEGIN
+    -- Actualizează starea la 'Finalizat' pentru înregistrările care au DataReturnare nenulă
+    UPDATE Imprumut
+    SET Stare = 'Finalizat'
+    WHERE DataReturnare IS NOT NULL;
+END;
+
+EXEC SetFinalizatPentruImprumuturiFinalizate;
+
+ALTER TABLE Carte
+add Descriere NVARCHAR(300);
+
+INSERT INTO Recenzie (ID_Cititor, ID_Carte, Nota, Comentariu, DataRecenzie)
+VALUES 
+(1, 1, 5, N'O capodoperă literară, cu o poveste captivantă și personaje memorabile.', '2024-12-01'),
+(2, 1, 4, N'Foarte bună, dar am simțit că finalul a fost ușor grăbit.', '2024-12-02'),
+(3, 1, 3, N'Poveste interesantă, însă stilul de scriere nu este pe gustul meu.', '2024-12-03'),
+(4, 1, 5, N'Un roman clasic ce merită citit de toată lumea.', '2024-12-04'),
+(5, 1, 4, N'Povestea este minunată, dar unele pasaje au fost prea descriptive.', '2024-12-05'),
+(6, 1, 2, N'Nu mi-a plăcut. Prea multă dramă și personaje greu de înțeles.', '2024-12-06'),
+(7, 1, 5, N'Un roman fascinant, cu multe lecții de viață.', '2024-12-07'),
+(8, 1, 3, N'M-a impresionat doar parțial. Unele părți sunt plictisitoare.', '2024-12-08'),
+(9, 1, 4, N'Excelent, dar mi-ar fi plăcut să aflu mai multe despre anumite personaje.', '2024-12-09'),
+(10, 1, 5, N'Un roman extraordinar, care m-a ținut în priză până la ultima pagină.', '2024-12-10');
+
+
+UPDATE Carte
+SET Descriere = 'Nick Carraway, un tanar atras de visul american, proaspat sosit la New York, intra in lumea fascinanta a lui Jay Gatsby, o lume a succesului si a iluziei.
+Pe fundalul Americii anilor 1920, Gatsby, impins de iubirea fata de Daisy Buchanan, isi schimba complet existenta, transformandu-se dintr-un tanar sarac in traficant de bauturi alcoolice si apoi milionar.
+In ciuda petrecerilor grandioase a caror gazda este, Gatsby ascunde o nemarginita nefericire. Tot ce face este destinat sa-i atraga atentia lui Daisy, insa iubirea sa nu ajunge sa se implineasca niciodata...
+Carte emblematica a "generatiei pierdute", Marele Gatsby este, conform Washington Post, "al doilea mare roman in limba engleza al secolului XX, dupa Ulise, de James Joyce".'
+WHERE Titlu = 'Marele Gatsby';
+
+select * from Recenzie
+select * from Carte
+
+ALTER TABLE Carte
+ADD NumarPagini INT, -- Numărul de pagini
+    Dimensiune NVARCHAR(50), -- Dimensiunea cărții (ex: "20x25cm")
+    Editura NVARCHAR(100); -- Numele editurii
+
+	UPDATE Carte
+SET NumarPagini = 200, -- Numărul de pagini
+    Dimensiune = '15x22cm', -- Dimensiunea cărții
+    Editura = 'Editura Humanitas' -- Numele editurii
+WHERE ID = 1; -- Cartea cu ID=1
+
+
+select * from Stoc
+
+select * from Persoana
+
+CREATE TRIGGER trg_UpdateStocOnInsert
+ON Imprumut
+AFTER INSERT
+AS
+BEGIN
+    -- Actualizează numărul de exemplare din tabelul Stoc
+    UPDATE Stoc
+    SET NrExemplare = NrExemplare - 1
+    FROM Stoc
+    INNER JOIN inserted ON Stoc.ID_Carte = inserted.ID_Carte
+    WHERE Stoc.NrExemplare > 0; -- Asigură că nu scade sub 0
+
+    -- Opțional: gestionează situațiile în care nu există stoc disponibil
+    IF EXISTS (
+        SELECT 1
+        FROM Stoc
+        INNER JOIN inserted ON Stoc.ID_Carte = inserted.ID_Carte
+        WHERE Stoc.NrExemplare < 0
+    )
+    BEGIN
+        THROW 50001, 'Stoc insuficient pentru cartea selectată.', 1;
+    END
+END;
+
+CREATE TABLE Feedback (
+    ID INT PRIMARY KEY IDENTITY, 
+    ID_Recenzie INT NOT NULL, 
+    NrLike INT NOT NULL DEFAULT 0, 
+    NrDislike INT NOT NULL DEFAULT 0, 
+    FOREIGN KEY (ID_Recenzie) REFERENCES Recenzie(ID)
+);
+
+select * from Recenzie
+
+
+-- Adăugarea unor valori în tabela Feedback
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (1, 15, 3);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (10, 20, 5);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (11, 8, 0);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (12, 12, 4);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (13, 25, 7);
+
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (2, 15, 3);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (3, 20, 5);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (4, 8, 0);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (5, 12, 4);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (6, 25, 7);
+
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (7, 15, 3);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (8, 20, 5);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (9, 8, 0);
+
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (17, 0, 0);
+select * from Recenzie
+select * from Feedback
+
+
+CREATE TRIGGER trg_AfterInsertRecenzie
+ON Recenzie
+AFTER INSERT
+AS
+BEGIN
+
+    INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike)
+    SELECT ID, 0, 0
+    FROM inserted;
+END;
+
+
+CREATE TRIGGER trg_UpdateNrExemplareOnReturn
+ON Imprumut
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (
+        SELECT 1
+        FROM Inserted
+        WHERE DataReturnare IS NOT NULL
+    )
+    BEGIN
+        UPDATE Stoc
+        SET NrExemplare= NrExemplare + 1
+        FROM Stoc
+        INNER JOIN Inserted ON Stoc.ID_Carte= Inserted.ID_Carte
+        WHERE Inserted.DataReturnare IS NOT NULL;
+    END
+END;
+
+CREATE TABLE TaskLogs (
+    Id INT PRIMARY KEY IDENTITY(1,1), 
+    TaskName NVARCHAR(100) NOT NULL,
+    LastRunTime DATETIME NOT NULL  
+);
+
+INSERT INTO Imprumut (ID_Cititor, ID_Carte, DataImprumut, TermenLimita, DataReturnare, Stare)
+VALUES 
+(13, 1, GETDATE() - 10, GETDATE() -1, NULL, 'Activ')
+
+select * from Imprumut
+
+select * from Notificare
+
+select * from TaskLogs
+
+DELETE FROM TaskLogs
+WHERE ID = 3
+
+
+
+delete from Notificare
+where id=6
+
+select * from Cititor
+select * from Persoana
+
+ALTER TABLE Notificare
+ALTER COLUMN DataTrimitere DATETIME NOT NULL;
+
+UPDATE Notificare
+SET DataTrimitere = DATEADD(HOUR, 17, DataTrimitere) -- Adaugă ora 12:00 pentru toate intrările
+WHERE CAST(DataTrimitere AS TIME) = '00:00:00';
+
+

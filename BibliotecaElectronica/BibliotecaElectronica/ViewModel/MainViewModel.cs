@@ -18,6 +18,7 @@ namespace BibliotecaElectronica.ViewModel
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
+
         private void OnCurrentViewModelChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));

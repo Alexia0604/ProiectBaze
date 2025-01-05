@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaElectronica.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="620" d:DesignWidth="622">
+    <Grid>
+        <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="Transparent">
+
+            <!-- Image at the top -->
+            <Image Source="C:/Users/draga/Desktop/interfata/Page-Navigation-using-MVVM/Source Code/Page Navigation App/Page Navigation App/Page Navigation App/Images/logo2.png"
+            Height="300" HorizontalAlignment="Stretch"/>
+
+            <Border Background="Transparent" Margin="10,20,10,10" Padding="15" CornerRadius="10">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Text="Ai atâtea vieți câte cărți ai citit"
+                    FontSize="40" FontStyle="Italic" Foreground="Gray" TextAlignment="Center"/>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

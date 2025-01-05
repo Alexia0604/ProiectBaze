@@ -8,7 +8,7 @@
              xmlns:userControl="clr-namespace:BibliotecaElectronica.View.UserControls" 
              xmlns:viewmodel="clr-namespace:BibliotecaElectronica.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="600">
+             d:DesignHeight="650" d:DesignWidth="600">
     <UserControl.Resources>
         <Style x:Key="UnderlineButtonStyle" TargetType="Button">
             <Setter Property="Template">
