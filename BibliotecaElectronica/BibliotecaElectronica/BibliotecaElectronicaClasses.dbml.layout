@@ -1,154 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 18.875, 14.5" name="BibliotecaElectronicaClasses">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 12.625" name="BibliotecaElectronicaClasses">
   <DataContextMoniker Name="/BibliotecaElectronicaClassesDataContext" />
   <nestedChildShapes>
-    <classShape Id="a805d343-1515-4e3c-a70d-1cbcfedcf47a" absoluteBounds="2.75, 1, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Administrator" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2b33bad6-3804-4c6e-a35e-b578b2217d7c" absoluteBounds="2.765, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b667a478-8e2f-4dd3-83a2-a5b60c9827a0" absoluteBounds="6.25, 1.5, 2, 1.3862939453125">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Bibliotecar" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e02789fa-65ed-42cd-9583-771c1d01dd34" absoluteBounds="6.265, 1.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="505b49bb-04f8-4930-aeda-b28c5e97e582" absoluteBounds="6.375, 3.875, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Categorie" />
-      <nestedChildShapes>
-        <elementListCompartment Id="7c86bbff-968d-4af6-a751-9cf34632320d" absoluteBounds="6.39, 4.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0ee716d4-eed7-4f0d-81f7-ed9ef63b9e57" absoluteBounds="11.75, 2.125, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor" />
-      <nestedChildShapes>
-        <elementListCompartment Id="533ac79f-4605-470b-bc02-0e4ee208c141" absoluteBounds="11.765, 2.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="fdf9099a-23a0-49b4-a6af-eed4d59e3f59" absoluteBounds="10, 5.625, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Imprumut" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e2f08cc0-f9ea-4247-ba47-1dde8ffd16b8" absoluteBounds="10.015, 6.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(12.8750005 : 3.70359537760417); (12.8750005 : 6.70274983723958); (12.5208310833333 : 6.70274983723958 : JumpStart); (12.3541644166667 : 6.70274983723958 : JumpEnd); (12 : 6.70274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor/Cititor_Imprumut" />
-      <nodes>
-        <classShapeMoniker Id="0ee716d4-eed7-4f0d-81f7-ed9ef63b9e57" />
-        <classShapeMoniker Id="fdf9099a-23a0-49b4-a6af-eed4d59e3f59" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="3a4e760a-e274-4dc1-8674-6d6d45bd066e" absoluteBounds="8, 10.875, 2, 2.5401025390625">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana" />
-      <nestedChildShapes>
-        <elementListCompartment Id="08abae1b-b1b3-49fe-8dc1-dea2269f2730" absoluteBounds="8.015, 11.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(9.1875 : 10.875); (9.1875 : 1.21875); (4.75 : 1.21875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Administrator" />
-      <nodes>
-        <classShapeMoniker Id="3a4e760a-e274-4dc1-8674-6d6d45bd066e" />
-        <classShapeMoniker Id="a805d343-1515-4e3c-a70d-1cbcfedcf47a" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.7812475 : 10.875); (8.7812475 : 2.19314697265625); (8.25 : 2.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Bibliotecar" />
-      <nodes>
-        <classShapeMoniker Id="3a4e760a-e274-4dc1-8674-6d6d45bd066e" />
-        <classShapeMoniker Id="b667a478-8e2f-4dd3-83a2-a5b60c9827a0" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(9.5937525 : 10.875); (9.5937525 : 3.32619466145833); (11.75 : 3.32619466145833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Cititor" />
-      <nodes>
-        <classShapeMoniker Id="3a4e760a-e274-4dc1-8674-6d6d45bd066e" />
-        <classShapeMoniker Id="0ee716d4-eed7-4f0d-81f7-ed9ef63b9e57" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="dcb2c21f-25b9-4840-8ad1-af52fa962883" absoluteBounds="16.625, 7.625, 2, 1.9631982421875">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Recenzie" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cb9444fb-9509-497f-a812-ffc0c2a96af6" absoluteBounds="16.64, 8.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(12.43749775 : 3.70359537760417); (12.43749775 : 8.88785162109375); (13.2604194166667 : 8.88785162109375 : JumpStart); (13.4270860833333 : 8.88785162109375 : JumpEnd); (16.625 : 8.88785162109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor/Cititor_Recenzie" />
-      <nodes>
-        <classShapeMoniker Id="0ee716d4-eed7-4f0d-81f7-ed9ef63b9e57" />
-        <classShapeMoniker Id="dcb2c21f-25b9-4840-8ad1-af52fa962883" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="b66c7de6-cc9e-41d9-9868-02e63e7360fe" absoluteBounds="14.875, 10.625, 2, 1.3862939453125">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Stoc" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c7a672f5-32a5-42c2-93d2-77130443179a" absoluteBounds="14.89, 11.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0c438cbd-76b6-4838-b605-d358c805e407" absoluteBounds="2.125, 4.25, 2, 2.9247054036458331">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d1db2d54-d40b-4f8e-ae53-1eaed0c52320" absoluteBounds="2.14, 4.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(4.125 : 6.39985270182292); (10 : 6.39985270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Imprumut" />
-      <nodes>
-        <classShapeMoniker Id="0c438cbd-76b6-4838-b605-d358c805e407" />
-        <classShapeMoniker Id="fdf9099a-23a0-49b4-a6af-eed4d59e3f59" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(4.125 : 5.34699625651042); (8.69791416666667 : 5.34699625651042 : JumpStart); (8.86458083333333 : 5.34699625651042 : JumpEnd); (9.10416666666667 : 5.34699625651042 : JumpStart); (9.27083333333333 : 5.34699625651042 : JumpEnd); (9.51041916666667 : 5.34699625651042 : JumpStart); (9.67708583333333 : 5.34699625651042 : JumpEnd); (12.3541644166667 : 5.34699625651042 : JumpStart); (12.5208310833333 : 5.34699625651042 : JumpEnd); (12.7916671666667 : 5.34699625651042 : JumpStart); (12.9583338333333 : 5.34699625651042 : JumpEnd); (13.2604194166667 : 5.34699625651042 : JumpStart); (13.4270860833333 : 5.34699625651042 : JumpEnd); (17.28125 : 5.34699625651042); (17.28125 : 7.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Recenzie" />
-      <nodes>
-        <classShapeMoniker Id="0c438cbd-76b6-4838-b605-d358c805e407" />
-        <classShapeMoniker Id="dcb2c21f-25b9-4840-8ad1-af52fa962883" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(3.125 : 7.17470540364583); (3.125 : 10.71875); (8.69791416666667 : 10.71875 : JumpStart); (8.86458083333333 : 10.71875 : JumpEnd); (9.10416666666667 : 10.71875 : JumpStart); (9.27083333333333 : 10.71875 : JumpEnd); (9.51041916666667 : 10.71875 : JumpStart); (9.67708583333333 : 10.71875 : JumpEnd); (13.2604194166667 : 10.71875 : JumpStart); (13.4270860833333 : 10.71875 : JumpEnd); (14.875 : 10.71875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Stoc" />
-      <nodes>
-        <classShapeMoniker Id="0c438cbd-76b6-4838-b605-d358c805e407" />
-        <classShapeMoniker Id="b66c7de6-cc9e-41d9-9868-02e63e7360fe" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(6.375 : 4.65949625651042); (4.125 : 4.65949625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Categorie/Categorie_Carte" />
-      <nodes>
-        <classShapeMoniker Id="505b49bb-04f8-4930-aeda-b28c5e97e582" />
-        <classShapeMoniker Id="0c438cbd-76b6-4838-b605-d358c805e407" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="2408a8c1-e752-41e1-9264-4bf0d8ff7d93" absoluteBounds="1.25, 2, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Feedback" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6f6971c2-8194-4876-b325-863e4572bcba" absoluteBounds="1.2650000000000001, 2.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(16.625 : 8.20274983723958); (13.4270860833333 : 8.20274983723958 : JumpStart); (13.2604194166667 : 8.20274983723958 : JumpEnd); (12.5208310833333 : 8.20274983723958 : JumpStart); (12.3541644166667 : 8.20274983723958 : JumpEnd); (9.67708583333333 : 8.20274983723958 : JumpStart); (9.51041916666667 : 8.20274983723958 : JumpEnd); (9.27083333333333 : 8.20274983723958 : JumpStart); (9.10416666666667 : 8.20274983723958 : JumpEnd); (8.86458083333333 : 8.20274983723958 : JumpStart); (8.69791416666667 : 8.20274983723958 : JumpEnd); (3.20833333333333 : 8.20274983723958 : JumpStart); (3.04166666666667 : 8.20274983723958 : JumpEnd); (1.65625 : 8.20274983723958); (1.65625 : 3.57859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Recenzie/Recenzie_Feedback" />
-      <nodes>
-        <classShapeMoniker Id="dcb2c21f-25b9-4840-8ad1-af52fa962883" />
-        <classShapeMoniker Id="2408a8c1-e752-41e1-9264-4bf0d8ff7d93" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="c88c2abc-270b-4e85-b88a-212b0b02ee76" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
+    <classShape Id="6c10173e-5f7a-403a-a223-648da1f91531" absoluteBounds="8.75, 3.75, 2, 1.3862939453125005">
       <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/TaskLog" />
       <nestedChildShapes>
-        <elementListCompartment Id="e9f9b1cb-0652-4312-aa12-7fba303e1527" absoluteBounds="0.515, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="35f7f2d1-c163-431d-b623-e185ed3d1abc" absoluteBounds="8.765, 4.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d64ca3c6-9e2e-4977-82a1-c34b5d4e59d3" absoluteBounds="6.25, 12.25, 2, 1.9631982421875">
+    <classShape Id="19a78ce2-e74b-4427-8411-1a7ac6c23066" absoluteBounds="6.25, 4, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Stoc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="92940425-1ca5-4603-bca3-537e340c01a5" absoluteBounds="6.265, 4.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8e4c35fa-7586-4fe2-9709-f895dfb6f2dd" absoluteBounds="6.25, 0.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Recenzie" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f32c5fbd-3c82-428c-bbb0-7fce88c17613" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="75ef95f0-1c65-4e0d-b27d-1e26b3e6701a" absoluteBounds="6.25, 10.375, 2, 1.9631982421874987">
       <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Notificare" />
       <nestedChildShapes>
-        <elementListCompartment Id="c42d4d19-5c2d-4db1-87fe-6a342f999c82" absoluteBounds="6.265, 12.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="64360f8e-a287-44a3-aecf-c65be8ab6640" absoluteBounds="6.265, 10.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(13.34375275 : 3.70359537760417); (13.34375275 : 13.845400390625); (8.25 : 13.845400390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="134c18a2-ae75-42ac-9969-6b1d8e402ce4" absoluteBounds="6.25, 6.625, 2, 2.1554996744791675">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Imprumut" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cd80120-1271-4893-9b77-6ebbe23ccfd5" absoluteBounds="6.265, 7.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="664a63ad-d92d-4a16-a0be-b787769c592a" absoluteBounds="9, 1, 2, 1.5785953776041668">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Feedback" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7ee16a4-2a84-4d49-a9a0-578391154466" absoluteBounds="9.015, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="106d3425-cc45-417d-92da-9a6a5009317d" absoluteBounds="3.5, 7.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38da66b6-fdbd-4fa1-bcf7-108abb6c3bf9" absoluteBounds="3.515, 7.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13672f92-0f5c-4313-946b-7c9f53eeac54" absoluteBounds="3.5, 10.25, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Bibliotecar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1572b135-2999-40f6-a4cb-07f66c66676f" absoluteBounds="3.515, 10.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cb7764b1-7da9-42eb-af28-b109b29a704d" absoluteBounds="3.5, 1.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Administrator" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c40c049-7aa7-48ef-9c0b-6b9196ef1840" absoluteBounds="3.515, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 1.78929768880208); (9 : 1.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Recenzie/Recenzie_Feedback" />
+      <nodes>
+        <classShapeMoniker Id="8e4c35fa-7586-4fe2-9709-f895dfb6f2dd" />
+        <classShapeMoniker Id="664a63ad-d92d-4a16-a0be-b787769c592a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 7.5); (5.875 : 7.125); (5.875 : 1.73159912109375); (6.25 : 1.73159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor/Cititor_Recenzie" />
+      <nodes>
+        <classShapeMoniker Id="106d3425-cc45-417d-92da-9a6a5009317d" />
+        <classShapeMoniker Id="8e4c35fa-7586-4fe2-9709-f895dfb6f2dd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 9.07859537760417); (5.875 : 9.45359537760417); (5.875 : 11.3565991210937); (6.25 : 11.3565991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor/Cititor_Notificare" />
       <nodes>
-        <classShapeMoniker Id="0ee716d4-eed7-4f0d-81f7-ed9ef63b9e57" />
-        <classShapeMoniker Id="d64ca3c6-9e2e-4977-82a1-c34b5d4e59d3" />
+        <classShapeMoniker Id="106d3425-cc45-417d-92da-9a6a5009317d" />
+        <classShapeMoniker Id="75ef95f0-1c65-4e0d-b27d-1e26b3e6701a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 8.17150233723958); (6.25 : 8.17150233723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor/Cititor_Imprumut" />
+      <nodes>
+        <classShapeMoniker Id="106d3425-cc45-417d-92da-9a6a5009317d" />
+        <classShapeMoniker Id="134c18a2-ae75-42ac-9969-6b1d8e402ce4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" absoluteBounds="3.375, 3.25, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9b5ce5a-bc7d-4fb8-93e0-e2361692373e" absoluteBounds="3.3899999999999997, 3.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.375 : 4.69314697265625); (5.79166666666667 : 4.69314697265625 : JumpStart); (5.95833333333333 : 4.69314697265625 : JumpEnd); (6.25 : 4.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Stoc" />
+      <nodes>
+        <classShapeMoniker Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" />
+        <classShapeMoniker Id="19a78ce2-e74b-4427-8411-1a7ac6c23066" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.40625 : 3.25); (3.40625 : 0.96875); (6.25 : 0.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Recenzie" />
+      <nodes>
+        <classShapeMoniker Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" />
+        <classShapeMoniker Id="8e4c35fa-7586-4fe2-9709-f895dfb6f2dd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.375 : 6.17470540364583); (5.75 : 6.54970540364583); (5.75 : 6.25); (5.875 : 6.25); (6.25 : 6.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Imprumut" />
+      <nodes>
+        <classShapeMoniker Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" />
+        <classShapeMoniker Id="134c18a2-ae75-42ac-9969-6b1d8e402ce4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7017e176-8403-4af5-b64c-52a22277666c" absoluteBounds="0.5, 6, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c914d413-bff1-4dae-85e5-62ee6e2668eb" absoluteBounds="0.51500000000000012, 6.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 8.11620198567708); (3.5 : 8.11620198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Cititor" />
+      <nodes>
+        <classShapeMoniker Id="7017e176-8403-4af5-b64c-52a22277666c" />
+        <classShapeMoniker Id="106d3425-cc45-417d-92da-9a6a5009317d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 8.73240397135417); (1.5 : 10.9431469726562); (3.5 : 10.9431469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Bibliotecar" />
+      <nodes>
+        <classShapeMoniker Id="7017e176-8403-4af5-b64c-52a22277666c" />
+        <classShapeMoniker Id="13672f92-0f5c-4313-946b-7c9f53eeac54" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 6); (1.5 : 1.84699625651042); (3.32291666666667 : 1.84699625651042 : JumpStart); (3.48958333333333 : 1.84699625651042 : JumpEnd); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Administrator" />
+      <nodes>
+        <classShapeMoniker Id="7017e176-8403-4af5-b64c-52a22277666c" />
+        <classShapeMoniker Id="cb7764b1-7da9-42eb-af28-b109b29a704d" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

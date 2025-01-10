@@ -11,6 +11,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="850">
 
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
     <Grid>
 
         <Grid.RowDefinitions>

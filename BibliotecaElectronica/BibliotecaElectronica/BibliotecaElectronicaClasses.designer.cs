@@ -30,46 +30,43 @@ namespace BibliotecaElectronica
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAdministrator(Administrator instance);
-    partial void UpdateAdministrator(Administrator instance);
-    partial void DeleteAdministrator(Administrator instance);
-    partial void InsertBibliotecar(Bibliotecar instance);
-    partial void UpdateBibliotecar(Bibliotecar instance);
-    partial void DeleteBibliotecar(Bibliotecar instance);
-    partial void InsertCategorie(Categorie instance);
-    partial void UpdateCategorie(Categorie instance);
-    partial void DeleteCategorie(Categorie instance);
-    partial void InsertCititor(Cititor instance);
-    partial void UpdateCititor(Cititor instance);
-    partial void DeleteCititor(Cititor instance);
-    partial void InsertImprumut(Imprumut instance);
-    partial void UpdateImprumut(Imprumut instance);
-    partial void DeleteImprumut(Imprumut instance);
-    partial void InsertPersoana(Persoana instance);
-    partial void UpdatePersoana(Persoana instance);
-    partial void DeletePersoana(Persoana instance);
-    partial void InsertRecenzie(Recenzie instance);
-    partial void UpdateRecenzie(Recenzie instance);
-    partial void DeleteRecenzie(Recenzie instance);
-    partial void InsertStoc(Stoc instance);
-    partial void UpdateStoc(Stoc instance);
-    partial void DeleteStoc(Stoc instance);
-    partial void InsertCarte(Carte instance);
-    partial void UpdateCarte(Carte instance);
-    partial void DeleteCarte(Carte instance);
-    partial void InsertFeedback(Feedback instance);
-    partial void UpdateFeedback(Feedback instance);
-    partial void DeleteFeedback(Feedback instance);
     partial void InsertTaskLog(TaskLog instance);
     partial void UpdateTaskLog(TaskLog instance);
     partial void DeleteTaskLog(TaskLog instance);
+    partial void InsertStoc(Stoc instance);
+    partial void UpdateStoc(Stoc instance);
+    partial void DeleteStoc(Stoc instance);
+    partial void InsertRecenzie(Recenzie instance);
+    partial void UpdateRecenzie(Recenzie instance);
+    partial void DeleteRecenzie(Recenzie instance);
     partial void InsertNotificare(Notificare instance);
     partial void UpdateNotificare(Notificare instance);
     partial void DeleteNotificare(Notificare instance);
+    partial void InsertImprumut(Imprumut instance);
+    partial void UpdateImprumut(Imprumut instance);
+    partial void DeleteImprumut(Imprumut instance);
+    partial void InsertFeedback(Feedback instance);
+    partial void UpdateFeedback(Feedback instance);
+    partial void DeleteFeedback(Feedback instance);
+    partial void InsertCititor(Cititor instance);
+    partial void UpdateCititor(Cititor instance);
+    partial void DeleteCititor(Cititor instance);
+    partial void InsertBibliotecar(Bibliotecar instance);
+    partial void UpdateBibliotecar(Bibliotecar instance);
+    partial void DeleteBibliotecar(Bibliotecar instance);
+    partial void InsertAdministrator(Administrator instance);
+    partial void UpdateAdministrator(Administrator instance);
+    partial void DeleteAdministrator(Administrator instance);
+    partial void InsertCarte(Carte instance);
+    partial void UpdateCarte(Carte instance);
+    partial void DeleteCarte(Carte instance);
+    partial void InsertPersoana(Persoana instance);
+    partial void UpdatePersoana(Persoana instance);
+    partial void DeletePersoana(Persoana instance);
     #endregion
 		
 		public BibliotecaElectronicaClassesDataContext() : 
-				base(global::BibliotecaElectronica.Properties.Settings.Default.BibliotecaElectronicaConnectionString1, mappingSource)
+				base(global::BibliotecaElectronica.Properties.Settings.Default.BibliotecaElectronicaConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -98,59 +95,11 @@ namespace BibliotecaElectronica
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Administrator> Administrators
+		public System.Data.Linq.Table<TaskLog> TaskLogs
 		{
 			get
 			{
-				return this.GetTable<Administrator>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Bibliotecar> Bibliotecars
-		{
-			get
-			{
-				return this.GetTable<Bibliotecar>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Categorie> Categories
-		{
-			get
-			{
-				return this.GetTable<Categorie>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Cititor> Cititors
-		{
-			get
-			{
-				return this.GetTable<Cititor>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Imprumut> Imprumuts
-		{
-			get
-			{
-				return this.GetTable<Imprumut>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Persoana> Persoanas
-		{
-			get
-			{
-				return this.GetTable<Persoana>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Recenzie> Recenzies
-		{
-			get
-			{
-				return this.GetTable<Recenzie>();
+				return this.GetTable<TaskLog>();
 			}
 		}
 		
@@ -162,11 +111,27 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		public System.Data.Linq.Table<Carte> Cartes
+		public System.Data.Linq.Table<Recenzie> Recenzies
 		{
 			get
 			{
-				return this.GetTable<Carte>();
+				return this.GetTable<Recenzie>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Notificare> Notificares
+		{
+			get
+			{
+				return this.GetTable<Notificare>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Imprumut> Imprumuts
+		{
+			get
+			{
+				return this.GetTable<Imprumut>();
 			}
 		}
 		
@@ -178,25 +143,1288 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		public System.Data.Linq.Table<TaskLog> TaskLogs
+		public System.Data.Linq.Table<Cititor> Cititors
 		{
 			get
 			{
-				return this.GetTable<TaskLog>();
+				return this.GetTable<Cititor>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Notificare> Notificares
+		public System.Data.Linq.Table<Bibliotecar> Bibliotecars
 		{
 			get
 			{
-				return this.GetTable<Notificare>();
+				return this.GetTable<Bibliotecar>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Administrator> Administrators
+		{
+			get
+			{
+				return this.GetTable<Administrator>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Carte> Cartes
+		{
+			get
+			{
+				return this.GetTable<Carte>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Persoana> Persoanas
+		{
+			get
+			{
+				return this.GetTable<Persoana>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Administrator")]
-	public partial class Administrator : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TaskLogs")]
+	public partial class TaskLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _TaskName;
+		
+		private System.DateTime _LastRunTime;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTaskNameChanging(string value);
+    partial void OnTaskNameChanged();
+    partial void OnLastRunTimeChanging(System.DateTime value);
+    partial void OnLastRunTimeChanged();
+    #endregion
+		
+		public TaskLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string TaskName
+		{
+			get
+			{
+				return this._TaskName;
+			}
+			set
+			{
+				if ((this._TaskName != value))
+				{
+					this.OnTaskNameChanging(value);
+					this.SendPropertyChanging();
+					this._TaskName = value;
+					this.SendPropertyChanged("TaskName");
+					this.OnTaskNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastRunTime", DbType="DateTime NOT NULL")]
+		public System.DateTime LastRunTime
+		{
+			get
+			{
+				return this._LastRunTime;
+			}
+			set
+			{
+				if ((this._LastRunTime != value))
+				{
+					this.OnLastRunTimeChanging(value);
+					this.SendPropertyChanging();
+					this._LastRunTime = value;
+					this.SendPropertyChanged("LastRunTime");
+					this.OnLastRunTimeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stoc")]
+	public partial class Stoc : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _ID_Carte;
+		
+		private int _NrExemplare;
+		
+		private EntityRef<Carte> _Carte;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnID_CarteChanging(System.Nullable<int> value);
+    partial void OnID_CarteChanged();
+    partial void OnNrExemplareChanging(int value);
+    partial void OnNrExemplareChanged();
+    #endregion
+		
+		public Stoc()
+		{
+			this._Carte = default(EntityRef<Carte>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Carte", DbType="Int")]
+		public System.Nullable<int> ID_Carte
+		{
+			get
+			{
+				return this._ID_Carte;
+			}
+			set
+			{
+				if ((this._ID_Carte != value))
+				{
+					if (this._Carte.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CarteChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Carte = value;
+					this.SendPropertyChanged("ID_Carte");
+					this.OnID_CarteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrExemplare", DbType="Int NOT NULL")]
+		public int NrExemplare
+		{
+			get
+			{
+				return this._NrExemplare;
+			}
+			set
+			{
+				if ((this._NrExemplare != value))
+				{
+					this.OnNrExemplareChanging(value);
+					this.SendPropertyChanging();
+					this._NrExemplare = value;
+					this.SendPropertyChanged("NrExemplare");
+					this.OnNrExemplareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Stoc", Storage="_Carte", ThisKey="ID_Carte", OtherKey="ID", IsForeignKey=true)]
+		public Carte Carte
+		{
+			get
+			{
+				return this._Carte.Entity;
+			}
+			set
+			{
+				Carte previousValue = this._Carte.Entity;
+				if (((previousValue != value) 
+							|| (this._Carte.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Carte.Entity = null;
+						previousValue.Stocs.Remove(this);
+					}
+					this._Carte.Entity = value;
+					if ((value != null))
+					{
+						value.Stocs.Add(this);
+						this._ID_Carte = value.ID;
+					}
+					else
+					{
+						this._ID_Carte = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Carte");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Recenzie")]
+	public partial class Recenzie : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _ID_Cititor;
+		
+		private System.Nullable<int> _ID_Carte;
+		
+		private System.Nullable<int> _Nota;
+		
+		private string _Comentariu;
+		
+		private System.DateTime _DataRecenzie;
+		
+		private EntitySet<Feedback> _Feedbacks;
+		
+		private EntityRef<Cititor> _Cititor;
+		
+		private EntityRef<Carte> _Carte;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnID_CititorChanging(System.Nullable<int> value);
+    partial void OnID_CititorChanged();
+    partial void OnID_CarteChanging(System.Nullable<int> value);
+    partial void OnID_CarteChanged();
+    partial void OnNotaChanging(System.Nullable<int> value);
+    partial void OnNotaChanged();
+    partial void OnComentariuChanging(string value);
+    partial void OnComentariuChanged();
+    partial void OnDataRecenzieChanging(System.DateTime value);
+    partial void OnDataRecenzieChanged();
+    #endregion
+		
+		public Recenzie()
+		{
+			this._Feedbacks = new EntitySet<Feedback>(new Action<Feedback>(this.attach_Feedbacks), new Action<Feedback>(this.detach_Feedbacks));
+			this._Cititor = default(EntityRef<Cititor>);
+			this._Carte = default(EntityRef<Carte>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cititor", DbType="Int")]
+		public System.Nullable<int> ID_Cititor
+		{
+			get
+			{
+				return this._ID_Cititor;
+			}
+			set
+			{
+				if ((this._ID_Cititor != value))
+				{
+					if (this._Cititor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CititorChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Cititor = value;
+					this.SendPropertyChanged("ID_Cititor");
+					this.OnID_CititorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Carte", DbType="Int")]
+		public System.Nullable<int> ID_Carte
+		{
+			get
+			{
+				return this._ID_Carte;
+			}
+			set
+			{
+				if ((this._ID_Carte != value))
+				{
+					if (this._Carte.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CarteChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Carte = value;
+					this.SendPropertyChanged("ID_Carte");
+					this.OnID_CarteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="Int")]
+		public System.Nullable<int> Nota
+		{
+			get
+			{
+				return this._Nota;
+			}
+			set
+			{
+				if ((this._Nota != value))
+				{
+					this.OnNotaChanging(value);
+					this.SendPropertyChanging();
+					this._Nota = value;
+					this.SendPropertyChanged("Nota");
+					this.OnNotaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comentariu", DbType="NVarChar(500)")]
+		public string Comentariu
+		{
+			get
+			{
+				return this._Comentariu;
+			}
+			set
+			{
+				if ((this._Comentariu != value))
+				{
+					this.OnComentariuChanging(value);
+					this.SendPropertyChanging();
+					this._Comentariu = value;
+					this.SendPropertyChanged("Comentariu");
+					this.OnComentariuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataRecenzie", DbType="Date NOT NULL")]
+		public System.DateTime DataRecenzie
+		{
+			get
+			{
+				return this._DataRecenzie;
+			}
+			set
+			{
+				if ((this._DataRecenzie != value))
+				{
+					this.OnDataRecenzieChanging(value);
+					this.SendPropertyChanging();
+					this._DataRecenzie = value;
+					this.SendPropertyChanged("DataRecenzie");
+					this.OnDataRecenzieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Recenzie_Feedback", Storage="_Feedbacks", ThisKey="ID", OtherKey="ID_Recenzie")]
+		public EntitySet<Feedback> Feedbacks
+		{
+			get
+			{
+				return this._Feedbacks;
+			}
+			set
+			{
+				this._Feedbacks.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Recenzie", Storage="_Cititor", ThisKey="ID_Cititor", OtherKey="ID", IsForeignKey=true)]
+		public Cititor Cititor
+		{
+			get
+			{
+				return this._Cititor.Entity;
+			}
+			set
+			{
+				Cititor previousValue = this._Cititor.Entity;
+				if (((previousValue != value) 
+							|| (this._Cititor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cititor.Entity = null;
+						previousValue.Recenzies.Remove(this);
+					}
+					this._Cititor.Entity = value;
+					if ((value != null))
+					{
+						value.Recenzies.Add(this);
+						this._ID_Cititor = value.ID;
+					}
+					else
+					{
+						this._ID_Cititor = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cititor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Recenzie", Storage="_Carte", ThisKey="ID_Carte", OtherKey="ID", IsForeignKey=true)]
+		public Carte Carte
+		{
+			get
+			{
+				return this._Carte.Entity;
+			}
+			set
+			{
+				Carte previousValue = this._Carte.Entity;
+				if (((previousValue != value) 
+							|| (this._Carte.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Carte.Entity = null;
+						previousValue.Recenzies.Remove(this);
+					}
+					this._Carte.Entity = value;
+					if ((value != null))
+					{
+						value.Recenzies.Add(this);
+						this._ID_Carte = value.ID;
+					}
+					else
+					{
+						this._ID_Carte = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Carte");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Feedbacks(Feedback entity)
+		{
+			this.SendPropertyChanging();
+			entity.Recenzie = this;
+		}
+		
+		private void detach_Feedbacks(Feedback entity)
+		{
+			this.SendPropertyChanging();
+			entity.Recenzie = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notificare")]
+	public partial class Notificare : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _ID_Cititor;
+		
+		private string _Tip_Notificare;
+		
+		private string _Mesaj;
+		
+		private System.DateTime _DataTrimitere;
+		
+		private string _Stare;
+		
+		private EntityRef<Cititor> _Cititor;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnID_CititorChanging(System.Nullable<int> value);
+    partial void OnID_CititorChanged();
+    partial void OnTip_NotificareChanging(string value);
+    partial void OnTip_NotificareChanged();
+    partial void OnMesajChanging(string value);
+    partial void OnMesajChanged();
+    partial void OnDataTrimitereChanging(System.DateTime value);
+    partial void OnDataTrimitereChanged();
+    partial void OnStareChanging(string value);
+    partial void OnStareChanged();
+    #endregion
+		
+		public Notificare()
+		{
+			this._Cititor = default(EntityRef<Cititor>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cititor", DbType="Int")]
+		public System.Nullable<int> ID_Cititor
+		{
+			get
+			{
+				return this._ID_Cititor;
+			}
+			set
+			{
+				if ((this._ID_Cititor != value))
+				{
+					if (this._Cititor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CititorChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Cititor = value;
+					this.SendPropertyChanged("ID_Cititor");
+					this.OnID_CititorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tip_Notificare", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Tip_Notificare
+		{
+			get
+			{
+				return this._Tip_Notificare;
+			}
+			set
+			{
+				if ((this._Tip_Notificare != value))
+				{
+					this.OnTip_NotificareChanging(value);
+					this.SendPropertyChanging();
+					this._Tip_Notificare = value;
+					this.SendPropertyChanged("Tip_Notificare");
+					this.OnTip_NotificareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mesaj", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
+		public string Mesaj
+		{
+			get
+			{
+				return this._Mesaj;
+			}
+			set
+			{
+				if ((this._Mesaj != value))
+				{
+					this.OnMesajChanging(value);
+					this.SendPropertyChanging();
+					this._Mesaj = value;
+					this.SendPropertyChanged("Mesaj");
+					this.OnMesajChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataTrimitere", DbType="DateTime NOT NULL")]
+		public System.DateTime DataTrimitere
+		{
+			get
+			{
+				return this._DataTrimitere;
+			}
+			set
+			{
+				if ((this._DataTrimitere != value))
+				{
+					this.OnDataTrimitereChanging(value);
+					this.SendPropertyChanging();
+					this._DataTrimitere = value;
+					this.SendPropertyChanged("DataTrimitere");
+					this.OnDataTrimitereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stare", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Stare
+		{
+			get
+			{
+				return this._Stare;
+			}
+			set
+			{
+				if ((this._Stare != value))
+				{
+					this.OnStareChanging(value);
+					this.SendPropertyChanging();
+					this._Stare = value;
+					this.SendPropertyChanged("Stare");
+					this.OnStareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Notificare", Storage="_Cititor", ThisKey="ID_Cititor", OtherKey="ID", IsForeignKey=true)]
+		public Cititor Cititor
+		{
+			get
+			{
+				return this._Cititor.Entity;
+			}
+			set
+			{
+				Cititor previousValue = this._Cititor.Entity;
+				if (((previousValue != value) 
+							|| (this._Cititor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cititor.Entity = null;
+						previousValue.Notificares.Remove(this);
+					}
+					this._Cititor.Entity = value;
+					if ((value != null))
+					{
+						value.Notificares.Add(this);
+						this._ID_Cititor = value.ID;
+					}
+					else
+					{
+						this._ID_Cititor = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cititor");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Imprumut")]
+	public partial class Imprumut : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _ID_Cititor;
+		
+		private System.Nullable<int> _ID_Carte;
+		
+		private System.DateTime _DataImprumut;
+		
+		private System.DateTime _TermenLimita;
+		
+		private System.Nullable<System.DateTime> _DataReturnare;
+		
+		private string _Stare;
+		
+		private EntityRef<Cititor> _Cititor;
+		
+		private EntityRef<Carte> _Carte;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnID_CititorChanging(System.Nullable<int> value);
+    partial void OnID_CititorChanged();
+    partial void OnID_CarteChanging(System.Nullable<int> value);
+    partial void OnID_CarteChanged();
+    partial void OnDataImprumutChanging(System.DateTime value);
+    partial void OnDataImprumutChanged();
+    partial void OnTermenLimitaChanging(System.DateTime value);
+    partial void OnTermenLimitaChanged();
+    partial void OnDataReturnareChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataReturnareChanged();
+    partial void OnStareChanging(string value);
+    partial void OnStareChanged();
+    #endregion
+		
+		public Imprumut()
+		{
+			this._Cititor = default(EntityRef<Cititor>);
+			this._Carte = default(EntityRef<Carte>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cititor", DbType="Int")]
+		public System.Nullable<int> ID_Cititor
+		{
+			get
+			{
+				return this._ID_Cititor;
+			}
+			set
+			{
+				if ((this._ID_Cititor != value))
+				{
+					if (this._Cititor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CititorChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Cititor = value;
+					this.SendPropertyChanged("ID_Cititor");
+					this.OnID_CititorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Carte", DbType="Int")]
+		public System.Nullable<int> ID_Carte
+		{
+			get
+			{
+				return this._ID_Carte;
+			}
+			set
+			{
+				if ((this._ID_Carte != value))
+				{
+					if (this._Carte.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_CarteChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Carte = value;
+					this.SendPropertyChanged("ID_Carte");
+					this.OnID_CarteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataImprumut", DbType="Date NOT NULL")]
+		public System.DateTime DataImprumut
+		{
+			get
+			{
+				return this._DataImprumut;
+			}
+			set
+			{
+				if ((this._DataImprumut != value))
+				{
+					this.OnDataImprumutChanging(value);
+					this.SendPropertyChanging();
+					this._DataImprumut = value;
+					this.SendPropertyChanged("DataImprumut");
+					this.OnDataImprumutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermenLimita", DbType="Date NOT NULL")]
+		public System.DateTime TermenLimita
+		{
+			get
+			{
+				return this._TermenLimita;
+			}
+			set
+			{
+				if ((this._TermenLimita != value))
+				{
+					this.OnTermenLimitaChanging(value);
+					this.SendPropertyChanging();
+					this._TermenLimita = value;
+					this.SendPropertyChanged("TermenLimita");
+					this.OnTermenLimitaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataReturnare", DbType="Date")]
+		public System.Nullable<System.DateTime> DataReturnare
+		{
+			get
+			{
+				return this._DataReturnare;
+			}
+			set
+			{
+				if ((this._DataReturnare != value))
+				{
+					this.OnDataReturnareChanging(value);
+					this.SendPropertyChanging();
+					this._DataReturnare = value;
+					this.SendPropertyChanged("DataReturnare");
+					this.OnDataReturnareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stare", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Stare
+		{
+			get
+			{
+				return this._Stare;
+			}
+			set
+			{
+				if ((this._Stare != value))
+				{
+					this.OnStareChanging(value);
+					this.SendPropertyChanging();
+					this._Stare = value;
+					this.SendPropertyChanged("Stare");
+					this.OnStareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Imprumut", Storage="_Cititor", ThisKey="ID_Cititor", OtherKey="ID", IsForeignKey=true)]
+		public Cititor Cititor
+		{
+			get
+			{
+				return this._Cititor.Entity;
+			}
+			set
+			{
+				Cititor previousValue = this._Cititor.Entity;
+				if (((previousValue != value) 
+							|| (this._Cititor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cititor.Entity = null;
+						previousValue.Imprumuts.Remove(this);
+					}
+					this._Cititor.Entity = value;
+					if ((value != null))
+					{
+						value.Imprumuts.Add(this);
+						this._ID_Cititor = value.ID;
+					}
+					else
+					{
+						this._ID_Cititor = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Cititor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Imprumut", Storage="_Carte", ThisKey="ID_Carte", OtherKey="ID", IsForeignKey=true)]
+		public Carte Carte
+		{
+			get
+			{
+				return this._Carte.Entity;
+			}
+			set
+			{
+				Carte previousValue = this._Carte.Entity;
+				if (((previousValue != value) 
+							|| (this._Carte.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Carte.Entity = null;
+						previousValue.Imprumuts.Remove(this);
+					}
+					this._Carte.Entity = value;
+					if ((value != null))
+					{
+						value.Imprumuts.Add(this);
+						this._ID_Carte = value.ID;
+					}
+					else
+					{
+						this._ID_Carte = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Carte");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Feedback")]
+	public partial class Feedback : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _ID_Recenzie;
+		
+		private int _NrLike;
+		
+		private int _NrDislike;
+		
+		private EntityRef<Recenzie> _Recenzie;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnID_RecenzieChanging(int value);
+    partial void OnID_RecenzieChanged();
+    partial void OnNrLikeChanging(int value);
+    partial void OnNrLikeChanged();
+    partial void OnNrDislikeChanging(int value);
+    partial void OnNrDislikeChanged();
+    #endregion
+		
+		public Feedback()
+		{
+			this._Recenzie = default(EntityRef<Recenzie>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Recenzie", DbType="Int NOT NULL")]
+		public int ID_Recenzie
+		{
+			get
+			{
+				return this._ID_Recenzie;
+			}
+			set
+			{
+				if ((this._ID_Recenzie != value))
+				{
+					if (this._Recenzie.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_RecenzieChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Recenzie = value;
+					this.SendPropertyChanged("ID_Recenzie");
+					this.OnID_RecenzieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrLike", DbType="Int NOT NULL")]
+		public int NrLike
+		{
+			get
+			{
+				return this._NrLike;
+			}
+			set
+			{
+				if ((this._NrLike != value))
+				{
+					this.OnNrLikeChanging(value);
+					this.SendPropertyChanging();
+					this._NrLike = value;
+					this.SendPropertyChanged("NrLike");
+					this.OnNrLikeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrDislike", DbType="Int NOT NULL")]
+		public int NrDislike
+		{
+			get
+			{
+				return this._NrDislike;
+			}
+			set
+			{
+				if ((this._NrDislike != value))
+				{
+					this.OnNrDislikeChanging(value);
+					this.SendPropertyChanging();
+					this._NrDislike = value;
+					this.SendPropertyChanged("NrDislike");
+					this.OnNrDislikeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Recenzie_Feedback", Storage="_Recenzie", ThisKey="ID_Recenzie", OtherKey="ID", IsForeignKey=true)]
+		public Recenzie Recenzie
+		{
+			get
+			{
+				return this._Recenzie.Entity;
+			}
+			set
+			{
+				Recenzie previousValue = this._Recenzie.Entity;
+				if (((previousValue != value) 
+							|| (this._Recenzie.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Recenzie.Entity = null;
+						previousValue.Feedbacks.Remove(this);
+					}
+					this._Recenzie.Entity = value;
+					if ((value != null))
+					{
+						value.Feedbacks.Add(this);
+						this._ID_Recenzie = value.ID;
+					}
+					else
+					{
+						this._ID_Recenzie = default(int);
+					}
+					this.SendPropertyChanged("Recenzie");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cititor")]
+	public partial class Cititor : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -204,6 +1432,16 @@ namespace BibliotecaElectronica
 		private int _ID;
 		
 		private System.Nullable<int> _ID_Persoana;
+		
+		private System.DateTime _DataInregistrare;
+		
+		private System.Nullable<int> _NrCartiImprumutate;
+		
+		private EntitySet<Recenzie> _Recenzies;
+		
+		private EntitySet<Notificare> _Notificares;
+		
+		private EntitySet<Imprumut> _Imprumuts;
 		
 		private EntityRef<Persoana> _Persoana;
 		
@@ -215,15 +1453,22 @@ namespace BibliotecaElectronica
     partial void OnIDChanged();
     partial void OnID_PersoanaChanging(System.Nullable<int> value);
     partial void OnID_PersoanaChanged();
+    partial void OnDataInregistrareChanging(System.DateTime value);
+    partial void OnDataInregistrareChanged();
+    partial void OnNrCartiImprumutateChanging(System.Nullable<int> value);
+    partial void OnNrCartiImprumutateChanged();
     #endregion
 		
-		public Administrator()
+		public Cititor()
 		{
+			this._Recenzies = new EntitySet<Recenzie>(new Action<Recenzie>(this.attach_Recenzies), new Action<Recenzie>(this.detach_Recenzies));
+			this._Notificares = new EntitySet<Notificare>(new Action<Notificare>(this.attach_Notificares), new Action<Notificare>(this.detach_Notificares));
+			this._Imprumuts = new EntitySet<Imprumut>(new Action<Imprumut>(this.attach_Imprumuts), new Action<Imprumut>(this.detach_Imprumuts));
 			this._Persoana = default(EntityRef<Persoana>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -267,7 +1512,86 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Administrator", Storage="_Persoana", ThisKey="ID_Persoana", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataInregistrare", DbType="Date NOT NULL")]
+		public System.DateTime DataInregistrare
+		{
+			get
+			{
+				return this._DataInregistrare;
+			}
+			set
+			{
+				if ((this._DataInregistrare != value))
+				{
+					this.OnDataInregistrareChanging(value);
+					this.SendPropertyChanging();
+					this._DataInregistrare = value;
+					this.SendPropertyChanged("DataInregistrare");
+					this.OnDataInregistrareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrCartiImprumutate", DbType="Int")]
+		public System.Nullable<int> NrCartiImprumutate
+		{
+			get
+			{
+				return this._NrCartiImprumutate;
+			}
+			set
+			{
+				if ((this._NrCartiImprumutate != value))
+				{
+					this.OnNrCartiImprumutateChanging(value);
+					this.SendPropertyChanging();
+					this._NrCartiImprumutate = value;
+					this.SendPropertyChanged("NrCartiImprumutate");
+					this.OnNrCartiImprumutateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Recenzie", Storage="_Recenzies", ThisKey="ID", OtherKey="ID_Cititor")]
+		public EntitySet<Recenzie> Recenzies
+		{
+			get
+			{
+				return this._Recenzies;
+			}
+			set
+			{
+				this._Recenzies.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Notificare", Storage="_Notificares", ThisKey="ID", OtherKey="ID_Cititor")]
+		public EntitySet<Notificare> Notificares
+		{
+			get
+			{
+				return this._Notificares;
+			}
+			set
+			{
+				this._Notificares.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Imprumut", Storage="_Imprumuts", ThisKey="ID", OtherKey="ID_Cititor")]
+		public EntitySet<Imprumut> Imprumuts
+		{
+			get
+			{
+				return this._Imprumuts;
+			}
+			set
+			{
+				this._Imprumuts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Cititor", Storage="_Persoana", ThisKey="ID_Persoana", OtherKey="ID", IsForeignKey=true)]
 		public Persoana Persoana
 		{
 			get
@@ -284,12 +1608,12 @@ namespace BibliotecaElectronica
 					if ((previousValue != null))
 					{
 						this._Persoana.Entity = null;
-						previousValue.Administrators.Remove(this);
+						previousValue.Cititors.Remove(this);
 					}
 					this._Persoana.Entity = value;
 					if ((value != null))
 					{
-						value.Administrators.Add(this);
+						value.Cititors.Add(this);
 						this._ID_Persoana = value.ID;
 					}
 					else
@@ -319,6 +1643,42 @@ namespace BibliotecaElectronica
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Recenzies(Recenzie entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cititor = this;
+		}
+		
+		private void detach_Recenzies(Recenzie entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cititor = null;
+		}
+		
+		private void attach_Notificares(Notificare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cititor = this;
+		}
+		
+		private void detach_Notificares(Notificare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cititor = null;
+		}
+		
+		private void attach_Imprumuts(Imprumut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cititor = this;
+		}
+		
+		private void detach_Imprumuts(Imprumut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Cititor = null;
 		}
 	}
 	
@@ -473,122 +1833,8 @@ namespace BibliotecaElectronica
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Categorie")]
-	public partial class Categorie : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Nume;
-		
-		private EntitySet<Carte> _Carte1s;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNumeChanging(string value);
-    partial void OnNumeChanged();
-    #endregion
-		
-		public Categorie()
-		{
-			this._Carte1s = new EntitySet<Carte>(new Action<Carte>(this.attach_Carte1s), new Action<Carte>(this.detach_Carte1s));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Nume
-		{
-			get
-			{
-				return this._Nume;
-			}
-			set
-			{
-				if ((this._Nume != value))
-				{
-					this.OnNumeChanging(value);
-					this.SendPropertyChanging();
-					this._Nume = value;
-					this.SendPropertyChanged("Nume");
-					this.OnNumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categorie_Carte", Storage="_Carte1s", ThisKey="ID", OtherKey="ID_Categorie")]
-		public EntitySet<Carte> Cartes
-		{
-			get
-			{
-				return this._Carte1s;
-			}
-			set
-			{
-				this._Carte1s.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Carte1s(Carte entity)
-		{
-			this.SendPropertyChanging();
-			entity.Categorie = this;
-		}
-		
-		private void detach_Carte1s(Carte entity)
-		{
-			this.SendPropertyChanging();
-			entity.Categorie = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cititor")]
-	public partial class Cititor : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Administrator")]
+	public partial class Administrator : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -596,16 +1842,6 @@ namespace BibliotecaElectronica
 		private int _ID;
 		
 		private System.Nullable<int> _ID_Persoana;
-		
-		private System.DateTime _DataInregistrare;
-		
-		private System.Nullable<int> _NrCartiImprumutate;
-		
-		private EntitySet<Imprumut> _Imprumuts;
-		
-		private EntitySet<Recenzie> _Recenzies;
-		
-		private EntitySet<Notificare> _Notificares;
 		
 		private EntityRef<Persoana> _Persoana;
 		
@@ -617,22 +1853,15 @@ namespace BibliotecaElectronica
     partial void OnIDChanged();
     partial void OnID_PersoanaChanging(System.Nullable<int> value);
     partial void OnID_PersoanaChanged();
-    partial void OnDataInregistrareChanging(System.DateTime value);
-    partial void OnDataInregistrareChanged();
-    partial void OnNrCartiImprumutateChanging(System.Nullable<int> value);
-    partial void OnNrCartiImprumutateChanged();
     #endregion
 		
-		public Cititor()
+		public Administrator()
 		{
-			this._Imprumuts = new EntitySet<Imprumut>(new Action<Imprumut>(this.attach_Imprumuts), new Action<Imprumut>(this.detach_Imprumuts));
-			this._Recenzies = new EntitySet<Recenzie>(new Action<Recenzie>(this.attach_Recenzies), new Action<Recenzie>(this.detach_Recenzies));
-			this._Notificares = new EntitySet<Notificare>(new Action<Notificare>(this.attach_Notificares), new Action<Notificare>(this.detach_Notificares));
 			this._Persoana = default(EntityRef<Persoana>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int ID
 		{
 			get
@@ -676,86 +1905,7 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataInregistrare", DbType="Date NOT NULL")]
-		public System.DateTime DataInregistrare
-		{
-			get
-			{
-				return this._DataInregistrare;
-			}
-			set
-			{
-				if ((this._DataInregistrare != value))
-				{
-					this.OnDataInregistrareChanging(value);
-					this.SendPropertyChanging();
-					this._DataInregistrare = value;
-					this.SendPropertyChanged("DataInregistrare");
-					this.OnDataInregistrareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrCartiImprumutate", DbType="Int")]
-		public System.Nullable<int> NrCartiImprumutate
-		{
-			get
-			{
-				return this._NrCartiImprumutate;
-			}
-			set
-			{
-				if ((this._NrCartiImprumutate != value))
-				{
-					this.OnNrCartiImprumutateChanging(value);
-					this.SendPropertyChanging();
-					this._NrCartiImprumutate = value;
-					this.SendPropertyChanged("NrCartiImprumutate");
-					this.OnNrCartiImprumutateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Imprumut", Storage="_Imprumuts", ThisKey="ID", OtherKey="ID_Cititor")]
-		public EntitySet<Imprumut> Imprumuts
-		{
-			get
-			{
-				return this._Imprumuts;
-			}
-			set
-			{
-				this._Imprumuts.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Recenzie", Storage="_Recenzies", ThisKey="ID", OtherKey="ID_Cititor")]
-		public EntitySet<Recenzie> Recenzies
-		{
-			get
-			{
-				return this._Recenzies;
-			}
-			set
-			{
-				this._Recenzies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Notificare", Storage="_Notificares", ThisKey="ID", OtherKey="ID_Cititor")]
-		public EntitySet<Notificare> Notificares
-		{
-			get
-			{
-				return this._Notificares;
-			}
-			set
-			{
-				this._Notificares.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Cititor", Storage="_Persoana", ThisKey="ID_Persoana", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Administrator", Storage="_Persoana", ThisKey="ID_Persoana", OtherKey="ID", IsForeignKey=true)]
 		public Persoana Persoana
 		{
 			get
@@ -772,12 +1922,12 @@ namespace BibliotecaElectronica
 					if ((previousValue != null))
 					{
 						this._Persoana.Entity = null;
-						previousValue.Cititors.Remove(this);
+						previousValue.Administrators.Remove(this);
 					}
 					this._Persoana.Entity = value;
 					if ((value != null))
 					{
-						value.Cititors.Add(this);
+						value.Administrators.Add(this);
 						this._ID_Persoana = value.ID;
 					}
 					else
@@ -808,67 +1958,41 @@ namespace BibliotecaElectronica
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Imprumuts(Imprumut entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cititor = this;
-		}
-		
-		private void detach_Imprumuts(Imprumut entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cititor = null;
-		}
-		
-		private void attach_Recenzies(Recenzie entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cititor = this;
-		}
-		
-		private void detach_Recenzies(Recenzie entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cititor = null;
-		}
-		
-		private void attach_Notificares(Notificare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cititor = this;
-		}
-		
-		private void detach_Notificares(Notificare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Cititor = null;
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Imprumut")]
-	public partial class Imprumut : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Carte")]
+	public partial class Carte : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _ID;
 		
-		private System.Nullable<int> _ID_Cititor;
+		private string _Titlu;
 		
-		private System.Nullable<int> _ID_Carte;
+		private string _Autor;
 		
-		private System.DateTime _DataImprumut;
+		private System.Nullable<int> _AnPublicare;
 		
-		private System.DateTime _TermenLimita;
+		private string _ISBN;
 		
-		private System.Nullable<System.DateTime> _DataReturnare;
+		private System.Data.Linq.Binary _Imagine;
 		
-		private string _Stare;
+		private string _Descriere;
 		
-		private EntityRef<Cititor> _Cititor;
+		private System.Nullable<int> _NumarPagini;
 		
-		private EntityRef<Carte> _Carte1;
+		private string _Dimensiune;
+		
+		private string _Editura;
+		
+		private string _Categorie;
+		
+		private EntitySet<Stoc> _Stocs;
+		
+		private EntitySet<Recenzie> _Recenzies;
+		
+		private EntitySet<Imprumut> _Imprumuts;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -876,24 +2000,33 @@ namespace BibliotecaElectronica
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnID_CititorChanging(System.Nullable<int> value);
-    partial void OnID_CititorChanged();
-    partial void OnID_CarteChanging(System.Nullable<int> value);
-    partial void OnID_CarteChanged();
-    partial void OnDataImprumutChanging(System.DateTime value);
-    partial void OnDataImprumutChanged();
-    partial void OnTermenLimitaChanging(System.DateTime value);
-    partial void OnTermenLimitaChanged();
-    partial void OnDataReturnareChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataReturnareChanged();
-    partial void OnStareChanging(string value);
-    partial void OnStareChanged();
+    partial void OnTitluChanging(string value);
+    partial void OnTitluChanged();
+    partial void OnAutorChanging(string value);
+    partial void OnAutorChanged();
+    partial void OnAnPublicareChanging(System.Nullable<int> value);
+    partial void OnAnPublicareChanged();
+    partial void OnISBNChanging(string value);
+    partial void OnISBNChanged();
+    partial void OnImagineChanging(System.Data.Linq.Binary value);
+    partial void OnImagineChanged();
+    partial void OnDescriereChanging(string value);
+    partial void OnDescriereChanged();
+    partial void OnNumarPaginiChanging(System.Nullable<int> value);
+    partial void OnNumarPaginiChanged();
+    partial void OnDimensiuneChanging(string value);
+    partial void OnDimensiuneChanged();
+    partial void OnEdituraChanging(string value);
+    partial void OnEdituraChanged();
+    partial void OnCategorieChanging(string value);
+    partial void OnCategorieChanged();
     #endregion
 		
-		public Imprumut()
+		public Carte()
 		{
-			this._Cititor = default(EntityRef<Cititor>);
-			this._Carte1 = default(EntityRef<Carte>);
+			this._Stocs = new EntitySet<Stoc>(new Action<Stoc>(this.attach_Stocs), new Action<Stoc>(this.detach_Stocs));
+			this._Recenzies = new EntitySet<Recenzie>(new Action<Recenzie>(this.attach_Recenzies), new Action<Recenzie>(this.detach_Recenzies));
+			this._Imprumuts = new EntitySet<Imprumut>(new Action<Imprumut>(this.attach_Imprumuts), new Action<Imprumut>(this.detach_Imprumuts));
 			OnCreated();
 		}
 		
@@ -917,199 +2050,242 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cititor", DbType="Int")]
-		public System.Nullable<int> ID_Cititor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Titlu", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string Titlu
 		{
 			get
 			{
-				return this._ID_Cititor;
+				return this._Titlu;
 			}
 			set
 			{
-				if ((this._ID_Cititor != value))
+				if ((this._Titlu != value))
 				{
-					if (this._Cititor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CititorChanging(value);
+					this.OnTitluChanging(value);
 					this.SendPropertyChanging();
-					this._ID_Cititor = value;
-					this.SendPropertyChanged("ID_Cititor");
-					this.OnID_CititorChanged();
+					this._Titlu = value;
+					this.SendPropertyChanged("Titlu");
+					this.OnTitluChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Carte", DbType="Int")]
-		public System.Nullable<int> ID_Carte
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Autor
 		{
 			get
 			{
-				return this._ID_Carte;
+				return this._Autor;
 			}
 			set
 			{
-				if ((this._ID_Carte != value))
+				if ((this._Autor != value))
 				{
-					if (this._Carte1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CarteChanging(value);
+					this.OnAutorChanging(value);
 					this.SendPropertyChanging();
-					this._ID_Carte = value;
-					this.SendPropertyChanged("ID_Carte");
-					this.OnID_CarteChanged();
+					this._Autor = value;
+					this.SendPropertyChanged("Autor");
+					this.OnAutorChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataImprumut", DbType="Date NOT NULL")]
-		public System.DateTime DataImprumut
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AnPublicare", DbType="Int")]
+		public System.Nullable<int> AnPublicare
 		{
 			get
 			{
-				return this._DataImprumut;
+				return this._AnPublicare;
 			}
 			set
 			{
-				if ((this._DataImprumut != value))
+				if ((this._AnPublicare != value))
 				{
-					this.OnDataImprumutChanging(value);
+					this.OnAnPublicareChanging(value);
 					this.SendPropertyChanging();
-					this._DataImprumut = value;
-					this.SendPropertyChanged("DataImprumut");
-					this.OnDataImprumutChanged();
+					this._AnPublicare = value;
+					this.SendPropertyChanged("AnPublicare");
+					this.OnAnPublicareChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermenLimita", DbType="Date NOT NULL")]
-		public System.DateTime TermenLimita
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISBN", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string ISBN
 		{
 			get
 			{
-				return this._TermenLimita;
+				return this._ISBN;
 			}
 			set
 			{
-				if ((this._TermenLimita != value))
+				if ((this._ISBN != value))
 				{
-					this.OnTermenLimitaChanging(value);
+					this.OnISBNChanging(value);
 					this.SendPropertyChanging();
-					this._TermenLimita = value;
-					this.SendPropertyChanged("TermenLimita");
-					this.OnTermenLimitaChanged();
+					this._ISBN = value;
+					this.SendPropertyChanged("ISBN");
+					this.OnISBNChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataReturnare", DbType="Date")]
-		public System.Nullable<System.DateTime> DataReturnare
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagine", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Imagine
 		{
 			get
 			{
-				return this._DataReturnare;
+				return this._Imagine;
 			}
 			set
 			{
-				if ((this._DataReturnare != value))
+				if ((this._Imagine != value))
 				{
-					this.OnDataReturnareChanging(value);
+					this.OnImagineChanging(value);
 					this.SendPropertyChanging();
-					this._DataReturnare = value;
-					this.SendPropertyChanged("DataReturnare");
-					this.OnDataReturnareChanged();
+					this._Imagine = value;
+					this.SendPropertyChanged("Imagine");
+					this.OnImagineChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stare", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Stare
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descriere", DbType="NVarChar(1000)")]
+		public string Descriere
 		{
 			get
 			{
-				return this._Stare;
+				return this._Descriere;
 			}
 			set
 			{
-				if ((this._Stare != value))
+				if ((this._Descriere != value))
 				{
-					this.OnStareChanging(value);
+					this.OnDescriereChanging(value);
 					this.SendPropertyChanging();
-					this._Stare = value;
-					this.SendPropertyChanged("Stare");
-					this.OnStareChanged();
+					this._Descriere = value;
+					this.SendPropertyChanged("Descriere");
+					this.OnDescriereChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Imprumut", Storage="_Cititor", ThisKey="ID_Cititor", OtherKey="ID", IsForeignKey=true)]
-		public Cititor Cititor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumarPagini", DbType="Int")]
+		public System.Nullable<int> NumarPagini
 		{
 			get
 			{
-				return this._Cititor.Entity;
+				return this._NumarPagini;
 			}
 			set
 			{
-				Cititor previousValue = this._Cititor.Entity;
-				if (((previousValue != value) 
-							|| (this._Cititor.HasLoadedOrAssignedValue == false)))
+				if ((this._NumarPagini != value))
 				{
+					this.OnNumarPaginiChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cititor.Entity = null;
-						previousValue.Imprumuts.Remove(this);
-					}
-					this._Cititor.Entity = value;
-					if ((value != null))
-					{
-						value.Imprumuts.Add(this);
-						this._ID_Cititor = value.ID;
-					}
-					else
-					{
-						this._ID_Cititor = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Cititor");
+					this._NumarPagini = value;
+					this.SendPropertyChanged("NumarPagini");
+					this.OnNumarPaginiChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Imprumut", Storage="_Carte1", ThisKey="ID_Carte", OtherKey="ID", IsForeignKey=true)]
-		public Carte Carte
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dimensiune", DbType="NVarChar(50)")]
+		public string Dimensiune
 		{
 			get
 			{
-				return this._Carte1.Entity;
+				return this._Dimensiune;
 			}
 			set
 			{
-				Carte previousValue = this._Carte1.Entity;
-				if (((previousValue != value) 
-							|| (this._Carte1.HasLoadedOrAssignedValue == false)))
+				if ((this._Dimensiune != value))
 				{
+					this.OnDimensiuneChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Carte1.Entity = null;
-						previousValue.Imprumuts.Remove(this);
-					}
-					this._Carte1.Entity = value;
-					if ((value != null))
-					{
-						value.Imprumuts.Add(this);
-						this._ID_Carte = value.ID;
-					}
-					else
-					{
-						this._ID_Carte = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Carte");
+					this._Dimensiune = value;
+					this.SendPropertyChanged("Dimensiune");
+					this.OnDimensiuneChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Editura", DbType="NVarChar(100)")]
+		public string Editura
+		{
+			get
+			{
+				return this._Editura;
+			}
+			set
+			{
+				if ((this._Editura != value))
+				{
+					this.OnEdituraChanging(value);
+					this.SendPropertyChanging();
+					this._Editura = value;
+					this.SendPropertyChanged("Editura");
+					this.OnEdituraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categorie", DbType="NVarChar(100)")]
+		public string Categorie
+		{
+			get
+			{
+				return this._Categorie;
+			}
+			set
+			{
+				if ((this._Categorie != value))
+				{
+					this.OnCategorieChanging(value);
+					this.SendPropertyChanging();
+					this._Categorie = value;
+					this.SendPropertyChanged("Categorie");
+					this.OnCategorieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Stoc", Storage="_Stocs", ThisKey="ID", OtherKey="ID_Carte")]
+		public EntitySet<Stoc> Stocs
+		{
+			get
+			{
+				return this._Stocs;
+			}
+			set
+			{
+				this._Stocs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Recenzie", Storage="_Recenzies", ThisKey="ID", OtherKey="ID_Carte")]
+		public EntitySet<Recenzie> Recenzies
+		{
+			get
+			{
+				return this._Recenzies;
+			}
+			set
+			{
+				this._Recenzies.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Imprumut", Storage="_Imprumuts", ThisKey="ID", OtherKey="ID_Carte")]
+		public EntitySet<Imprumut> Imprumuts
+		{
+			get
+			{
+				return this._Imprumuts;
+			}
+			set
+			{
+				this._Imprumuts.Assign(value);
 			}
 		}
 		
@@ -1131,6 +2307,42 @@ namespace BibliotecaElectronica
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Stocs(Stoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Carte = this;
+		}
+		
+		private void detach_Stocs(Stoc entity)
+		{
+			this.SendPropertyChanging();
+			entity.Carte = null;
+		}
+		
+		private void attach_Recenzies(Recenzie entity)
+		{
+			this.SendPropertyChanging();
+			entity.Carte = this;
+		}
+		
+		private void detach_Recenzies(Recenzie entity)
+		{
+			this.SendPropertyChanging();
+			entity.Carte = null;
+		}
+		
+		private void attach_Imprumuts(Imprumut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Carte = this;
+		}
+		
+		private void detach_Imprumuts(Imprumut entity)
+		{
+			this.SendPropertyChanging();
+			entity.Carte = null;
 		}
 	}
 	
@@ -1158,11 +2370,13 @@ namespace BibliotecaElectronica
 		
 		private System.Nullable<System.DateTime> _DataNasterii;
 		
-		private EntitySet<Administrator> _Administrators;
+		private System.Nullable<int> _StareCont;
+		
+		private EntitySet<Cititor> _Cititors;
 		
 		private EntitySet<Bibliotecar> _Bibliotecars;
 		
-		private EntitySet<Cititor> _Cititors;
+		private EntitySet<Administrator> _Administrators;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1186,13 +2400,15 @@ namespace BibliotecaElectronica
     partial void OnAdresaChanged();
     partial void OnDataNasteriiChanging(System.Nullable<System.DateTime> value);
     partial void OnDataNasteriiChanged();
+    partial void OnStareContChanging(System.Nullable<int> value);
+    partial void OnStareContChanged();
     #endregion
 		
 		public Persoana()
 		{
-			this._Administrators = new EntitySet<Administrator>(new Action<Administrator>(this.attach_Administrators), new Action<Administrator>(this.detach_Administrators));
-			this._Bibliotecars = new EntitySet<Bibliotecar>(new Action<Bibliotecar>(this.attach_Bibliotecars), new Action<Bibliotecar>(this.detach_Bibliotecars));
 			this._Cititors = new EntitySet<Cititor>(new Action<Cititor>(this.attach_Cititors), new Action<Cititor>(this.detach_Cititors));
+			this._Bibliotecars = new EntitySet<Bibliotecar>(new Action<Bibliotecar>(this.attach_Bibliotecars), new Action<Bibliotecar>(this.detach_Bibliotecars));
+			this._Administrators = new EntitySet<Administrator>(new Action<Administrator>(this.attach_Administrators), new Action<Administrator>(this.detach_Administrators));
 			OnCreated();
 		}
 		
@@ -1376,16 +2592,36 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Administrator", Storage="_Administrators", ThisKey="ID", OtherKey="ID_Persoana")]
-		public EntitySet<Administrator> Administrators
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StareCont", DbType="Int")]
+		public System.Nullable<int> StareCont
 		{
 			get
 			{
-				return this._Administrators;
+				return this._StareCont;
 			}
 			set
 			{
-				this._Administrators.Assign(value);
+				if ((this._StareCont != value))
+				{
+					this.OnStareContChanging(value);
+					this.SendPropertyChanging();
+					this._StareCont = value;
+					this.SendPropertyChanged("StareCont");
+					this.OnStareContChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Cititor", Storage="_Cititors", ThisKey="ID", OtherKey="ID_Persoana")]
+		public EntitySet<Cititor> Cititors
+		{
+			get
+			{
+				return this._Cititors;
+			}
+			set
+			{
+				this._Cititors.Assign(value);
 			}
 		}
 		
@@ -1402,16 +2638,16 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Cititor", Storage="_Cititors", ThisKey="ID", OtherKey="ID_Persoana")]
-		public EntitySet<Cititor> Cititors
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Administrator", Storage="_Administrators", ThisKey="ID", OtherKey="ID_Persoana")]
+		public EntitySet<Administrator> Administrators
 		{
 			get
 			{
-				return this._Cititors;
+				return this._Administrators;
 			}
 			set
 			{
-				this._Cititors.Assign(value);
+				this._Administrators.Assign(value);
 			}
 		}
 		
@@ -1435,13 +2671,13 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		private void attach_Administrators(Administrator entity)
+		private void attach_Cititors(Cititor entity)
 		{
 			this.SendPropertyChanging();
 			entity.Persoana = this;
 		}
 		
-		private void detach_Administrators(Administrator entity)
+		private void detach_Cititors(Cititor entity)
 		{
 			this.SendPropertyChanging();
 			entity.Persoana = null;
@@ -1459,1394 +2695,16 @@ namespace BibliotecaElectronica
 			entity.Persoana = null;
 		}
 		
-		private void attach_Cititors(Cititor entity)
+		private void attach_Administrators(Administrator entity)
 		{
 			this.SendPropertyChanging();
 			entity.Persoana = this;
 		}
 		
-		private void detach_Cititors(Cititor entity)
+		private void detach_Administrators(Administrator entity)
 		{
 			this.SendPropertyChanging();
 			entity.Persoana = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Recenzie")]
-	public partial class Recenzie : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _ID_Cititor;
-		
-		private System.Nullable<int> _ID_Carte;
-		
-		private System.Nullable<int> _Nota;
-		
-		private string _Comentariu;
-		
-		private System.DateTime _DataRecenzie;
-		
-		private EntitySet<Feedback> _Feedbacks;
-		
-		private EntityRef<Cititor> _Cititor;
-		
-		private EntityRef<Carte> _Carte1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnID_CititorChanging(System.Nullable<int> value);
-    partial void OnID_CititorChanged();
-    partial void OnID_CarteChanging(System.Nullable<int> value);
-    partial void OnID_CarteChanged();
-    partial void OnNotaChanging(System.Nullable<int> value);
-    partial void OnNotaChanged();
-    partial void OnComentariuChanging(string value);
-    partial void OnComentariuChanged();
-    partial void OnDataRecenzieChanging(System.DateTime value);
-    partial void OnDataRecenzieChanged();
-    #endregion
-		
-		public Recenzie()
-		{
-			this._Feedbacks = new EntitySet<Feedback>(new Action<Feedback>(this.attach_Feedbacks), new Action<Feedback>(this.detach_Feedbacks));
-			this._Cititor = default(EntityRef<Cititor>);
-			this._Carte1 = default(EntityRef<Carte>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cititor", DbType="Int")]
-		public System.Nullable<int> ID_Cititor
-		{
-			get
-			{
-				return this._ID_Cititor;
-			}
-			set
-			{
-				if ((this._ID_Cititor != value))
-				{
-					if (this._Cititor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CititorChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Cititor = value;
-					this.SendPropertyChanged("ID_Cititor");
-					this.OnID_CititorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Carte", DbType="Int")]
-		public System.Nullable<int> ID_Carte
-		{
-			get
-			{
-				return this._ID_Carte;
-			}
-			set
-			{
-				if ((this._ID_Carte != value))
-				{
-					if (this._Carte1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CarteChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Carte = value;
-					this.SendPropertyChanged("ID_Carte");
-					this.OnID_CarteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="Int")]
-		public System.Nullable<int> Nota
-		{
-			get
-			{
-				return this._Nota;
-			}
-			set
-			{
-				if ((this._Nota != value))
-				{
-					this.OnNotaChanging(value);
-					this.SendPropertyChanging();
-					this._Nota = value;
-					this.SendPropertyChanged("Nota");
-					this.OnNotaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comentariu", DbType="NVarChar(500)")]
-		public string Comentariu
-		{
-			get
-			{
-				return this._Comentariu;
-			}
-			set
-			{
-				if ((this._Comentariu != value))
-				{
-					this.OnComentariuChanging(value);
-					this.SendPropertyChanging();
-					this._Comentariu = value;
-					this.SendPropertyChanged("Comentariu");
-					this.OnComentariuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataRecenzie", DbType="Date NOT NULL")]
-		public System.DateTime DataRecenzie
-		{
-			get
-			{
-				return this._DataRecenzie;
-			}
-			set
-			{
-				if ((this._DataRecenzie != value))
-				{
-					this.OnDataRecenzieChanging(value);
-					this.SendPropertyChanging();
-					this._DataRecenzie = value;
-					this.SendPropertyChanged("DataRecenzie");
-					this.OnDataRecenzieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Recenzie_Feedback", Storage="_Feedbacks", ThisKey="ID", OtherKey="ID_Recenzie")]
-		public EntitySet<Feedback> Feedbacks
-		{
-			get
-			{
-				return this._Feedbacks;
-			}
-			set
-			{
-				this._Feedbacks.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Recenzie", Storage="_Cititor", ThisKey="ID_Cititor", OtherKey="ID", IsForeignKey=true)]
-		public Cititor Cititor
-		{
-			get
-			{
-				return this._Cititor.Entity;
-			}
-			set
-			{
-				Cititor previousValue = this._Cititor.Entity;
-				if (((previousValue != value) 
-							|| (this._Cititor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cititor.Entity = null;
-						previousValue.Recenzies.Remove(this);
-					}
-					this._Cititor.Entity = value;
-					if ((value != null))
-					{
-						value.Recenzies.Add(this);
-						this._ID_Cititor = value.ID;
-					}
-					else
-					{
-						this._ID_Cititor = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Cititor");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Recenzie", Storage="_Carte1", ThisKey="ID_Carte", OtherKey="ID", IsForeignKey=true)]
-		public Carte Carte
-		{
-			get
-			{
-				return this._Carte1.Entity;
-			}
-			set
-			{
-				Carte previousValue = this._Carte1.Entity;
-				if (((previousValue != value) 
-							|| (this._Carte1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Carte1.Entity = null;
-						previousValue.Recenzies.Remove(this);
-					}
-					this._Carte1.Entity = value;
-					if ((value != null))
-					{
-						value.Recenzies.Add(this);
-						this._ID_Carte = value.ID;
-					}
-					else
-					{
-						this._ID_Carte = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Carte");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Feedbacks(Feedback entity)
-		{
-			this.SendPropertyChanging();
-			entity.Recenzie = this;
-		}
-		
-		private void detach_Feedbacks(Feedback entity)
-		{
-			this.SendPropertyChanging();
-			entity.Recenzie = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Stoc")]
-	public partial class Stoc : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _ID_Carte;
-		
-		private int _NrExemplare;
-		
-		private EntityRef<Carte> _Carte1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnID_CarteChanging(System.Nullable<int> value);
-    partial void OnID_CarteChanged();
-    partial void OnNrExemplareChanging(int value);
-    partial void OnNrExemplareChanged();
-    #endregion
-		
-		public Stoc()
-		{
-			this._Carte1 = default(EntityRef<Carte>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Carte", DbType="Int")]
-		public System.Nullable<int> ID_Carte
-		{
-			get
-			{
-				return this._ID_Carte;
-			}
-			set
-			{
-				if ((this._ID_Carte != value))
-				{
-					if (this._Carte1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CarteChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Carte = value;
-					this.SendPropertyChanged("ID_Carte");
-					this.OnID_CarteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrExemplare", DbType="Int NOT NULL")]
-		public int NrExemplare
-		{
-			get
-			{
-				return this._NrExemplare;
-			}
-			set
-			{
-				if ((this._NrExemplare != value))
-				{
-					this.OnNrExemplareChanging(value);
-					this.SendPropertyChanging();
-					this._NrExemplare = value;
-					this.SendPropertyChanged("NrExemplare");
-					this.OnNrExemplareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Stoc", Storage="_Carte1", ThisKey="ID_Carte", OtherKey="ID", IsForeignKey=true)]
-		public Carte Carte
-		{
-			get
-			{
-				return this._Carte1.Entity;
-			}
-			set
-			{
-				Carte previousValue = this._Carte1.Entity;
-				if (((previousValue != value) 
-							|| (this._Carte1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Carte1.Entity = null;
-						previousValue.Stocs.Remove(this);
-					}
-					this._Carte1.Entity = value;
-					if ((value != null))
-					{
-						value.Stocs.Add(this);
-						this._ID_Carte = value.ID;
-					}
-					else
-					{
-						this._ID_Carte = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Carte");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Carte")]
-	public partial class Carte : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Titlu;
-		
-		private string _Autor;
-		
-		private System.Nullable<int> _AnPublicare;
-		
-		private string _ISBN;
-		
-		private System.Nullable<int> _ID_Categorie;
-		
-		private System.Data.Linq.Binary _Imagine;
-		
-		private string _Descriere;
-		
-		private System.Nullable<int> _NumarPagini;
-		
-		private string _Dimensiune;
-		
-		private string _Editura;
-		
-		private EntitySet<Imprumut> _Imprumuts;
-		
-		private EntitySet<Recenzie> _Recenzies;
-		
-		private EntitySet<Stoc> _Stocs;
-		
-		private EntityRef<Categorie> _Categorie;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnTitluChanging(string value);
-    partial void OnTitluChanged();
-    partial void OnAutorChanging(string value);
-    partial void OnAutorChanged();
-    partial void OnAnPublicareChanging(System.Nullable<int> value);
-    partial void OnAnPublicareChanged();
-    partial void OnISBNChanging(string value);
-    partial void OnISBNChanged();
-    partial void OnID_CategorieChanging(System.Nullable<int> value);
-    partial void OnID_CategorieChanged();
-    partial void OnImagineChanging(System.Data.Linq.Binary value);
-    partial void OnImagineChanged();
-    partial void OnDescriereChanging(string value);
-    partial void OnDescriereChanged();
-    partial void OnNumarPaginiChanging(System.Nullable<int> value);
-    partial void OnNumarPaginiChanged();
-    partial void OnDimensiuneChanging(string value);
-    partial void OnDimensiuneChanged();
-    partial void OnEdituraChanging(string value);
-    partial void OnEdituraChanged();
-    #endregion
-		
-		public Carte()
-		{
-			this._Imprumuts = new EntitySet<Imprumut>(new Action<Imprumut>(this.attach_Imprumuts), new Action<Imprumut>(this.detach_Imprumuts));
-			this._Recenzies = new EntitySet<Recenzie>(new Action<Recenzie>(this.attach_Recenzies), new Action<Recenzie>(this.detach_Recenzies));
-			this._Stocs = new EntitySet<Stoc>(new Action<Stoc>(this.attach_Stocs), new Action<Stoc>(this.detach_Stocs));
-			this._Categorie = default(EntityRef<Categorie>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Titlu", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string Titlu
-		{
-			get
-			{
-				return this._Titlu;
-			}
-			set
-			{
-				if ((this._Titlu != value))
-				{
-					this.OnTitluChanging(value);
-					this.SendPropertyChanging();
-					this._Titlu = value;
-					this.SendPropertyChanged("Titlu");
-					this.OnTitluChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Autor
-		{
-			get
-			{
-				return this._Autor;
-			}
-			set
-			{
-				if ((this._Autor != value))
-				{
-					this.OnAutorChanging(value);
-					this.SendPropertyChanging();
-					this._Autor = value;
-					this.SendPropertyChanged("Autor");
-					this.OnAutorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AnPublicare", DbType="Int")]
-		public System.Nullable<int> AnPublicare
-		{
-			get
-			{
-				return this._AnPublicare;
-			}
-			set
-			{
-				if ((this._AnPublicare != value))
-				{
-					this.OnAnPublicareChanging(value);
-					this.SendPropertyChanging();
-					this._AnPublicare = value;
-					this.SendPropertyChanged("AnPublicare");
-					this.OnAnPublicareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ISBN", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
-		public string ISBN
-		{
-			get
-			{
-				return this._ISBN;
-			}
-			set
-			{
-				if ((this._ISBN != value))
-				{
-					this.OnISBNChanging(value);
-					this.SendPropertyChanging();
-					this._ISBN = value;
-					this.SendPropertyChanged("ISBN");
-					this.OnISBNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Categorie", DbType="Int")]
-		public System.Nullable<int> ID_Categorie
-		{
-			get
-			{
-				return this._ID_Categorie;
-			}
-			set
-			{
-				if ((this._ID_Categorie != value))
-				{
-					if (this._Categorie.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CategorieChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Categorie = value;
-					this.SendPropertyChanged("ID_Categorie");
-					this.OnID_CategorieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Imagine", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Imagine
-		{
-			get
-			{
-				return this._Imagine;
-			}
-			set
-			{
-				if ((this._Imagine != value))
-				{
-					this.OnImagineChanging(value);
-					this.SendPropertyChanging();
-					this._Imagine = value;
-					this.SendPropertyChanged("Imagine");
-					this.OnImagineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descriere", DbType="NVarChar(300)")]
-		public string Descriere
-		{
-			get
-			{
-				return this._Descriere;
-			}
-			set
-			{
-				if ((this._Descriere != value))
-				{
-					this.OnDescriereChanging(value);
-					this.SendPropertyChanging();
-					this._Descriere = value;
-					this.SendPropertyChanged("Descriere");
-					this.OnDescriereChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumarPagini", DbType="Int")]
-		public System.Nullable<int> NumarPagini
-		{
-			get
-			{
-				return this._NumarPagini;
-			}
-			set
-			{
-				if ((this._NumarPagini != value))
-				{
-					this.OnNumarPaginiChanging(value);
-					this.SendPropertyChanging();
-					this._NumarPagini = value;
-					this.SendPropertyChanged("NumarPagini");
-					this.OnNumarPaginiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dimensiune", DbType="NVarChar(50)")]
-		public string Dimensiune
-		{
-			get
-			{
-				return this._Dimensiune;
-			}
-			set
-			{
-				if ((this._Dimensiune != value))
-				{
-					this.OnDimensiuneChanging(value);
-					this.SendPropertyChanging();
-					this._Dimensiune = value;
-					this.SendPropertyChanged("Dimensiune");
-					this.OnDimensiuneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Editura", DbType="NVarChar(100)")]
-		public string Editura
-		{
-			get
-			{
-				return this._Editura;
-			}
-			set
-			{
-				if ((this._Editura != value))
-				{
-					this.OnEdituraChanging(value);
-					this.SendPropertyChanging();
-					this._Editura = value;
-					this.SendPropertyChanged("Editura");
-					this.OnEdituraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Imprumut", Storage="_Imprumuts", ThisKey="ID", OtherKey="ID_Carte")]
-		public EntitySet<Imprumut> Imprumuts
-		{
-			get
-			{
-				return this._Imprumuts;
-			}
-			set
-			{
-				this._Imprumuts.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Recenzie", Storage="_Recenzies", ThisKey="ID", OtherKey="ID_Carte")]
-		public EntitySet<Recenzie> Recenzies
-		{
-			get
-			{
-				return this._Recenzies;
-			}
-			set
-			{
-				this._Recenzies.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Carte_Stoc", Storage="_Stocs", ThisKey="ID", OtherKey="ID_Carte")]
-		public EntitySet<Stoc> Stocs
-		{
-			get
-			{
-				return this._Stocs;
-			}
-			set
-			{
-				this._Stocs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categorie_Carte", Storage="_Categorie", ThisKey="ID_Categorie", OtherKey="ID", IsForeignKey=true)]
-		public Categorie Categorie
-		{
-			get
-			{
-				return this._Categorie.Entity;
-			}
-			set
-			{
-				Categorie previousValue = this._Categorie.Entity;
-				if (((previousValue != value) 
-							|| (this._Categorie.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Categorie.Entity = null;
-						previousValue.Cartes.Remove(this);
-					}
-					this._Categorie.Entity = value;
-					if ((value != null))
-					{
-						value.Cartes.Add(this);
-						this._ID_Categorie = value.ID;
-					}
-					else
-					{
-						this._ID_Categorie = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Categorie");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Imprumuts(Imprumut entity)
-		{
-			this.SendPropertyChanging();
-			entity.Carte = this;
-		}
-		
-		private void detach_Imprumuts(Imprumut entity)
-		{
-			this.SendPropertyChanging();
-			entity.Carte = null;
-		}
-		
-		private void attach_Recenzies(Recenzie entity)
-		{
-			this.SendPropertyChanging();
-			entity.Carte = this;
-		}
-		
-		private void detach_Recenzies(Recenzie entity)
-		{
-			this.SendPropertyChanging();
-			entity.Carte = null;
-		}
-		
-		private void attach_Stocs(Stoc entity)
-		{
-			this.SendPropertyChanging();
-			entity.Carte = this;
-		}
-		
-		private void detach_Stocs(Stoc entity)
-		{
-			this.SendPropertyChanging();
-			entity.Carte = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Feedback")]
-	public partial class Feedback : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private int _ID_Recenzie;
-		
-		private int _NrLike;
-		
-		private int _NrDislike;
-		
-		private EntityRef<Recenzie> _Recenzie;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnID_RecenzieChanging(int value);
-    partial void OnID_RecenzieChanged();
-    partial void OnNrLikeChanging(int value);
-    partial void OnNrLikeChanged();
-    partial void OnNrDislikeChanging(int value);
-    partial void OnNrDislikeChanged();
-    #endregion
-		
-		public Feedback()
-		{
-			this._Recenzie = default(EntityRef<Recenzie>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Recenzie", DbType="Int NOT NULL")]
-		public int ID_Recenzie
-		{
-			get
-			{
-				return this._ID_Recenzie;
-			}
-			set
-			{
-				if ((this._ID_Recenzie != value))
-				{
-					if (this._Recenzie.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_RecenzieChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Recenzie = value;
-					this.SendPropertyChanged("ID_Recenzie");
-					this.OnID_RecenzieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrLike", DbType="Int NOT NULL")]
-		public int NrLike
-		{
-			get
-			{
-				return this._NrLike;
-			}
-			set
-			{
-				if ((this._NrLike != value))
-				{
-					this.OnNrLikeChanging(value);
-					this.SendPropertyChanging();
-					this._NrLike = value;
-					this.SendPropertyChanged("NrLike");
-					this.OnNrLikeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrDislike", DbType="Int NOT NULL")]
-		public int NrDislike
-		{
-			get
-			{
-				return this._NrDislike;
-			}
-			set
-			{
-				if ((this._NrDislike != value))
-				{
-					this.OnNrDislikeChanging(value);
-					this.SendPropertyChanging();
-					this._NrDislike = value;
-					this.SendPropertyChanged("NrDislike");
-					this.OnNrDislikeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Recenzie_Feedback", Storage="_Recenzie", ThisKey="ID_Recenzie", OtherKey="ID", IsForeignKey=true)]
-		public Recenzie Recenzie
-		{
-			get
-			{
-				return this._Recenzie.Entity;
-			}
-			set
-			{
-				Recenzie previousValue = this._Recenzie.Entity;
-				if (((previousValue != value) 
-							|| (this._Recenzie.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Recenzie.Entity = null;
-						previousValue.Feedbacks.Remove(this);
-					}
-					this._Recenzie.Entity = value;
-					if ((value != null))
-					{
-						value.Feedbacks.Add(this);
-						this._ID_Recenzie = value.ID;
-					}
-					else
-					{
-						this._ID_Recenzie = default(int);
-					}
-					this.SendPropertyChanged("Recenzie");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TaskLogs")]
-	public partial class TaskLog : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _TaskName;
-		
-		private System.DateTime _LastRunTime;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnTaskNameChanging(string value);
-    partial void OnTaskNameChanged();
-    partial void OnLastRunTimeChanging(System.DateTime value);
-    partial void OnLastRunTimeChanged();
-    #endregion
-		
-		public TaskLog()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string TaskName
-		{
-			get
-			{
-				return this._TaskName;
-			}
-			set
-			{
-				if ((this._TaskName != value))
-				{
-					this.OnTaskNameChanging(value);
-					this.SendPropertyChanging();
-					this._TaskName = value;
-					this.SendPropertyChanged("TaskName");
-					this.OnTaskNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastRunTime", DbType="DateTime NOT NULL")]
-		public System.DateTime LastRunTime
-		{
-			get
-			{
-				return this._LastRunTime;
-			}
-			set
-			{
-				if ((this._LastRunTime != value))
-				{
-					this.OnLastRunTimeChanging(value);
-					this.SendPropertyChanging();
-					this._LastRunTime = value;
-					this.SendPropertyChanged("LastRunTime");
-					this.OnLastRunTimeChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notificare")]
-	public partial class Notificare : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private System.Nullable<int> _ID_Cititor;
-		
-		private string _Tip_Notificare;
-		
-		private string _Mesaj;
-		
-		private System.DateTime _DataTrimitere;
-		
-		private string _Stare;
-		
-		private EntityRef<Cititor> _Cititor;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnID_CititorChanging(System.Nullable<int> value);
-    partial void OnID_CititorChanged();
-    partial void OnTip_NotificareChanging(string value);
-    partial void OnTip_NotificareChanged();
-    partial void OnMesajChanging(string value);
-    partial void OnMesajChanged();
-    partial void OnDataTrimitereChanging(System.DateTime value);
-    partial void OnDataTrimitereChanged();
-    partial void OnStareChanging(string value);
-    partial void OnStareChanged();
-    #endregion
-		
-		public Notificare()
-		{
-			this._Cititor = default(EntityRef<Cititor>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Cititor", DbType="Int")]
-		public System.Nullable<int> ID_Cititor
-		{
-			get
-			{
-				return this._ID_Cititor;
-			}
-			set
-			{
-				if ((this._ID_Cititor != value))
-				{
-					if (this._Cititor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_CititorChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Cititor = value;
-					this.SendPropertyChanged("ID_Cititor");
-					this.OnID_CititorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tip_Notificare", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Tip_Notificare
-		{
-			get
-			{
-				return this._Tip_Notificare;
-			}
-			set
-			{
-				if ((this._Tip_Notificare != value))
-				{
-					this.OnTip_NotificareChanging(value);
-					this.SendPropertyChanging();
-					this._Tip_Notificare = value;
-					this.SendPropertyChanged("Tip_Notificare");
-					this.OnTip_NotificareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mesaj", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string Mesaj
-		{
-			get
-			{
-				return this._Mesaj;
-			}
-			set
-			{
-				if ((this._Mesaj != value))
-				{
-					this.OnMesajChanging(value);
-					this.SendPropertyChanging();
-					this._Mesaj = value;
-					this.SendPropertyChanged("Mesaj");
-					this.OnMesajChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataTrimitere", DbType="Date NOT NULL")]
-		public System.DateTime DataTrimitere
-		{
-			get
-			{
-				return this._DataTrimitere;
-			}
-			set
-			{
-				if ((this._DataTrimitere != value))
-				{
-					this.OnDataTrimitereChanging(value);
-					this.SendPropertyChanging();
-					this._DataTrimitere = value;
-					this.SendPropertyChanged("DataTrimitere");
-					this.OnDataTrimitereChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stare", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Stare
-		{
-			get
-			{
-				return this._Stare;
-			}
-			set
-			{
-				if ((this._Stare != value))
-				{
-					this.OnStareChanging(value);
-					this.SendPropertyChanging();
-					this._Stare = value;
-					this.SendPropertyChanged("Stare");
-					this.OnStareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cititor_Notificare", Storage="_Cititor", ThisKey="ID_Cititor", OtherKey="ID", IsForeignKey=true)]
-		public Cititor Cititor
-		{
-			get
-			{
-				return this._Cititor.Entity;
-			}
-			set
-			{
-				Cititor previousValue = this._Cititor.Entity;
-				if (((previousValue != value) 
-							|| (this._Cititor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cititor.Entity = null;
-						previousValue.Notificares.Remove(this);
-					}
-					this._Cititor.Entity = value;
-					if ((value != null))
-					{
-						value.Notificares.Add(this);
-						this._ID_Cititor = value.ID;
-					}
-					else
-					{
-						this._ID_Cititor = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Cititor");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

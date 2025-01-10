@@ -12,6 +12,7 @@ namespace BibliotecaElectronica.Commands
     {
         private readonly PersoanaModel _persoana;
         private readonly ClientViewModel _clientViewModel;
+        private readonly LibrarianViewModel _librarianViewModel;
 
         public OrdersClickButtonCommand(PersoanaModel client,ClientViewModel clientViewModel)
         {
@@ -19,9 +20,16 @@ namespace BibliotecaElectronica.Commands
 
             _clientViewModel = clientViewModel;
         }
+
+        public OrdersClickButtonCommand(PersoanaModel client, LibrarianViewModel librarianViewModel)
+        {
+            _persoana = client;
+
+            _librarianViewModel = librarianViewModel;
+        }
         public override void Execute(object parameter)
         {
-            _clientViewModel.CurrentRightViewModel = new OrdersViewModel(_clientViewModel,_persoana) ;
+            _clientViewModel.CurrentRightViewModel = new OrdersViewModel(_clientViewModel, _persoana);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace BibliotecaElectronica.ViewModel
     public class CustomerViewModel : ViewModelBase
     {
         private ClientViewModel _clientViewModel;
+        private LibrarianViewModel _librarianViewModel;
+        private AdminViewModel _adminViewModel;
         private BibliotecaElectronicaClassesDataContext _dbContext;
 
         private string _lastName;
@@ -22,6 +24,7 @@ namespace BibliotecaElectronica.ViewModel
         private string _address;
         private string _birthDate;
         private string _username;
+        private string _hireDate;
 
         public string CustomerLastName
         {
@@ -93,6 +96,15 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
+        public string HireDate
+        {
+            get => _hireDate;
+            set
+            {
+                _hireDate = value;
+                OnPropertyChanged(nameof(HireDate));
+            }
+        }
 
         private bool _isEditingFirstName;
         public bool IsEditingFirstName
@@ -160,6 +172,17 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
+        private bool _isSectionVisible;
+        public bool IsSectionVisible
+        {
+            get => _isSectionVisible;
+            set
+            {
+                _isSectionVisible = value;
+                OnPropertyChanged(nameof(IsSectionVisible));
+            }
+        }
+
         // Comenzi
         public ICommand StartEditCommand { get; }
         public ICommand SaveEditCommand { get; }
@@ -177,6 +200,7 @@ namespace BibliotecaElectronica.ViewModel
         {
            
             _clientViewModel = clientViewModel;
+            _isSectionVisible = false;
             _dbContext = new BibliotecaElectronicaClassesDataContext();
 
             if (clientViewModel != null && clientViewModel.Persoana != null)
@@ -196,7 +220,54 @@ namespace BibliotecaElectronica.ViewModel
             CancelEditCommand = new RelayCommand<string>(CancelEdit);
         }
 
-      
+        public CustomerViewModel(LibrarianViewModel librarianViewModel)
+        {
+            _librarianViewModel = librarianViewModel;
+            _isSectionVisible = true;
+            _dbContext = new BibliotecaElectronicaClassesDataContext();
+
+            BibliotecarModel bibliotecar = new BibliotecarModel();
+
+            if (librarianViewModel != null && librarianViewModel.Persoana != null)
+            {
+                CustomerLastName = librarianViewModel.Persoana.Nume;
+                CustomerFirstName = librarianViewModel.Persoana.Prenume;
+                Email = librarianViewModel.Persoana.EmailAddress;
+                PhoneNumber = librarianViewModel.Persoana.Telefon;
+                Address = librarianViewModel.Persoana.Adresa;
+                BirthDate = librarianViewModel.Persoana.DataNasterii.ToString("dd/MM/yyyy");
+                Username = librarianViewModel.Persoana.NumeUtilizator;
+                HireDate = bibliotecar.getHireDate(librarianViewModel.Persoana.IdPerson).ToString("dd/MM/yyyy");
+            }
+            StartEditCommand = new RelayCommand<string>(StartEdit);
+            SaveEditCommand = new RelayCommand<string>(SaveEdit);
+            CancelEditCommand = new RelayCommand<string>(CancelEdit);
+        }
+
+
+        public CustomerViewModel(AdminViewModel adminViewModel)
+        {
+            _adminViewModel = adminViewModel;
+            _isSectionVisible = false;
+            _dbContext = new BibliotecaElectronicaClassesDataContext();
+
+            AdministratorModel administrator = new AdministratorModel();
+
+            if (adminViewModel != null && adminViewModel.Persoana != null)
+            {
+                CustomerLastName = adminViewModel.Persoana.Nume;
+                CustomerFirstName = adminViewModel.Persoana.Prenume;
+                Email = adminViewModel.Persoana.EmailAddress;
+                PhoneNumber = adminViewModel.Persoana.Telefon;
+                Address = adminViewModel.Persoana.Adresa;
+                BirthDate = adminViewModel.Persoana.DataNasterii.ToString("dd/MM/yyyy");
+                Username = adminViewModel.Persoana.NumeUtilizator;
+            }
+            StartEditCommand = new RelayCommand<string>(StartEdit);
+            SaveEditCommand = new RelayCommand<string>(SaveEdit);
+            CancelEditCommand = new RelayCommand<string>(CancelEdit);
+        }
+
         private void StartEdit(string field)
         {
             switch (field)

@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\baze\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\commands\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\commands\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\baze\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\viewmodel\\createaccountviewmodel2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\viewmodel\\createaccountviewmodel2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|c:\\users\\draga\\desktop\\baze\\proiectbaze\\bibliotecaelectronica\\bibliotecaelectronica\\view\\createaccountview2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F8448A47-AD52-487F-AD51-364247451DD3}|BibliotecaElectronica\\BibliotecaElectronica.csproj|solutionrelative:bibliotecaelectronica\\view\\createaccountview2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegisterCommand.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\Commands\\RegisterCommand.cs",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\Commands\\RegisterCommand.cs",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\Commands\\RegisterCommand.cs",
+              "RelativeToolTip": "BibliotecaElectronica\\Commands\\RegisterCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T21:41:39.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreateAccountView2.xaml",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\View\\CreateAccountView2.xaml",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\View\\CreateAccountView2.xaml",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\View\\CreateAccountView2.xaml",
+              "RelativeToolTip": "BibliotecaElectronica\\View\\CreateAccountView2.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-01-10T21:35:49.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateAccountViewModel2.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\ViewModel\\CreateAccountViewModel2.cs",
+              "RelativeDocumentMoniker": "BibliotecaElectronica\\ViewModel\\CreateAccountViewModel2.cs",
+              "ToolTip": "C:\\Users\\draga\\Desktop\\Baze\\ProiectBaze\\BibliotecaElectronica\\BibliotecaElectronica\\ViewModel\\CreateAccountViewModel2.cs",
+              "RelativeToolTip": "BibliotecaElectronica\\ViewModel\\CreateAccountViewModel2.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAA4wEsAAACSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T21:35:44.721Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

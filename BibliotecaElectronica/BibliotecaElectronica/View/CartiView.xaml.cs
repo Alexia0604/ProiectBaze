@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace BibliotecaElectronica.View
 {
-    /// <summary>
-    /// Interaction logic for CartiView.xaml
-    /// </summary>
+
     public partial class CartiView : UserControl
     {
         public CartiView()

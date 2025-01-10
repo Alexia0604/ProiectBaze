@@ -12,8 +12,8 @@ namespace BibliotecaElectronica.Model
     {
         private int IDAdmin;
         AdministratorModel(int idAdmin, int idPersoana, string lastname, string firstname, string username, string password,
-            string email, string phone, string address, DateTime birthdate): base(idPersoana, lastname, firstname, username, 
-                password, email, address, phone, birthdate)
+            string email, string phone, string address, DateTime birthdate, int status): base(idPersoana, lastname, firstname, username, 
+                password, email, address, phone, birthdate, status)
         {
             IDAdmin = idAdmin;
         }
@@ -51,12 +51,18 @@ namespace BibliotecaElectronica.Model
                 var admin_db = db.Administrators.SingleOrDefault(a => a.ID_Persoana == user.ID); 
                 if (admin_db!=null)
                 {
-                    AdministratorModel admin = new AdministratorModel(admin_db.ID, admin_db.ID_Persoana.GetValueOrDefault(), 
-                        admin_db.Persoana.Nume, admin_db.Persoana.Prenume, admin_db.Persoana.Username,
-                        admin_db.Persoana.Parola, admin_db.Persoana.Email, admin_db.Persoana.Adresa,
-                        admin_db.Persoana.Telefon, admin_db.Persoana.DataNasterii.GetValueOrDefault());
+                    this.IDAdmin = admin_db.ID;
+                    this.IdPerson = admin_db.ID_Persoana.GetValueOrDefault();
+                    this.LastName = admin_db.Persoana.Nume;
+                    this.FirstName = admin_db.Persoana.Prenume;
+                    this.Username = admin_db.Persoana.Username;
+                    this.Password = admin_db.Persoana.Parola;
+                    this.Email = admin_db.Persoana.Email;
+                    this.Address = admin_db.Persoana.Adresa;
+                    this.Phone = admin_db.Persoana.Telefon;
+                    this.BirthDate = admin_db.Persoana.DataNasterii.GetValueOrDefault();
 
-                    return admin;
+                    return this;
                 }
                 else
                     throw new SignInException();

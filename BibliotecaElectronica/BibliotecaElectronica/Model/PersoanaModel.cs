@@ -21,6 +21,7 @@ namespace BibliotecaElectronica.Model
         protected string Address;
         protected string Phone;
         protected DateTime BirthDate;
+        protected int Status;
 
 
         protected BibliotecaElectronicaClassesDataContext db = new BibliotecaElectronicaClassesDataContext();
@@ -67,6 +68,12 @@ namespace BibliotecaElectronica.Model
             set => BirthDate = value;
         }
 
+
+        public int StareCont
+        {
+            get => Status;
+            set => Status = value;
+        }
         public string NumeUtilizator
         {
             get => Username;
@@ -74,7 +81,7 @@ namespace BibliotecaElectronica.Model
         }
 
         public PersoanaModel() { }
-        public PersoanaModel(int id, string lastname, string firstname, string username, string password, string email, string phone, string address, DateTime birthdate)
+        public PersoanaModel(int id, string lastname, string firstname, string username, string password, string email, string phone, string address, DateTime birthdate, int status)
         {
             idPerson = id;
             LastName = lastname;
@@ -85,6 +92,7 @@ namespace BibliotecaElectronica.Model
             Address = address;
             Phone = phone;
             BirthDate = birthdate;
+            Status = status;
         }
 
         public PersoanaModel(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate)

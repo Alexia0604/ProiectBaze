@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace BibliotecaElectronica.Model
@@ -27,6 +28,7 @@ namespace BibliotecaElectronica.Model
         private string dimensiune;
         private string editura;
         private int nrExemplare;
+        public string categorie;
       
         public int NrExemplare
         {
@@ -104,6 +106,12 @@ namespace BibliotecaElectronica.Model
                 image = value;
                 BitmapImage = ConvertToBitmapImage(value);
             }
+        }
+
+        public string Categorie
+        {
+            get { return categorie; }
+            set => categorie = value;
         }
 
         public BitmapImage BitmapImage { get; private set; }
@@ -284,5 +292,67 @@ namespace BibliotecaElectronica.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public bool AddCarte(string title, string author, int year, string isbn, string categorie, byte[] image, string description, int nrPagini, string dimensiune, string editura, int nrExemplare)
+        {
+            try
+            {
+                if (db == null)
+                    db = new BibliotecaElectronicaClassesDataContext();
+
+                // Verifică dacă ISBN-ul există deja
+                if (IsIsbnExists(isbn))
+                {
+                    MessageBox.Show("O carte cu acest ISBN există deja în baza de date.", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false; // Nu adăuga cartea
+                }
+
+                // Crearea unui nou obiect Carte pentru baza de date
+                var newCarte = new Carte
+                {
+                    Titlu = title,
+                    Autor = author,
+                    AnPublicare = year,
+                    ISBN = isbn,
+                    Categorie = categorie,
+                    Imagine = image,
+                    Descriere = description,
+                    NumarPagini = nrPagini,
+                    Dimensiune = dimensiune,
+                    Editura = editura
+                };
+
+                // Adăugarea cărții în baza de date
+                db.Cartes.InsertOnSubmit(newCarte);
+                db.SubmitChanges();
+
+                // Adăugarea informațiilor despre stoc
+                var newStoc = new Stoc
+                {
+                    ID_Carte = newCarte.ID,
+                    NrExemplare = nrExemplare
+                };
+
+                db.Stocs.InsertOnSubmit(newStoc);
+                db.SubmitChanges();
+
+                return true; // Succes
+            }
+            catch (Exception ex)
+            {
+                throw new DataBaseException("Eroare la adăugarea cărții în baza de date.", ex);
+            }
+        }
+
+
+
+        public bool IsIsbnExists(string isbn)
+        {
+            if (db == null)
+                db = new BibliotecaElectronicaClassesDataContext();
+
+            return db.Cartes.Any(c => c.ISBN == isbn);
+        }
+
     }
 }

@@ -13,20 +13,11 @@
 
     <Grid>
         <Grid >
-            <Image Source="client.png"
-                    Width="100"
-                     Height="100"
-                     Margin="0,-5,0,0"
-                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Stretch="UniformToFill"
-                    ClipToBounds="True" RenderTransformOrigin="0.572,0.175"/>
-
             <Border Background="#efdaf7"
                     CornerRadius="20"
-                    Padding="20"
+                    Padding="10"
                     Width="500" 
-                     Height="400"
+                    Height="Auto"
          
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -42,15 +33,16 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="2*" />
-                      
+
 
                     </Grid.ColumnDefinitions>
 
-                    
+                    <!-- Nume -->
                     <Border Background="#FFFFFF"
                             CornerRadius="10"
                             BorderBrush="#DDDDDD"
@@ -92,7 +84,7 @@
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding IsEditingFirstName}" Value="True">
                                                     <Setter Property="Visibility" Value="Visible"/>
-                                                  
+
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
@@ -115,40 +107,40 @@
                                         Content="✔"
                                         FontSize="10">
                                     <Button.Style>
-                                    <Style TargetType="{x:Type Button}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border  x:Name="Border"
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
                                                            Background="{TemplateBinding Background}"
                                                             BorderBrush="{TemplateBinding BorderBrush}"
-                                                            BorderThickness="{TemplateBinding BorderThickness}">        
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
 
                                                             <ContentPresenter HorizontalAlignment="Center"
                                                              VerticalAlignment="Top"/>
-                                                    </Border>
+                                                        </Border>
 
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
 
-                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
 
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
 
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
 
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsEditingFirstName}"
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingFirstName}"
                                                          Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
                                     </Button.Style>
                                 </Button>
 
@@ -200,7 +192,7 @@
                                     </Button.Style>
                                 </Button>
                             </StackPanel>
-                            
+
                             <Button Width="60"
                                     Height="20"
                                     Background="white"
@@ -211,40 +203,40 @@
                                     Content="Modifică"
                                     FontSize="10">
                                 <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border  x:Name="Border"
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
                                                          Background="{TemplateBinding Background}"
                                                          BorderBrush="{TemplateBinding BorderBrush}"
                                                          BorderThickness="{TemplateBinding BorderThickness}"
                                                          CornerRadius="10">
-                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                        <ContentPresenter HorizontalAlignment="Center"
                                                                        VerticalAlignment="Center"/>
-                                                </Border>
+                                                    </Border>
 
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
 
-                                                        <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
 
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
 
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
 
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsEditingFirstName}"
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingFirstName}"
                                                      Value="True">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
                                 </Button.Style>
 
                             </Button>
@@ -306,7 +298,7 @@
                                       Command="{Binding StartEditCommand}"
                                       CommandParameter="LastName"
                                       Content="Modifică"
-                                      FontSize="10">    
+                                      FontSize="10">
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Visibility" Value="Visible"/>
@@ -360,47 +352,47 @@
                                     Command="{Binding SaveEditCommand}"
                                     CommandParameter="LastName"
                                     Content="✔"
-                                    FontSize="10">  
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border  x:Name="Border"
+                                    FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
                                                            Background="{TemplateBinding Background}"
                                                             BorderBrush="{TemplateBinding BorderBrush}"
                                                             BorderThickness="{TemplateBinding BorderThickness}">
 
-                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                            <ContentPresenter HorizontalAlignment="Center"
                                                                      VerticalAlignment="Top"/>
-                                                    </Border>
+                                                        </Border>
 
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
 
-                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
 
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
 
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
 
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsEditingLastName}"
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingLastName}"
                              Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
 
-                            <!-- Buton "✖" -->
-                            <Button Width="30"
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
             Height="20"
             Background="white"
             BorderThickness="2"
@@ -409,44 +401,44 @@
             CommandParameter="LastName"
             Content="✖"
             FontSize="8">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border  x:Name="Border"
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
                                      Background="{TemplateBinding Background}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       BorderThickness="{TemplateBinding BorderThickness}">
 
-                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                            <ContentPresenter HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"/>
-                                                    </Border>
+                                                        </Border>
 
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
 
-                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
 
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
 
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
 
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsEditingLastName}"
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingLastName}"
                                 Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-                        </StackPanel>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
 
@@ -506,7 +498,7 @@ Grid.ColumnSpan="2">
                                       Command="{Binding StartEditCommand}"
                                       CommandParameter="Email"
                                       Content="Modifică"
-                                      FontSize="10">    
+                                      FontSize="10">
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Visibility" Value="Visible"/>
@@ -561,46 +553,46 @@ Grid.ColumnSpan="2">
             CommandParameter="Email"
             Content="✔"
             FontSize="10">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border  x:Name="Border"
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
 
-                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                            <ContentPresenter HorizontalAlignment="Center"
                                  VerticalAlignment="Top"/>
-                                                    </Border>
+                                                        </Border>
 
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
 
-                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
 
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
 
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
 
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsEditingEmail}"
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingEmail}"
                              Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
 
-                            <!-- Buton "✖" -->
-                            <Button Width="30"
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
             Height="20"
             Background="white"
             BorderThickness="2"
@@ -609,44 +601,44 @@ Grid.ColumnSpan="2">
             CommandParameter="Email"
             Content="✖"
             FontSize="8">
-                                <Button.Style>
-                                    <Style TargetType="{x:Type Button}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border  x:Name="Border"
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
                                      Background="{TemplateBinding Background}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       BorderThickness="{TemplateBinding BorderThickness}">
 
-                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                            <ContentPresenter HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"/>
-                                                    </Border>
+                                                        </Border>
 
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
 
-                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
 
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
 
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
 
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsEditingEmail}"
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingEmail}"
                                 Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                            </Button>
-                        </StackPanel>
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
 
@@ -716,7 +708,7 @@ Grid.ColumnSpan="2">
                                                                Background="{TemplateBinding Background}"
                                                                BorderBrush="{TemplateBinding BorderBrush}"
                                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                               CornerRadius="10">   
+                                                               CornerRadius="10">
                                                         <ContentPresenter HorizontalAlignment="Center"
                                              VerticalAlignment="Center"/>
                                                     </Border>
@@ -916,7 +908,7 @@ Grid.ColumnSpan="2">
                                                                Background="{TemplateBinding Background}"
                                                                BorderBrush="{TemplateBinding BorderBrush}"
                                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                               CornerRadius="10">       
+                                                               CornerRadius="10">
                                                         <ContentPresenter HorizontalAlignment="Center"
                                              VerticalAlignment="Center"/>
                                                     </Border>
@@ -1018,7 +1010,7 @@ Grid.ColumnSpan="2">
                                                         <Border  x:Name="Border"
                                                  Background="{TemplateBinding Background}"
                                                   BorderBrush="{TemplateBinding BorderBrush}"
-                                                  BorderThickness="{TemplateBinding BorderThickness}">  
+                                                  BorderThickness="{TemplateBinding BorderThickness}">
 
                                                             <ContentPresenter HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"/>
@@ -1069,14 +1061,34 @@ Grid.ColumnSpan="2">
                         </StackPanel>
                     </Border>
 
+                    <!-- Data Angajării -->
+                    <Border Background="#FFFFFF"
+                            CornerRadius="10"
+                            BorderBrush="#DDDDDD"
+                            BorderThickness="1"
+                            Padding="10"
+                            Margin="5"
+                            Grid.Row="6"
+                            Grid.ColumnSpan="2"
+                            Visibility="{Binding IsSectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Data Angajării:"
+                                           FontWeight="Bold"
+                                           Foreground="#4B4B4B"
+                                           Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding HireDate, Mode=TwoWay}"
+                                           Foreground="#6B6B6B" Width="275" />
+                        </StackPanel>
+                    </Border>
+
                     <!-- Username -->
                     <Border Background="#FFFFFF"
 CornerRadius="10"
 BorderBrush="#DDDDDD"
 BorderThickness="1"
 Padding="10"
-Margin="5"
-Grid.Row="6"
+Margin="5,5,5,5"
+Grid.Row="7"
 Grid.ColumnSpan="2">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Username:"
@@ -1124,7 +1136,7 @@ Grid.ColumnSpan="2">
                                       Command="{Binding StartEditCommand}"
                                       CommandParameter="Username"
                                       Content="Modifică"
-                                      FontSize="10">            
+                                      FontSize="10">
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Visibility" Value="Visible"/>
@@ -1135,7 +1147,7 @@ Grid.ColumnSpan="2">
                                                                Background="{TemplateBinding Background}"
                                                                BorderBrush="{TemplateBinding BorderBrush}"
                                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                               CornerRadius="10">   
+                                                               CornerRadius="10">
                                                         <ContentPresenter HorizontalAlignment="Center"
                                              VerticalAlignment="Center"/>
                                                     </Border>

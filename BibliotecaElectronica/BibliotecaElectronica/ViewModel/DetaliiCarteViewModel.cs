@@ -17,6 +17,11 @@ namespace BibliotecaElectronica.ViewModel
     public class DetaliiCarteViewModel : ViewModelBase
     {
         public readonly ClientViewModel _clientViewModel;
+
+        public readonly LibrarianViewModel _librarianViewModel;
+
+        public AdminViewModel _adminViewModel;
+
         private CarteModel _selectedBook;
         public CarteModel SelectedBook
         {
@@ -98,6 +103,7 @@ namespace BibliotecaElectronica.ViewModel
                 OnPropertyChanged(nameof(AverageRating));
             }
         }
+
         private int totalReviews;
         public int TotalReviews
         {
@@ -168,10 +174,19 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
-       
-
+        private bool _isSectionVisible;
+        public bool IsSectionVisible
+        {
+            get => _isSectionVisible;
+            set
+            {
+                _isSectionVisible = value;
+                OnPropertyChanged(nameof(IsSectionVisible));
+            }
+        }
         public DetaliiCarteViewModel(CarteModel selectedBook, ClientViewModel clientViewModel)
         {
+            _isSectionVisible= true;
             ratings =selectedBook.getRatingDistributions();
             averageRating = GetPercentage();
             stars = GetStars(averageRating);
@@ -191,7 +206,33 @@ namespace BibliotecaElectronica.ViewModel
             SelectStarCommand = new RelayCommand<int>(SelectStar);
         }
 
-     
+        public DetaliiCarteViewModel(CarteModel selectedBook, LibrarianViewModel librarianViewModel)
+        {
+            _isSectionVisible = false;
+            ratings = selectedBook.getRatingDistributions();
+            averageRating = GetPercentage();
+            stars = GetStars(averageRating);
+            _selectedBook = selectedBook;
+            _librarianViewModel = librarianViewModel;
+            BackToAllBooks = new BackToAllBooksCommand(librarianViewModel);
+            _selectedBook.populeazaRecenziile();
+            recenzii = new ObservableCollection<RecenzieModel>();
+            recenzii = _selectedBook.populeazaRecenziile();
+        }
+
+        public DetaliiCarteViewModel(CarteModel selectedBook, AdminViewModel adminViewModel)
+        {
+            _isSectionVisible = false;
+            ratings = selectedBook.getRatingDistributions();
+            averageRating = GetPercentage();
+            stars = GetStars(averageRating);
+            _selectedBook = selectedBook;
+            _adminViewModel = adminViewModel;
+            BackToAllBooks = new BackToAllBooksCommand(adminViewModel);
+            _selectedBook.populeazaRecenziile();
+            recenzii = new ObservableCollection<RecenzieModel>();
+            recenzii = _selectedBook.populeazaRecenziile();
+        }
 
         private void SelectStar(int selectedStar)
         {

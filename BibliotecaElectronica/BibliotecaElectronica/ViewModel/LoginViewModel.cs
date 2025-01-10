@@ -63,7 +63,7 @@ namespace BibliotecaElectronica.ViewModel
 
         private readonly ObservableCollection<string> _roles;
 
-        private string _selectedRole="Client";
+        private string _selectedRole="Cititor";
 
         public string SelectedRole
         {
@@ -86,7 +86,7 @@ namespace BibliotecaElectronica.ViewModel
         public LoginViewModel(NavigationStore navigationStore) 
         {
 
-           _roles = new ObservableCollection<string> { "Client", "Bibliotecar","Administrator" };
+           _roles = new ObservableCollection<string> { "Cititor", "Bibliotecar","Administrator" };
             SignInCommand = new SignInCommand(this,navigationStore);
             CreateAccountCommand = new CreateAccountCommand(navigationStore);
         }

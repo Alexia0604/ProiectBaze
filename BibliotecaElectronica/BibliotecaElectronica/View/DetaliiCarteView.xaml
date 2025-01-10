@@ -15,7 +15,10 @@
         <utilities:PercentageToWidthConverter x:Key="PercentageToWidthConverter"/>
         <utilities:TextToVisibilityConverter x:Key="TextToVisibilityConverter" />
         <utilities:StarReviewConverter x:Key="StarReviewConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
+
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
         <Grid.RowDefinitions>
@@ -81,6 +84,7 @@
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <Button Content="Împrumută!" 
                         Background="Transparent"
+                        Visibility="{Binding IsSectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Foreground="#ad4ef5"
                           Command="{Binding BorrowBook}"  
                          Width="110" Height="30" Margin="0,90,10,0"/>
@@ -192,7 +196,9 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </StackPanel>
-                        <Border BorderThickness="0.5" BorderBrush="Gray" Background="Transparent" Height="100" Width="auto">
+                        <Border BorderThickness="0.5" BorderBrush="Gray" Background="Transparent" Height="100" Width="auto"
+                                Visibility="{Binding IsSectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
                             <!--<Label Content="Ți-a plăcut produsul?"/>-->
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="Ți-a plăcut cartea?"
@@ -310,6 +316,7 @@
 
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Button Content="👍" 
+                                                
                                                 Command="{Binding DataContext.LikeCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" 
                                                 CommandParameter="{Binding}" 
                                                 Margin="0,0,5,0"
@@ -317,6 +324,7 @@
                                         <TextBlock Text="{Binding Like,UpdateSourceTrigger=PropertyChanged}"
                                                    Margin="0,0,5,5"/>
                                         <Button Content="👎" 
+                                                
                                                 Command="{Binding DataContext.DislikeCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" 
                                                 CommandParameter="{Binding}"
                                                 Style="{x:Null}"/>

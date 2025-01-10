@@ -117,6 +117,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BibliotecaElectronicaClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\AddBooksClickButtonCommand.cs" />
     <Compile Include="Commands\BackToAllBooksCommand.cs" />
     <Compile Include="Commands\BackToCreateAccountCommand.cs" />
     <Compile Include="Commands\BackToLoginCommand.cs" />
@@ -130,6 +131,8 @@
     <Compile Include="Commands\HomeClickButtonCommand.cs" />
     <Compile Include="Commands\InboxClickButtonCommmand.cs" />
     <Compile Include="Commands\LikeCommand.cs" />
+    <Compile Include="Commands\ListLibrariansClickButtonCommand.cs" />
+    <Compile Include="Commands\ListReadersClickButtonCommand.cs" />
     <Compile Include="Commands\OrdersClickButtonCommand.cs" />
     <Compile Include="Commands\ProductsClickButtonCommand.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
@@ -141,8 +144,10 @@
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\AccountException.cs" />
+    <Compile Include="Exceptions\ClosedAccountException.cs" />
     <Compile Include="Exceptions\DataBaseException.cs" />
     <Compile Include="Exceptions\EmailException.cs" />
+    <Compile Include="Exceptions\MatchingPasswordsFailed.cs" />
     <Compile Include="Exceptions\NoUsernameOrPasswordException.cs" />
     <Compile Include="Exceptions\SignInException.cs" />
     <Compile Include="Exceptions\SignInWrongCredentialsException.cs" />
@@ -161,6 +166,8 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
     <Compile Include="Utilities\Btn.cs" />
+    <Compile Include="Utilities\ByteArrayToImageConverter.cs" />
+    <Compile Include="Utilities\IntConverter.cs" />
     <Compile Include="Utilities\NotificariBackgroundWorker.cs" />
     <Compile Include="Utilities\PercentageConverter.cs" />
     <Compile Include="Utilities\PercentageToWidthConverter.cs" />
@@ -169,7 +176,11 @@
     <Compile Include="Utilities\StarsReviewConverter.cs" />
     <Compile Include="Utilities\TextToVisibilityConverter .cs" />
     <Compile Include="Utilities\Utility.cs" />
+    <Compile Include="ViewModel\AddBooksViewModel.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\BibliotecariViewModel.cs" />
     <Compile Include="ViewModel\CartiViewModel.cs" />
+    <Compile Include="ViewModel\CititoriViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
     <Compile Include="ViewModel\CreateAccountViewModel.cs" />
     <Compile Include="ViewModel\CreateAccountViewModel2.cs" />
@@ -177,12 +188,25 @@
     <Compile Include="ViewModel\DetaliiCarteViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\InboxViewModel.cs" />
+    <Compile Include="ViewModel\LibrarianViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\OrdersViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AddBooksView.xaml.cs">
+      <DependentUpon>AddBooksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView.xaml.cs">
+      <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BibliotecariView.xaml.cs">
+      <DependentUpon>BibliotecariView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CartiView.xaml.cs">
       <DependentUpon>CartiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CititoriView.xaml.cs">
+      <DependentUpon>CititoriView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClientView.xaml.cs">
       <DependentUpon>ClientView.xaml</DependentUpon>
@@ -207,6 +231,9 @@
     </Compile>
     <Compile Include="View\InboxView.xaml.cs">
       <DependentUpon>InboxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LibrarianView.xaml.cs">
+      <DependentUpon>LibrarianView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -249,7 +276,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddBooksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BibliotecariView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CartiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CititoriView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,6 +325,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InboxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LibrarianView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

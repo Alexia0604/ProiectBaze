@@ -26,6 +26,12 @@
             <DataTemplate DataType="{x:Type vms:ClientViewModel}">
                 <view:ClientView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:LibrarianViewModel}">
+                <view:LibrarianView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:AdminViewModel}">
+                <view:AdminView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <Grid>

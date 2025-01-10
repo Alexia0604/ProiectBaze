@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using BibliotecaElectronica.Stores;
+using System.Security.Cryptography;
 
 
 namespace BibliotecaElectronica.Commands
@@ -27,42 +28,58 @@ namespace BibliotecaElectronica.Commands
             _navigationStore = navigationStore;
         }
 
+        private string EncryptPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Aplică SHA256 asupra parolei
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                // Convertește hash-ul în format hexadecimals
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         public override void Execute(object parameter)
         {
             string _role = _loginViewModel.SelectedRole;
             try
             {
+                string hashedPassword = EncryptPassword(_loginViewModel.Password);
+
                 switch (_role)
                 {
                     case "Administrator":
                         AdministratorModel administrator = new AdministratorModel();
-                        administrator.LoginClient(_loginViewModel.Username, _loginViewModel.Password);
+                        administrator.LoginClient(_loginViewModel.Username, hashedPassword);
                         MessageBox.Show($"Bine ai venit, {_loginViewModel.Username}!",
                         $"Conectare {_loginViewModel.SelectedRole} reușită!", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                        //_navigationStore.CurrentViewModel=new ClientViewModel(_navigationStore);
+                        _navigationStore.CurrentViewModel=new AdminViewModel(_navigationStore,administrator);
 
                         break;
 
                     case "Bibliotecar":
                         BibliotecarModel bibliotecar = new BibliotecarModel();
-                        bibliotecar.LoginClient(_loginViewModel.Username, _loginViewModel.Password);
+                        bibliotecar.LoginClient(_loginViewModel.Username, hashedPassword);
                         MessageBox.Show($"Bine ai venit, {_loginViewModel.Username}!",
                         $"Conectare {_loginViewModel.SelectedRole} reușită!", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                        //_navigationStore.CurrentViewModel=new ClientViewModel(_navigationStore);
+                        _navigationStore.CurrentViewModel=new LibrarianViewModel(_navigationStore,bibliotecar);
 
                         break;
-                    case "Client":
+                    case "Cititor":
                         CititorModel cititor = new CititorModel();
-                        cititor.LoginClient(_loginViewModel.Username, _loginViewModel.Password);
+                        cititor.LoginClient(_loginViewModel.Username, hashedPassword);
                         MessageBox.Show($"Bine ai venit, {_loginViewModel.Username}!",
                         $"Conectare {_loginViewModel.SelectedRole} reușită!", MessageBoxButton.OK, MessageBoxImage.Information);
 
                         _navigationStore.CurrentViewModel = new ClientViewModel(_navigationStore,cititor);
-
-
-                        //_navigationStore.CurrentViewModel = new CreateAccountViewModel(_navigationStore);
 
                         break;
 
@@ -77,6 +94,11 @@ namespace BibliotecaElectronica.Commands
             catch (SignInWrongCredentialsException e2)
             {
                 MessageBox.Show("Username sau parolă greșită!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (ClosedAccountException e3)
+            {
+                MessageBox.Show("Contul este inchis!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+            
             }
             
         }

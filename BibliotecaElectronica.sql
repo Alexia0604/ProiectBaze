@@ -353,9 +353,10 @@ INSERT INTO Persoana (Nume, Prenume, Username, Parola, Email, Telefon, Adresa, D
 VALUES 
 ('a', 'a', 'a', 'a', 'a', 'a', 'Str. Exemplu, Nr. 1', '1985-07-14')
 
+select * from Persoana
 select * from Cititor
 
-Alter TRIGGER trg_UpdateNrCartiImprumutate
+Create trigger trg_UpdateNrCartiImprumutate
 ON Imprumut
 AFTER INSERT
 AS
@@ -375,12 +376,18 @@ END;
 
 INSERT INTO Imprumut (ID_Cititor, ID_Carte, DataImprumut, TermenLimita, DataReturnare, Stare)
 VALUES 
-(13, 8, GETDATE() - 10, GETDATE() + 20, NULL, 'Activ'),
-(13, 9, GETDATE() - 15, GETDATE() + 15, GETDATE() - 5, 'Activ'),
-(13, 10, GETDATE() - 5, GETDATE() + 25, NULL, 'Activ');
+(6, 8, GETDATE() - 10, GETDATE() + 20, NULL, 'Activ'),
+(6, 9, GETDATE() - 15, GETDATE() + 15, GETDATE() - 5, 'Activ'),
+(6, 10, GETDATE() - 5, GETDATE() + 25, NULL, 'Activ');
 
-
+select * from Cititor
 select * from carte
+select * from Imprumut
+select * from Persoana
+
+INSERT INTO Cititor ( ID_Persoana, DataInregistrare, NrCartiImprumutate)
+VALUES 
+( 11, GETDATE(), 0);
 
 CREATE PROCEDURE SetFinalizatPentruImprumuturiFinalizate
 AS
@@ -394,7 +401,7 @@ END;
 EXEC SetFinalizatPentruImprumuturiFinalizate;
 
 ALTER TABLE Carte
-add Descriere NVARCHAR(300);
+add Descriere NVARCHAR(1000);
 
 INSERT INTO Recenzie (ID_Cititor, ID_Carte, Nota, Comentariu, DataRecenzie)
 VALUES 
@@ -403,11 +410,7 @@ VALUES
 (3, 1, 3, N'Poveste interesantă, însă stilul de scriere nu este pe gustul meu.', '2024-12-03'),
 (4, 1, 5, N'Un roman clasic ce merită citit de toată lumea.', '2024-12-04'),
 (5, 1, 4, N'Povestea este minunată, dar unele pasaje au fost prea descriptive.', '2024-12-05'),
-(6, 1, 2, N'Nu mi-a plăcut. Prea multă dramă și personaje greu de înțeles.', '2024-12-06'),
-(7, 1, 5, N'Un roman fascinant, cu multe lecții de viață.', '2024-12-07'),
-(8, 1, 3, N'M-a impresionat doar parțial. Unele părți sunt plictisitoare.', '2024-12-08'),
-(9, 1, 4, N'Excelent, dar mi-ar fi plăcut să aflu mai multe despre anumite personaje.', '2024-12-09'),
-(10, 1, 5, N'Un roman extraordinar, care m-a ținut în priză până la ultima pagină.', '2024-12-10');
+(6, 1, 2, N'Nu mi-a plăcut. Prea multă dramă și personaje greu de înțeles.', '2024-12-06');
 
 
 UPDATE Carte
@@ -473,22 +476,13 @@ select * from Recenzie
 
 -- Adăugarea unor valori în tabela Feedback
 INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (1, 15, 3);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (10, 20, 5);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (11, 8, 0);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (12, 12, 4);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (13, 25, 7);
 
 INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (2, 15, 3);
 INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (3, 20, 5);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (4, 8, 0);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (5, 12, 4);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (6, 25, 7);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (1009, 8, 0);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (1010, 12, 4);
+INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (1011, 25, 7);
 
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (7, 15, 3);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (8, 20, 5);
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (9, 8, 0);
-
-INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (17, 0, 0);
 select * from Recenzie
 select * from Feedback
 
@@ -534,7 +528,7 @@ CREATE TABLE TaskLogs (
 
 INSERT INTO Imprumut (ID_Cititor, ID_Carte, DataImprumut, TermenLimita, DataReturnare, Stare)
 VALUES 
-(13, 1, GETDATE() - 10, GETDATE() -1, NULL, 'Activ')
+(6, 1, GETDATE() - 10, GETDATE() -1, NULL, 'Activ')
 
 select * from Imprumut
 
@@ -559,5 +553,184 @@ ALTER COLUMN DataTrimitere DATETIME NOT NULL;
 UPDATE Notificare
 SET DataTrimitere = DATEADD(HOUR, 17, DataTrimitere) -- Adaugă ora 12:00 pentru toate intrările
 WHERE CAST(DataTrimitere AS TIME) = '00:00:00';
+
+
+select * from Persoana
+select * from Bibliotecar
+select * from Administrator
+select * from Cititor
+select * from Categorie
+
+INSERT INTO BiblBibliotecar( ID_Persoana, DataAngajare)
+VALUES 
+( 1, GETDATE(), 2),
+( 2, GETDATE(), 1);
+
+FK__Carte__ID_Catego__03F0984C
+
+ALTER TABLE Carte
+DROP CONSTRAINT FK__Carte__ID_Catego__03F0984C;
+
+EXEC sp_help 'Carte';
+
+Alter table Carte 
+add  Categorie nvarchar(100)
+
+select * from Carte
+
+alter table Carte
+drop column ID_Categorie
+
+
+UPDATE Carte
+SET Categorie = 'distopie'
+WHERE ID=2; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'fantastic'
+WHERE ID=3; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'istorie stiinta'
+WHERE ID=4; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'dezvoltare personala'
+WHERE ID=5; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'aventura'
+WHERE ID=6; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'clasic aventura'
+WHERE ID=7; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'biografie'
+WHERE ID=8; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'clasic romantic dragoste'
+WHERE ID=9; -- Prima și a doua carte sunt asociate cu categoria 1
+
+UPDATE Carte
+SET Categorie = 'aventura fantastic'
+WHERE ID=10; -- Prima și a doua carte sunt asociate cu categoria 1
+
+select * from Carte
+
+UPDATE Carte
+SET ID_Categorie = 2
+WHERE ID IN (3, 4); -- A treia și a patra carte sunt asociate cu categoria 2
+
+UPDATE Carte
+SET ID_Categorie = 3
+WHERE ID IN (5, 6); -- A cincea și a șasea carte sunt asociate cu categoria 3
+
+UPDATE Carte
+SET ID_Categorie = 4
+WHERE ID IN (7, 8); -- A șaptea și a opta carte sunt asociate cu categoria 4
+
+UPDATE Carte
+SET ID_Categorie = 5
+WHERE ID IN (9, 10); -- A noua și a zecea carte sunt asociate cu categoria 5
+
+
+-- de aici incepi
+ALTER TABLE Persoana
+ADD StareCont INT DEFAULT 1; -- 1 înseamnă "activ", 0 înseamnă "închis"
+
+select * from Persoana
+
+--aici vezi cate conturi ai
+update Persoana set StareCont=1 where id in (1)
+update Persoana set StareCont=1 where id in (2)
+update Persoana set StareCont=1 where id in (3)
+update Persoana set StareCont=1 where id in (4)
+update Persoana set StareCont=1 where id in (5)
+update Persoana set StareCont=1 where id in (6)
+update Persoana set StareCont=1 where id in (7)
+update Persoana set StareCont=1 where id in (8)
+update Persoana set StareCont=1 where id in (9)
+update Persoana set StareCont=1 where id in (10)
+update Persoana set StareCont=1 where id in (11)
+update Persoana set StareCont=1 where id in (12)
+
+UPDATE Carte
+SET Descriere = '„1984” este un roman distopic în care autorul George Orwell prezintă o societate totalitară condusă de un regim care supraveghează și controlează fiecare aspect al vieții individului. Protagonistul, Winston Smith, încearcă să reziste dictaturii „Big Brother”, dar descoperă că lupta pentru libertate poate avea un preț devastator. Este o lucrare profundă despre manipularea adevărului, libertatea de gândire și pericolele unui control excesiv din partea guvernului.',
+    NumarPagini = 328, 
+    Dimensiune = '15.5 x 23.5 cm', 
+    Editura = 'Editura Polirom'
+WHERE Titlu = '1984' AND Autor = 'George Orwell';
+
+UPDATE Carte
+SET Descriere = '„Harry Potter și Piatra Filozofală” este primul volum din seria emblematică a lui J.K. Rowling, în care cititorii sunt introduși într-o lume magică uimitoare. Harry Potter, un băiat orfan, descoperă că este vrăjitor și că a fost acceptat la Hogwarts, o școală de magie. Aici, alături de noii săi prieteni, Ron și Hermione, Harry se confruntă cu pericole și dezvăluie misterele legate de Piatra Filozofală, o artefact magic cu puteri incredibile.',
+    NumarPagini = 300, 
+    Dimensiune = '15 x 23 cm', 
+    Editura = 'Editura Arthur'
+WHERE Titlu = 'Harry Potter și Piatra Filozofală' AND Autor = 'J.K. Rowling';
+
+UPDATE Carte
+SET Descriere = '„Sapiens: O scurtă istorie a omenirii” oferă o viziune panoramică asupra evoluției omenirii, de la apariția Homo sapiens până în prezent. Harari explorează procesele care au condus la dezvoltarea civilizațiilor, revoluțiile agricole și științifice, precum și impactul pe care l-au avut aceste schimbări asupra umanității și planetei. O lucrare fascinantă care pune întrebări fundamentale despre evoluția umană și direcția în care se îndreaptă societatea modernă.',
+    NumarPagini = 512, 
+    Dimensiune = '15.5 x 23.5 cm', 
+    Editura = 'Editura Humanitas'
+WHERE Titlu = 'Sapiens: O scurtă istorie a omenirii' AND Autor = 'Yuval Noah Harari';
+
+UPDATE Carte
+SET Descriere = '„Arta subtilă a nepăsării” este un ghid de auto-ajutor care propune o abordare neconvențională a vieții. Mark Manson încurajează cititorii să accepte incertitudinea și să își aleagă cu înțelepciune problemele care merită atenție, în loc să fugă de ele. Cu un stil direct și fără menajamente, autorul promovează ideea că, pentru a trăi o viață fericită, trebuie să învățăm să ne preocupăm de lucrurile care contează cu adevărat, lăsând în urmă dorințele și așteptările nerealiste.',
+    NumarPagini = 224, 
+    Dimensiune = '14 x 20 cm', 
+    Editura = 'Editura Lifestyle'
+WHERE Titlu = 'Arta subtilă a nepăsării' AND Autor = 'Mark Manson';
+
+UPDATE Carte
+SET Descriere = '„Sherlock Holmes: Aventurile” este o colecție de povestiri în care faimosul detectiv Sherlock Holmes, alături de companionul său, dr. Watson, rezolvă cele mai enigmatice și complexe cazuri. Fiecare poveste din această serie de renume mondial aduce noi mistere și personaje fascinante, fiind un amestec perfect de logică, deducție și suspans. De la crime misterioase la secrete bine păstrate, Sherlock Holmes este simbolul detectivului perfect.',
+    NumarPagini = 416, 
+    Dimensiune = '13.5 x 21 cm', 
+    Editura = 'Editura Corint'
+WHERE Titlu = 'Sherlock Holmes: Aventurile' AND Autor = 'Arthur Conan Doyle';
+
+UPDATE Carte
+SET Descriere = '„Cei trei muschetari” este un roman istoric clasic în care Artagnan, tânărul protagonist, își face loc în rândul muschetarilor regelui Ludovic al XIII-lea. Împreună cu Athos, Porthos și Aramis ,Artagnan se aventurează într-o serie de peripeții care includ dueluri, trădări și lupte pentru onoare și dreptate. Este o poveste despre prietenie, curaj și loialitate, cu un ritm alert și personaje memorabile.',
+    NumarPagini = 640, 
+    Dimensiune = '15 x 23 cm', 
+    Editura = 'Editura Nemira'
+WHERE Titlu = 'Cei trei mușchetari' AND Autor = 'Alexandre Dumas';
+
+UPDATE Carte
+SET Descriere = '„Steve Jobs: Biografie” este povestea fascinantă a unui dintre cei mai influenți antreprenori din istoria modernă. Walter Isaacson explorează viața și carierea lui Jobs, de la copilul rebel la revoluționarul tehnologic care a fondat Apple, transformând industria de computere, telefoane și divertisment. O biografie profundă și complexă, care nu doar că detaliază succesul său, dar și momentele sale de dificultate personală și profesională.',
+    NumarPagini = 656, 
+    Dimensiune = '16 x 24 cm', 
+    Editura = 'Editura Publica'
+WHERE Titlu = 'Steve Jobs: Biografie' AND Autor = 'Walter Isaacson';
+
+UPDATE Carte
+SET Descriere = '„Doamna Bovary” este un roman clasic despre drama unei femei din provincia franceză, Emma Bovary, care caută sensul vieții printr-o serie de relații extraconjugale și excese materiale. Povestea sa tragică scoate în evidență contradicțiile între idealurile romantice și realitățile vieții cotidiene, iar stilul narativ al lui Flaubert pune accent pe detalii și realismul psihologic al personajelor.',
+    NumarPagini = 384, 
+    Dimensiune = '13.5 x 20 cm', 
+    Editura = 'Editura Humanitas'
+WHERE Titlu = 'Doamna Bovary' AND Autor = 'Gustave Flaubert';
+
+UPDATE Carte
+SET Descriere = '„Călătoria fantastică” este un roman science-fiction în care un grup de cercetători sunt miniaturizați și introdusi într-un corp uman pentru a-l salva. Pe parcursul călătoriei lor, aceștia se confruntă cu pericole interne și descoperă lucruri uimitoare despre biologia umană, explorând în același timp și limitele tehnologiei și ale științei. O poveste captivantă despre curajul de a explora necunoscutul.',
+    NumarPagini = 192, 
+    Dimensiune = '14 x 21 cm', 
+    Editura = 'Editura Nemira'
+WHERE Titlu = 'Călătoria fantastică' AND Autor = 'Isaac Asimov';
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -68,8 +68,6 @@ namespace BibliotecaElectronica.Model
             }
         }
 
-      
-
         public string Stare
         {
             get { return stare; }

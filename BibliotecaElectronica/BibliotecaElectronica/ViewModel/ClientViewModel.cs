@@ -45,7 +45,7 @@ namespace BibliotecaElectronica.ViewModel
             OnPropertyChanged(nameof(NrNotificari));}
             get { return _nrNotificari; }
          }
-       
+
 
         public ICommand HomeClickButtonCommand { get; }
 
@@ -58,7 +58,7 @@ namespace BibliotecaElectronica.ViewModel
 
         public ClientViewModel(Stores.NavigationStore navigationStore,PersoanaModel persoana)
         {
-            _persoana = persoana;
+            _persoana = persoana; 
             
             _currentRightViewModel = new HomeViewModel();
           

@@ -27,7 +27,7 @@ namespace BibliotecaElectronica.Commands
             Utility u=new Utility();
 
             DateTime birthDate=new DateTime(_createAccountViewModel.Year,u.getMonthByName(_createAccountViewModel.Month),_createAccountViewModel.Day);
-           
+
             try
             {
                 CititorModel cititor=new CititorModel();

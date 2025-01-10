@@ -18,6 +18,7 @@ namespace BibliotecaElectronica.ViewModel
     {
         //  private ObservableCollection<CarteModel> _cartiImprumutate;
         private ClientViewModel _clientViewModel;
+        private LibrarianViewModel _librarianViewModel;
         private ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>> _cartiImprumutate;
         public ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>> CartiImprumutate
         {
@@ -61,6 +62,18 @@ namespace BibliotecaElectronica.ViewModel
         {
             persoana = _persoana;
             _clientViewModel = clientViewModel;
+            CartiImprumutate = new ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>>();
+            afiseazaCartileImprumutate(persoana.IdPerson);
+            ReturneazaCarteCommand = new RelayCommand<KeyValuePair<CarteModel, ImprumutModel>>(ReturneazaCarte);
+            PrelungesteTermenCommand = new RelayCommand<KeyValuePair<CarteModel, ImprumutModel>>(PrelungesteTermen);
+            ConfirmaPrelungireCommand = new RelayCommand<KeyValuePair<CarteModel, ImprumutModel>>(ConfirmaPrelungire);
+            AnuleazaPrelungireCommand = new RelayCommand<KeyValuePair<CarteModel, ImprumutModel>>(AnuleazaPrelungire);
+        }
+
+        public OrdersViewModel(LibrarianViewModel librarianViewModel, PersoanaModel _persoana)
+        {
+            persoana = _persoana;
+            _librarianViewModel = librarianViewModel;
             CartiImprumutate = new ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>>();
             afiseazaCartileImprumutate(persoana.IdPerson);
             ReturneazaCarteCommand = new RelayCommand<KeyValuePair<CarteModel, ImprumutModel>>(ReturneazaCarte);

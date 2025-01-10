@@ -9,21 +9,44 @@ using System.Xml.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Windows;
 using BibliotecaElectronica.Exceptions;
+using System.Collections.ObjectModel;
+using BibliotecaElectronica.View;
 
 namespace BibliotecaElectronica.Model
 {
     public class CititorModel : PersoanaModel
     {
+        static private BibliotecaElectronicaClassesDataContext db;
         private int idReader;
         private DateTime registerDate;
         private int? nrOfBooks;
-    
-       public CititorModel(int iD) { }
+
+        public string Email
+        {
+            get => base.EmailAddress; // Corelare cu moștenirea
+            set
+            {
+                base.EmailAddress = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+
+        public int IdPerson
+        {
+            get => base.idPerson;
+            set
+            {
+                base.idPerson = value;
+                OnPropertyChanged(nameof(IdPerson));
+            }
+        }
+
+        public CititorModel(int iD) { }
 
         public CititorModel(int idReader, DateTime registerDate, int? nrOfBooks,
             int idPerson, string lastname, string firstname, string username, string password, 
-            string email, string address,string phone, DateTime birthdate):base (idPerson,lastname,firstname,username
-                ,password,email,address,phone,birthdate)
+            string email, string address,string phone, DateTime birthdate, int status):base (idPerson,lastname,firstname,username
+                ,password,email,address,phone,birthdate,status)
         {
             this.idReader = idReader;
             this.registerDate = registerDate;
@@ -36,10 +59,15 @@ namespace BibliotecaElectronica.Model
         public CititorModel() { }
         public override PersoanaModel LoginClient(string _username, string _password)
         {
+            db = new BibliotecaElectronicaClassesDataContext();
+
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
             {
-
+                if (user.StareCont == 0)
+                {
+                    throw new ClosedAccountException();
+                }
                 var reader_db = db.Cititors.SingleOrDefault(c => c.ID_Persoana == user.ID);
                 if (reader_db != null)
                 {
@@ -64,8 +92,10 @@ namespace BibliotecaElectronica.Model
             }
             else
             {
+                //MessageBox.Show("Contul este inchis. Nu va puteti conecta!");
                 throw new SignInWrongCredentialsException();
             }
+
         }
 
         public override PersoanaModel CreateAccount(string _nume, string _prenume, string _adresa, string _telefon, string _email, DateTime birthDate)
@@ -119,6 +149,78 @@ namespace BibliotecaElectronica.Model
                 throw new DataBaseException();
             }
 
+        }
+
+        public static ObservableCollection<CititorModel> LoadAllReaders()
+        {
+
+            db = new BibliotecaElectronicaClassesDataContext();
+
+            var allreadersData = db.Cititors
+        .Join(db.Persoanas,
+            cititor => cititor.ID_Persoana,
+            persoana => persoana.ID,
+            (cititor, persoana) => new
+            {
+                CititorID = cititor.ID,
+                PersoanaID = persoana.ID,
+                Nume = persoana.Nume,
+                Prenume = persoana.Prenume,
+                Telefon = persoana.Telefon,
+                Email = persoana.Email,
+                Adresa = persoana.Adresa,
+                Username = persoana.Username,
+                DataNasterii = persoana.DataNasterii,
+                StareCont = persoana.StareCont,
+                DataInregistrare = cititor.DataInregistrare,
+                NrCartiImprumutate = cititor.NrCartiImprumutate
+            })
+        .Where(c => c.StareCont == 1)
+        .ToList();
+
+            var allreaders = allreadersData.Select(c => new CititorModel
+            {
+                idReader = c.CititorID,
+                idPerson = c.PersoanaID,
+                LastName = c.Nume,
+                FirstName = c.Prenume,
+                Phone = c.Telefon,
+                Email = c.Email,
+                Address = c.Adresa,
+                Username = c.Username,
+                BirthDate = c.DataNasterii.GetValueOrDefault(),
+                Status = c.StareCont.GetValueOrDefault()
+            }).ToList();
+
+            ObservableCollection<CititorModel> cititori = new ObservableCollection<CititorModel>(allreaders);
+
+            return cititori;
+        }
+
+        public static void DeleteReader(CititorModel readerToDelete)
+        {
+            db = new BibliotecaElectronicaClassesDataContext();
+
+            var cititorDb = db.Cititors.SingleOrDefault(c => c.ID_Persoana == readerToDelete.idPerson);
+
+            if (cititorDb != null)
+            {
+                try
+                {
+                    cititorDb.Persoana.StareCont = 0;
+                    db.SubmitChanges();
+
+                    MessageBox.Show("Cititorul a fost șters cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"A apărut o eroare la ștergerea cititorului: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cititorul nu a fost găsit în baza de date.");
+            }
         }
     }
 }

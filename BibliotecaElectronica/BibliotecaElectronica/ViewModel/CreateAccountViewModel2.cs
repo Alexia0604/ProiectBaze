@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BibliotecaElectronica.ViewModel
@@ -40,6 +41,21 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
+
+        private string _password3 = "Parola";
+        public string Password3
+        {
+            get
+            {
+                return _password3;
+            }
+            set
+            {
+                _password3 = value;
+                OnPropertyChanged(nameof(Password3));
+            }
+        }
+
         public ICommand BackToCreateAccountCommand { get; }
         public ICommand RegisterCommand { get; }
         public ICommand ClearTextBoxCommand { get; }
@@ -49,7 +65,32 @@ namespace BibliotecaElectronica.ViewModel
             Client = client;
             ClearTextBoxCommand = new RelayCommand<string>(ClearText);
             BackToCreateAccountCommand =new BackToCreateAccountCommand(navigationStore);
-            RegisterCommand=new RegisterCommand(navigationStore,this,client);
+
+            if (_password != _password3)
+            {
+                // Golește câmpurile de parolă și confirmare
+                _password = string.Empty;
+                _password3 = string.Empty;
+
+                // Afișează un mesaj de eroare
+                MessageBox.Show("Parolele nu coincid! Vă rugăm să le introduceți din nou.", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+            } else
+            {
+                RegisterCommand =new RegisterCommand(navigationStore,this,client);
+            }
+        }
+
+        private void CheckPasswordsMatch()
+        {
+            if (Password2 != _password3)
+            {
+                // Golește câmpurile de parolă și confirmare
+                _password = string.Empty;
+                _password3 = string.Empty;
+
+                // Afișează un mesaj de eroare
+                MessageBox.Show("Parolele nu coincid! Vă rugăm să le introduceți din nou.", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ClearText(string textBoxName)
@@ -61,6 +102,9 @@ namespace BibliotecaElectronica.ViewModel
                     break;
                 case "Password":
                     Password2 = string.Empty;
+                    break;
+                case "Password2":
+                    Password3 = string.Empty;
                     break;
             }
         }

@@ -6,6 +6,7 @@ using BibliotecaElectronica.Commands;
 using BibliotecaElectronica.Model;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows.Media.Imaging;
+using System.Windows;
 
 
 namespace BibliotecaElectronica.ViewModel
@@ -15,6 +16,10 @@ namespace BibliotecaElectronica.ViewModel
         private readonly BibliotecaElectronicaClassesDataContext _context;
 
         private ClientViewModel _clientViewModel;
+
+        private LibrarianViewModel _librarianViewModel;
+
+        private AdminViewModel _adminViewModel;
 
         private ObservableCollection<CarteModel> _books;
         public ObservableCollection<CarteModel> Books
@@ -71,12 +76,48 @@ namespace BibliotecaElectronica.ViewModel
             LoadAllBooks();
 
         }
+
+        public CartiViewModel(LibrarianViewModel librarianViewModel)
+        {
+            _librarianViewModel = librarianViewModel;
+            _context = new BibliotecaElectronicaClassesDataContext();
+            Books = new ObservableCollection<CarteModel>();
+
+            SearchCommand = new RelayCommand(SearchBooks);
+            SelectBookCommand = new RelayCommand<CarteModel>(SelectBook);
+            LoadAllBooks();
+
+        }
+
+        public CartiViewModel(AdminViewModel adminViewModel)
+        {
+            _adminViewModel = adminViewModel;
+            _context = new BibliotecaElectronicaClassesDataContext();
+            Books = new ObservableCollection<CarteModel>();
+
+            SearchCommand = new RelayCommand(SearchBooks);
+            SelectBookCommand = new RelayCommand<CarteModel>(SelectBook);
+            LoadAllBooks();
+
+        }
+
         private void SelectBook(CarteModel selectedBook)
         {
             if (selectedBook != null)
             {
-              // ClickOnBookImage = new ClickOnBookImage(selectedBook, _clientViewModel);
-               _clientViewModel.CurrentRightViewModel = new DetaliiCarteViewModel(selectedBook, _clientViewModel);
+
+                if (_clientViewModel != null)
+                {
+                    _clientViewModel.CurrentRightViewModel = new DetaliiCarteViewModel(selectedBook, _clientViewModel);
+                }
+                else if (_librarianViewModel != null)
+                {
+                    _librarianViewModel.CurrentRightViewModel = new DetaliiCarteViewModel(selectedBook, _librarianViewModel);
+                }
+                else if (_adminViewModel != null)
+                {
+                    _adminViewModel.CurrentRightViewModel = new DetaliiCarteViewModel(selectedBook, _adminViewModel);
+                }
             }
         }
         private void LoadAllBooks()
@@ -89,43 +130,33 @@ namespace BibliotecaElectronica.ViewModel
         }
         private void SearchBooks()
         {
-           
+
             var filteredBooksData = _context.Cartes
-                .Where(c => c.Titlu.Contains(SearchText) || c.Autor.Contains(SearchText))
+                .Where(c => c.Titlu.Contains(SearchText) || c.Autor.Contains(SearchText) || c.Categorie.Contains(SearchText))
                 .Select(c => new
                 {
                     Titlu = c.Titlu,
                     Autor = c.Autor,
-                    Imagine = c.Imagine.ToArray(),
-                    CategorieId = c.ID_Categorie 
+                    Imagine = c.Imagine.ToArray()
+
                 }).ToList();
 
-            var category = _context.Categories
-                .Where(c => c.Nume.Contains(SearchText))
-                .Select(c => new
-                {
-                    ID = c.ID,
-                    Nume = c.Nume
-                }).FirstOrDefault();
-        
-            var filteredBooksByCategory = _context.Cartes.Where(c => c.ID_Categorie==category.ID)
-                                             .Select(c => new
-                                             {
-                                                 Titlu = c.Titlu,
-                                                 Autor = c.Autor,
-                                                 Imagine = c.Imagine.ToArray(),
-                                                 CategorieId = c.ID_Categorie
-                                             }).ToList() ;
-              
-            var combinedResults = filteredBooksData.Union(filteredBooksByCategory).Distinct().ToList();
-            
-            var filteredBooks = combinedResults.Select(c => new CarteModel
+            if(filteredBooksData.Count == 0)
             {
-                Title = c.Titlu,
-                Author = c.Autor,
-                Image = c.Imagine
-            }).ToList();
-            Books = new ObservableCollection<CarteModel>(filteredBooks);
+                MessageBox.Show($"Nu exista rezultate pentru {SearchText}! ", "Mesaj cautare", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var filteredBooks = filteredBooksData.Select(c => new CarteModel
+                {
+                    Title = c.Titlu,
+                    Author = c.Autor,
+                    Image = c.Imagine
+                }).ToList();
+
+                Books = new ObservableCollection<CarteModel>(filteredBooks);
+            }
+
         }
     }
 }
