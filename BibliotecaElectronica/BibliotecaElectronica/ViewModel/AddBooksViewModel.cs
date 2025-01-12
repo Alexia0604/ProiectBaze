@@ -360,7 +360,6 @@ namespace BibliotecaElectronica.ViewModel
             _propertyErrors.Clear();
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(string.Empty));
 
-            // Sau, dacă vrei să actualizezi erorile pentru fiecare proprietate în parte:
             foreach (var propertyName in new[] { nameof(Title), nameof(Author), nameof(Year), nameof(ISBN), nameof(Category), nameof(Publisher), nameof(PageCount), nameof(Dimensions), nameof(Copies), nameof(Description), nameof(SelectedImage) })
             {
                 ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));

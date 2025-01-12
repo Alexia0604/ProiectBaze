@@ -57,16 +57,16 @@ namespace BibliotecaElectronica
     partial void InsertAdministrator(Administrator instance);
     partial void UpdateAdministrator(Administrator instance);
     partial void DeleteAdministrator(Administrator instance);
-    partial void InsertCarte(Carte instance);
-    partial void UpdateCarte(Carte instance);
-    partial void DeleteCarte(Carte instance);
     partial void InsertPersoana(Persoana instance);
     partial void UpdatePersoana(Persoana instance);
     partial void DeletePersoana(Persoana instance);
+    partial void InsertCarte(Carte instance);
+    partial void UpdateCarte(Carte instance);
+    partial void DeleteCarte(Carte instance);
     #endregion
 		
 		public BibliotecaElectronicaClassesDataContext() : 
-				base(global::BibliotecaElectronica.Properties.Settings.Default.BibliotecaElectronicaConnectionString2, mappingSource)
+				base(global::BibliotecaElectronica.Properties.Settings.Default.BibliotecaElectronicaConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -167,19 +167,19 @@ namespace BibliotecaElectronica
 			}
 		}
 		
-		public System.Data.Linq.Table<Carte> Cartes
-		{
-			get
-			{
-				return this.GetTable<Carte>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Persoana> Persoanas
 		{
 			get
 			{
 				return this.GetTable<Persoana>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Carte> Cartes
+		{
+			get
+			{
+				return this.GetTable<Carte>();
 			}
 		}
 	}
@@ -1960,6 +1960,368 @@ namespace BibliotecaElectronica
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Persoana")]
+	public partial class Persoana : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Nume;
+		
+		private string _Prenume;
+		
+		private string _Username;
+		
+		private string _Parola;
+		
+		private string _Email;
+		
+		private string _Telefon;
+		
+		private string _Adresa;
+		
+		private System.Nullable<System.DateTime> _DataNasterii;
+		
+		private System.Nullable<int> _StareCont;
+		
+		private EntitySet<Cititor> _Cititors;
+		
+		private EntitySet<Bibliotecar> _Bibliotecars;
+		
+		private EntitySet<Administrator> _Administrators;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNumeChanging(string value);
+    partial void OnNumeChanged();
+    partial void OnPrenumeChanging(string value);
+    partial void OnPrenumeChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnParolaChanging(string value);
+    partial void OnParolaChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnTelefonChanging(string value);
+    partial void OnTelefonChanged();
+    partial void OnAdresaChanging(string value);
+    partial void OnAdresaChanged();
+    partial void OnDataNasteriiChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataNasteriiChanged();
+    partial void OnStareContChanging(System.Nullable<int> value);
+    partial void OnStareContChanged();
+    #endregion
+		
+		public Persoana()
+		{
+			this._Cititors = new EntitySet<Cititor>(new Action<Cititor>(this.attach_Cititors), new Action<Cititor>(this.detach_Cititors));
+			this._Bibliotecars = new EntitySet<Bibliotecar>(new Action<Bibliotecar>(this.attach_Bibliotecars), new Action<Bibliotecar>(this.detach_Bibliotecars));
+			this._Administrators = new EntitySet<Administrator>(new Action<Administrator>(this.attach_Administrators), new Action<Administrator>(this.detach_Administrators));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nume
+		{
+			get
+			{
+				return this._Nume;
+			}
+			set
+			{
+				if ((this._Nume != value))
+				{
+					this.OnNumeChanging(value);
+					this.SendPropertyChanging();
+					this._Nume = value;
+					this.SendPropertyChanged("Nume");
+					this.OnNumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Prenume
+		{
+			get
+			{
+				return this._Prenume;
+			}
+			set
+			{
+				if ((this._Prenume != value))
+				{
+					this.OnPrenumeChanging(value);
+					this.SendPropertyChanging();
+					this._Prenume = value;
+					this.SendPropertyChanged("Prenume");
+					this.OnPrenumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parola", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string Parola
+		{
+			get
+			{
+				return this._Parola;
+			}
+			set
+			{
+				if ((this._Parola != value))
+				{
+					this.OnParolaChanging(value);
+					this.SendPropertyChanging();
+					this._Parola = value;
+					this.SendPropertyChanged("Parola");
+					this.OnParolaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefon", DbType="NVarChar(20)")]
+		public string Telefon
+		{
+			get
+			{
+				return this._Telefon;
+			}
+			set
+			{
+				if ((this._Telefon != value))
+				{
+					this.OnTelefonChanging(value);
+					this.SendPropertyChanging();
+					this._Telefon = value;
+					this.SendPropertyChanged("Telefon");
+					this.OnTelefonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresa", DbType="NVarChar(255)")]
+		public string Adresa
+		{
+			get
+			{
+				return this._Adresa;
+			}
+			set
+			{
+				if ((this._Adresa != value))
+				{
+					this.OnAdresaChanging(value);
+					this.SendPropertyChanging();
+					this._Adresa = value;
+					this.SendPropertyChanged("Adresa");
+					this.OnAdresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNasterii", DbType="Date")]
+		public System.Nullable<System.DateTime> DataNasterii
+		{
+			get
+			{
+				return this._DataNasterii;
+			}
+			set
+			{
+				if ((this._DataNasterii != value))
+				{
+					this.OnDataNasteriiChanging(value);
+					this.SendPropertyChanging();
+					this._DataNasterii = value;
+					this.SendPropertyChanged("DataNasterii");
+					this.OnDataNasteriiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StareCont", DbType="Int")]
+		public System.Nullable<int> StareCont
+		{
+			get
+			{
+				return this._StareCont;
+			}
+			set
+			{
+				if ((this._StareCont != value))
+				{
+					this.OnStareContChanging(value);
+					this.SendPropertyChanging();
+					this._StareCont = value;
+					this.SendPropertyChanged("StareCont");
+					this.OnStareContChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Cititor", Storage="_Cititors", ThisKey="ID", OtherKey="ID_Persoana")]
+		public EntitySet<Cititor> Cititors
+		{
+			get
+			{
+				return this._Cititors;
+			}
+			set
+			{
+				this._Cititors.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Bibliotecar", Storage="_Bibliotecars", ThisKey="ID", OtherKey="ID_Persoana")]
+		public EntitySet<Bibliotecar> Bibliotecars
+		{
+			get
+			{
+				return this._Bibliotecars;
+			}
+			set
+			{
+				this._Bibliotecars.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Administrator", Storage="_Administrators", ThisKey="ID", OtherKey="ID_Persoana")]
+		public EntitySet<Administrator> Administrators
+		{
+			get
+			{
+				return this._Administrators;
+			}
+			set
+			{
+				this._Administrators.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Cititors(Cititor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persoana = this;
+		}
+		
+		private void detach_Cititors(Cititor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persoana = null;
+		}
+		
+		private void attach_Bibliotecars(Bibliotecar entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persoana = this;
+		}
+		
+		private void detach_Bibliotecars(Bibliotecar entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persoana = null;
+		}
+		
+		private void attach_Administrators(Administrator entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persoana = this;
+		}
+		
+		private void detach_Administrators(Administrator entity)
+		{
+			this.SendPropertyChanging();
+			entity.Persoana = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Carte")]
 	public partial class Carte : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2343,368 +2705,6 @@ namespace BibliotecaElectronica
 		{
 			this.SendPropertyChanging();
 			entity.Carte = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Persoana")]
-	public partial class Persoana : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Nume;
-		
-		private string _Prenume;
-		
-		private string _Username;
-		
-		private string _Parola;
-		
-		private string _Email;
-		
-		private string _Telefon;
-		
-		private string _Adresa;
-		
-		private System.Nullable<System.DateTime> _DataNasterii;
-		
-		private System.Nullable<int> _StareCont;
-		
-		private EntitySet<Cititor> _Cititors;
-		
-		private EntitySet<Bibliotecar> _Bibliotecars;
-		
-		private EntitySet<Administrator> _Administrators;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNumeChanging(string value);
-    partial void OnNumeChanged();
-    partial void OnPrenumeChanging(string value);
-    partial void OnPrenumeChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnParolaChanging(string value);
-    partial void OnParolaChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnTelefonChanging(string value);
-    partial void OnTelefonChanged();
-    partial void OnAdresaChanging(string value);
-    partial void OnAdresaChanged();
-    partial void OnDataNasteriiChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataNasteriiChanged();
-    partial void OnStareContChanging(System.Nullable<int> value);
-    partial void OnStareContChanged();
-    #endregion
-		
-		public Persoana()
-		{
-			this._Cititors = new EntitySet<Cititor>(new Action<Cititor>(this.attach_Cititors), new Action<Cititor>(this.detach_Cititors));
-			this._Bibliotecars = new EntitySet<Bibliotecar>(new Action<Bibliotecar>(this.attach_Bibliotecars), new Action<Bibliotecar>(this.detach_Bibliotecars));
-			this._Administrators = new EntitySet<Administrator>(new Action<Administrator>(this.attach_Administrators), new Action<Administrator>(this.detach_Administrators));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Nume
-		{
-			get
-			{
-				return this._Nume;
-			}
-			set
-			{
-				if ((this._Nume != value))
-				{
-					this.OnNumeChanging(value);
-					this.SendPropertyChanging();
-					this._Nume = value;
-					this.SendPropertyChanged("Nume");
-					this.OnNumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Prenume
-		{
-			get
-			{
-				return this._Prenume;
-			}
-			set
-			{
-				if ((this._Prenume != value))
-				{
-					this.OnPrenumeChanging(value);
-					this.SendPropertyChanging();
-					this._Prenume = value;
-					this.SendPropertyChanged("Prenume");
-					this.OnPrenumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parola", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
-		public string Parola
-		{
-			get
-			{
-				return this._Parola;
-			}
-			set
-			{
-				if ((this._Parola != value))
-				{
-					this.OnParolaChanging(value);
-					this.SendPropertyChanging();
-					this._Parola = value;
-					this.SendPropertyChanged("Parola");
-					this.OnParolaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefon", DbType="NVarChar(20)")]
-		public string Telefon
-		{
-			get
-			{
-				return this._Telefon;
-			}
-			set
-			{
-				if ((this._Telefon != value))
-				{
-					this.OnTelefonChanging(value);
-					this.SendPropertyChanging();
-					this._Telefon = value;
-					this.SendPropertyChanged("Telefon");
-					this.OnTelefonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresa", DbType="NVarChar(255)")]
-		public string Adresa
-		{
-			get
-			{
-				return this._Adresa;
-			}
-			set
-			{
-				if ((this._Adresa != value))
-				{
-					this.OnAdresaChanging(value);
-					this.SendPropertyChanging();
-					this._Adresa = value;
-					this.SendPropertyChanged("Adresa");
-					this.OnAdresaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNasterii", DbType="Date")]
-		public System.Nullable<System.DateTime> DataNasterii
-		{
-			get
-			{
-				return this._DataNasterii;
-			}
-			set
-			{
-				if ((this._DataNasterii != value))
-				{
-					this.OnDataNasteriiChanging(value);
-					this.SendPropertyChanging();
-					this._DataNasterii = value;
-					this.SendPropertyChanged("DataNasterii");
-					this.OnDataNasteriiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StareCont", DbType="Int")]
-		public System.Nullable<int> StareCont
-		{
-			get
-			{
-				return this._StareCont;
-			}
-			set
-			{
-				if ((this._StareCont != value))
-				{
-					this.OnStareContChanging(value);
-					this.SendPropertyChanging();
-					this._StareCont = value;
-					this.SendPropertyChanged("StareCont");
-					this.OnStareContChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Cititor", Storage="_Cititors", ThisKey="ID", OtherKey="ID_Persoana")]
-		public EntitySet<Cititor> Cititors
-		{
-			get
-			{
-				return this._Cititors;
-			}
-			set
-			{
-				this._Cititors.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Bibliotecar", Storage="_Bibliotecars", ThisKey="ID", OtherKey="ID_Persoana")]
-		public EntitySet<Bibliotecar> Bibliotecars
-		{
-			get
-			{
-				return this._Bibliotecars;
-			}
-			set
-			{
-				this._Bibliotecars.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persoana_Administrator", Storage="_Administrators", ThisKey="ID", OtherKey="ID_Persoana")]
-		public EntitySet<Administrator> Administrators
-		{
-			get
-			{
-				return this._Administrators;
-			}
-			set
-			{
-				this._Administrators.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Cititors(Cititor entity)
-		{
-			this.SendPropertyChanging();
-			entity.Persoana = this;
-		}
-		
-		private void detach_Cititors(Cititor entity)
-		{
-			this.SendPropertyChanging();
-			entity.Persoana = null;
-		}
-		
-		private void attach_Bibliotecars(Bibliotecar entity)
-		{
-			this.SendPropertyChanging();
-			entity.Persoana = this;
-		}
-		
-		private void detach_Bibliotecars(Bibliotecar entity)
-		{
-			this.SendPropertyChanging();
-			entity.Persoana = null;
-		}
-		
-		private void attach_Administrators(Administrator entity)
-		{
-			this.SendPropertyChanging();
-			entity.Persoana = this;
-		}
-		
-		private void detach_Administrators(Administrator entity)
-		{
-			this.SendPropertyChanging();
-			entity.Persoana = null;
 		}
 	}
 }

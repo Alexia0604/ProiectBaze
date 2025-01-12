@@ -32,7 +32,6 @@ namespace BibliotecaElectronica.Commands
             {
                 if (viewModel.Password2 != viewModel.Password3)
                 {
-                    // Golește câmpurile de parolă și confirmare
                     viewModel.Password2 = string.Empty;
                     viewModel.Password3 = string.Empty;
 
@@ -65,10 +64,8 @@ namespace BibliotecaElectronica.Commands
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
-                // Aplică SHA256 asupra parolei
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-                // Convertește hash-ul în format hexadecimals
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {

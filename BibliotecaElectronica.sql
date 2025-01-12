@@ -75,11 +75,6 @@ CREATE TABLE Administrator (
     ID_Persoana INT FOREIGN KEY REFERENCES Persoana(ID)
 );
 
--- Tabela Categorie
-CREATE TABLE Categorie (
-    ID INT PRIMARY KEY IDENTITY,
-    Nume NVARCHAR(100) NOT NULL UNIQUE
-);
 
 -- Tabela Carte
 CREATE TABLE Carte (
@@ -88,9 +83,8 @@ CREATE TABLE Carte (
     Autor NVARCHAR(100) NOT NULL,
     AnPublicare INT,
     ISBN NVARCHAR(20) NOT NULL UNIQUE, -- Adăugat câmpul ISBN
-    ID_Categorie INT FOREIGN KEY REFERENCES Categorie(ID)
+    Descriere NVARCHAR(50) 
 );
-
 
 
 ALTER TABLE Carte
@@ -353,6 +347,11 @@ INSERT INTO Persoana (Nume, Prenume, Username, Parola, Email, Telefon, Adresa, D
 VALUES 
 ('a', 'a', 'a', 'a', 'a', 'a', 'Str. Exemplu, Nr. 1', '1985-07-14')
 
+INSERT INTO Persoana (Nume, Prenume, Username, Parola, Email, Telefon, Adresa, DataNasterii)
+VALUES 
+('b', 'b', 'b', 'b', 'b', 'b', 'Str. Exemplu, Nr. 1', '1985-07-14')
+
+
 select * from Persoana
 select * from Cititor
 
@@ -401,7 +400,11 @@ END;
 EXEC SetFinalizatPentruImprumuturiFinalizate;
 
 ALTER TABLE Carte
-add Descriere NVARCHAR(1000);
+add Descriere NVARCHAR(50);
+
+ALTER TABLE Carte
+ALTER COLUMN Descriere NVARCHAR(1000);
+
 
 INSERT INTO Recenzie (ID_Cititor, ID_Carte, Nota, Comentariu, DataRecenzie)
 VALUES 
@@ -428,7 +431,7 @@ ADD NumarPagini INT, -- Numărul de pagini
     Dimensiune NVARCHAR(50), -- Dimensiunea cărții (ex: "20x25cm")
     Editura NVARCHAR(100); -- Numele editurii
 
-	UPDATE Carte
+UPDATE Carte
 SET NumarPagini = 200, -- Numărul de pagini
     Dimensiune = '15x22cm', -- Dimensiunea cărții
     Editura = 'Editura Humanitas' -- Numele editurii
@@ -561,15 +564,14 @@ select * from Administrator
 select * from Cititor
 select * from Categorie
 
-INSERT INTO BiblBibliotecar( ID_Persoana, DataAngajare)
+INSERT INTO Bibliotecar(ID, ID_Persoana, DataAngajare)
 VALUES 
-( 1, GETDATE(), 2),
-( 2, GETDATE(), 1);
+( 2,5, GETDATE())
 
-FK__Carte__ID_Catego__03F0984C
+
 
 ALTER TABLE Carte
-DROP CONSTRAINT FK__Carte__ID_Catego__03F0984C;
+DROP CONSTRAINT [FK__Carte__ID_Catego__2A164134];
 
 EXEC sp_help 'Carte';
 
@@ -581,18 +583,21 @@ select * from Carte
 alter table Carte
 drop column ID_Categorie
 
+UPDATE Carte
+SET Categorie = 'romantic dragoste'
+WHERE ID=1; 
 
 UPDATE Carte
 SET Categorie = 'distopie'
-WHERE ID=2; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=2; 
 
 UPDATE Carte
 SET Categorie = 'fantastic'
-WHERE ID=3; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=3; 
 
 UPDATE Carte
 SET Categorie = 'istorie stiinta'
-WHERE ID=4; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=4; 
 
 UPDATE Carte
 SET Categorie = 'dezvoltare personala'
@@ -649,86 +654,106 @@ update Persoana set StareCont=1 where id in (2)
 update Persoana set StareCont=1 where id in (3)
 update Persoana set StareCont=1 where id in (4)
 update Persoana set StareCont=1 where id in (5)
-update Persoana set StareCont=1 where id in (6)
-update Persoana set StareCont=1 where id in (7)
-update Persoana set StareCont=1 where id in (8)
-update Persoana set StareCont=1 where id in (9)
-update Persoana set StareCont=1 where id in (10)
 update Persoana set StareCont=1 where id in (11)
 update Persoana set StareCont=1 where id in (12)
+update Persoana set StareCont=1 where id in (13)
+update Persoana set StareCont=1 where id in (22)
+update Persoana set StareCont=1 where id in (23)
+update Persoana set StareCont=1 where id in (25)
+update Persoana set StareCont=1 where id in (26)
+update Persoana set StareCont=1 where id in (27)
+update Persoana set StareCont=1 where id in (28)
+update Persoana set StareCont=1 where id in (29)
 
 UPDATE Carte
-SET Descriere = '„1984” este un roman distopic în care autorul George Orwell prezintă o societate totalitară condusă de un regim care supraveghează și controlează fiecare aspect al vieții individului. Protagonistul, Winston Smith, încearcă să reziste dictaturii „Big Brother”, dar descoperă că lupta pentru libertate poate avea un preț devastator. Este o lucrare profundă despre manipularea adevărului, libertatea de gândire și pericolele unui control excesiv din partea guvernului.',
+SET Descriere = N'„1984” este un roman distopic în care autorul George Orwell prezintă o societate totalitară condusă de un regim care supraveghează și controlează fiecare aspect al vieții individului. Protagonistul, Winston Smith, încearcă să reziste dictaturii „Big Brother”, dar descoperă că lupta pentru libertate poate avea un preț devastator. Este o lucrare profundă despre manipularea adevărului, libertatea de gândire și pericolele unui control excesiv din partea guvernului.',
     NumarPagini = 328, 
-    Dimensiune = '15.5 x 23.5 cm', 
+    Dimensiune = '15.5x23.5cm', 
     Editura = 'Editura Polirom'
 WHERE Titlu = '1984' AND Autor = 'George Orwell';
 
 UPDATE Carte
-SET Descriere = '„Harry Potter și Piatra Filozofală” este primul volum din seria emblematică a lui J.K. Rowling, în care cititorii sunt introduși într-o lume magică uimitoare. Harry Potter, un băiat orfan, descoperă că este vrăjitor și că a fost acceptat la Hogwarts, o școală de magie. Aici, alături de noii săi prieteni, Ron și Hermione, Harry se confruntă cu pericole și dezvăluie misterele legate de Piatra Filozofală, o artefact magic cu puteri incredibile.',
+SET Descriere = N'„Harry Potter și Piatra Filozofală” este primul volum din seria emblematică a lui J.K. Rowling, în care cititorii sunt introduși într-o lume magică uimitoare. Harry Potter, un băiat orfan, descoperă că este vrăjitor și că a fost acceptat la Hogwarts, o școală de magie. Aici, alături de noii săi prieteni, Ron și Hermione, Harry se confruntă cu pericole și dezvăluie misterele legate de Piatra Filozofală, o artefact magic cu puteri incredibile.',
     NumarPagini = 300, 
-    Dimensiune = '15 x 23 cm', 
+    Dimensiune = '15x23 cm', 
     Editura = 'Editura Arthur'
 WHERE Titlu = 'Harry Potter și Piatra Filozofală' AND Autor = 'J.K. Rowling';
 
 UPDATE Carte
-SET Descriere = '„Sapiens: O scurtă istorie a omenirii” oferă o viziune panoramică asupra evoluției omenirii, de la apariția Homo sapiens până în prezent. Harari explorează procesele care au condus la dezvoltarea civilizațiilor, revoluțiile agricole și științifice, precum și impactul pe care l-au avut aceste schimbări asupra umanității și planetei. O lucrare fascinantă care pune întrebări fundamentale despre evoluția umană și direcția în care se îndreaptă societatea modernă.',
+SET Descriere = N'„Sapiens: O scurtă istorie a omenirii” oferă o viziune panoramică asupra evoluției omenirii, de la apariția Homo sapiens până în prezent. Harari explorează procesele care au condus la dezvoltarea civilizațiilor, revoluțiile agricole și științifice, precum și impactul pe care l-au avut aceste schimbări asupra umanității și planetei. O lucrare fascinantă care pune întrebări fundamentale despre evoluția umană și direcția în care se îndreaptă societatea modernă.',
     NumarPagini = 512, 
-    Dimensiune = '15.5 x 23.5 cm', 
+    Dimensiune = '15.5x23.5cm', 
     Editura = 'Editura Humanitas'
 WHERE Titlu = 'Sapiens: O scurtă istorie a omenirii' AND Autor = 'Yuval Noah Harari';
 
 UPDATE Carte
-SET Descriere = '„Arta subtilă a nepăsării” este un ghid de auto-ajutor care propune o abordare neconvențională a vieții. Mark Manson încurajează cititorii să accepte incertitudinea și să își aleagă cu înțelepciune problemele care merită atenție, în loc să fugă de ele. Cu un stil direct și fără menajamente, autorul promovează ideea că, pentru a trăi o viață fericită, trebuie să învățăm să ne preocupăm de lucrurile care contează cu adevărat, lăsând în urmă dorințele și așteptările nerealiste.',
+SET Descriere = N'„Arta subtilă a nepăsării” este un ghid de auto-ajutor care propune o abordare neconvențională a vieții. Mark Manson încurajează cititorii să accepte incertitudinea și să își aleagă cu înțelepciune problemele care merită atenție, în loc să fugă de ele. Cu un stil direct și fără menajamente, autorul promovează ideea că, pentru a trăi o viață fericită, trebuie să învățăm să ne preocupăm de lucrurile care contează cu adevărat, lăsând în urmă dorințele și așteptările nerealiste.',
     NumarPagini = 224, 
-    Dimensiune = '14 x 20 cm', 
+    Dimensiune = '14x20cm', 
     Editura = 'Editura Lifestyle'
 WHERE Titlu = 'Arta subtilă a nepăsării' AND Autor = 'Mark Manson';
 
 UPDATE Carte
-SET Descriere = '„Sherlock Holmes: Aventurile” este o colecție de povestiri în care faimosul detectiv Sherlock Holmes, alături de companionul său, dr. Watson, rezolvă cele mai enigmatice și complexe cazuri. Fiecare poveste din această serie de renume mondial aduce noi mistere și personaje fascinante, fiind un amestec perfect de logică, deducție și suspans. De la crime misterioase la secrete bine păstrate, Sherlock Holmes este simbolul detectivului perfect.',
+SET Descriere = N'„Sherlock Holmes: Aventurile” este o colecție de povestiri în care faimosul detectiv Sherlock Holmes, alături de companionul său, dr. Watson, rezolvă cele mai enigmatice și complexe cazuri. Fiecare poveste din această serie de renume mondial aduce noi mistere și personaje fascinante, fiind un amestec perfect de logică, deducție și suspans. De la crime misterioase la secrete bine păstrate, Sherlock Holmes este simbolul detectivului perfect.',
     NumarPagini = 416, 
-    Dimensiune = '13.5 x 21 cm', 
+    Dimensiune = '13.5x21cm', 
     Editura = 'Editura Corint'
 WHERE Titlu = 'Sherlock Holmes: Aventurile' AND Autor = 'Arthur Conan Doyle';
 
 UPDATE Carte
-SET Descriere = '„Cei trei muschetari” este un roman istoric clasic în care Artagnan, tânărul protagonist, își face loc în rândul muschetarilor regelui Ludovic al XIII-lea. Împreună cu Athos, Porthos și Aramis ,Artagnan se aventurează într-o serie de peripeții care includ dueluri, trădări și lupte pentru onoare și dreptate. Este o poveste despre prietenie, curaj și loialitate, cu un ritm alert și personaje memorabile.',
+SET Descriere = N'„Cei trei muschetari” este un roman istoric clasic în care Artagnan, tânărul protagonist, își face loc în rândul muschetarilor regelui Ludovic al XIII-lea. Împreună cu Athos, Porthos și Aramis ,Artagnan se aventurează într-o serie de peripeții care includ dueluri, trădări și lupte pentru onoare și dreptate. Este o poveste despre prietenie, curaj și loialitate, cu un ritm alert și personaje memorabile.',
     NumarPagini = 640, 
-    Dimensiune = '15 x 23 cm', 
+    Dimensiune = '15x23cm', 
     Editura = 'Editura Nemira'
 WHERE Titlu = 'Cei trei mușchetari' AND Autor = 'Alexandre Dumas';
 
 UPDATE Carte
-SET Descriere = '„Steve Jobs: Biografie” este povestea fascinantă a unui dintre cei mai influenți antreprenori din istoria modernă. Walter Isaacson explorează viața și carierea lui Jobs, de la copilul rebel la revoluționarul tehnologic care a fondat Apple, transformând industria de computere, telefoane și divertisment. O biografie profundă și complexă, care nu doar că detaliază succesul său, dar și momentele sale de dificultate personală și profesională.',
+SET Descriere = N'„Steve Jobs: Biografie” este povestea fascinantă a unui dintre cei mai influenți antreprenori din istoria modernă. Walter Isaacson explorează viața și carierea lui Jobs, de la copilul rebel la revoluționarul tehnologic care a fondat Apple, transformând industria de computere, telefoane și divertisment. O biografie profundă și complexă, care nu doar că detaliază succesul său, dar și momentele sale de dificultate personală și profesională.',
     NumarPagini = 656, 
-    Dimensiune = '16 x 24 cm', 
-    Editura = 'Editura Publica'
+    Dimensiune = '16x24cm', 
+    Editura = N'Editura Publica'
 WHERE Titlu = 'Steve Jobs: Biografie' AND Autor = 'Walter Isaacson';
 
 UPDATE Carte
-SET Descriere = '„Doamna Bovary” este un roman clasic despre drama unei femei din provincia franceză, Emma Bovary, care caută sensul vieții printr-o serie de relații extraconjugale și excese materiale. Povestea sa tragică scoate în evidență contradicțiile între idealurile romantice și realitățile vieții cotidiene, iar stilul narativ al lui Flaubert pune accent pe detalii și realismul psihologic al personajelor.',
+SET Descriere = N'„Doamna Bovary” este un roman clasic despre drama unei femei din provincia franceză, Emma Bovary, care caută sensul vieții printr-o serie de relații extraconjugale și excese materiale. Povestea sa tragică scoate în evidență contradicțiile între idealurile romantice și realitățile vieții cotidiene, iar stilul narativ al lui Flaubert pune accent pe detalii și realismul psihologic al personajelor.',
     NumarPagini = 384, 
-    Dimensiune = '13.5 x 20 cm', 
+    Dimensiune = '13.5x20cm', 
     Editura = 'Editura Humanitas'
 WHERE Titlu = 'Doamna Bovary' AND Autor = 'Gustave Flaubert';
 
 UPDATE Carte
-SET Descriere = '„Călătoria fantastică” este un roman science-fiction în care un grup de cercetători sunt miniaturizați și introdusi într-un corp uman pentru a-l salva. Pe parcursul călătoriei lor, aceștia se confruntă cu pericole interne și descoperă lucruri uimitoare despre biologia umană, explorând în același timp și limitele tehnologiei și ale științei. O poveste captivantă despre curajul de a explora necunoscutul.',
+SET Descriere = N'„Călătoria fantastică” este un roman science-fiction în care un grup de cercetători sunt miniaturizați și introdusi într-un corp uman pentru a-l salva. Pe parcursul călătoriei lor, aceștia se confruntă cu pericole interne și descoperă lucruri uimitoare despre biologia umană, explorând în același timp și limitele tehnologiei și ale științei. O poveste captivantă despre curajul de a explora necunoscutul.',
     NumarPagini = 192, 
-    Dimensiune = '14 x 21 cm', 
+    Dimensiune = '14x21cm', 
     Editura = 'Editura Nemira'
 WHERE Titlu = 'Călătoria fantastică' AND Autor = 'Isaac Asimov';
 
 
+CREATE TRIGGER trg_UpdateStareCont
+ON Persoana
+AFTER INSERT
+AS
+BEGIN
+    -- Actualizează StareCont la 1 pentru fiecare persoană nouă inserată
+    UPDATE p
+    SET p.StareCont = 1
+    FROM Persoana p
+    INNER JOIN inserted i ON p.ID = i.ID;
+END;
+
+select * from Persoana
+select * from Cititor
+
+UPDATE Persoana
+SET Parola = 'a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312'
+WHERE ID=5;
 
 
+select * from Administrator
+DELETE FROM Administrator;
+DBCC CHECKIDENT ('Administrator', RESEED, 0);
 
-
-
-
-
-
+insert into Administrator(ID,ID_Persoana) values (1,27)
 
 
 

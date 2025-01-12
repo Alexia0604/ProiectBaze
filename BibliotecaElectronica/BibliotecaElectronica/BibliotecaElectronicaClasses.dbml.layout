@@ -63,7 +63,7 @@
         <classShapeMoniker Id="664a63ad-d92d-4a16-a0be-b787769c592a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.5); (5.875 : 7.125); (5.875 : 1.73159912109375); (6.25 : 1.73159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 7.5); (5.875 : 7.125); (5.875 : 1.73159912109375); (6.25 : 1.73159912109375)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Cititor/Cititor_Recenzie" />
       <nodes>
         <classShapeMoniker Id="106d3425-cc45-417d-92da-9a6a5009317d" />
@@ -84,47 +84,20 @@
         <classShapeMoniker Id="134c18a2-ae75-42ac-9969-6b1d8e402ce4" />
       </nodes>
     </associationConnector>
-    <classShape Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" absoluteBounds="3.375, 3.25, 2, 2.9247054036458331">
-      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte" />
-      <nestedChildShapes>
-        <elementListCompartment Id="f9b5ce5a-bc7d-4fb8-93e0-e2361692373e" absoluteBounds="3.3899999999999997, 3.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(5.375 : 4.69314697265625); (5.79166666666667 : 4.69314697265625 : JumpStart); (5.95833333333333 : 4.69314697265625 : JumpEnd); (6.25 : 4.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Stoc" />
-      <nodes>
-        <classShapeMoniker Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" />
-        <classShapeMoniker Id="19a78ce2-e74b-4427-8411-1a7ac6c23066" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(3.40625 : 3.25); (3.40625 : 0.96875); (6.25 : 0.96875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Recenzie" />
-      <nodes>
-        <classShapeMoniker Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" />
-        <classShapeMoniker Id="8e4c35fa-7586-4fe2-9709-f895dfb6f2dd" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.375 : 6.17470540364583); (5.75 : 6.54970540364583); (5.75 : 6.25); (5.875 : 6.25); (6.25 : 6.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Imprumut" />
-      <nodes>
-        <classShapeMoniker Id="6b9b5e03-5907-4ded-a5f6-ca6588c51523" />
-        <classShapeMoniker Id="134c18a2-ae75-42ac-9969-6b1d8e402ce4" />
-      </nodes>
-    </associationConnector>
     <classShape Id="7017e176-8403-4af5-b64c-52a22277666c" absoluteBounds="0.5, 6, 2, 2.7324039713541666">
       <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana" />
       <nestedChildShapes>
         <elementListCompartment Id="c914d413-bff1-4dae-85e5-62ee6e2668eb" absoluteBounds="0.51500000000000012, 6.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 8.11620198567708); (3.5 : 8.11620198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 8.11620198567708); (3.5 : 8.11620198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Cititor" />
       <nodes>
         <classShapeMoniker Id="7017e176-8403-4af5-b64c-52a22277666c" />
         <classShapeMoniker Id="106d3425-cc45-417d-92da-9a6a5009317d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.5 : 8.73240397135417); (1.5 : 10.9431469726562); (3.5 : 10.9431469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.5 : 8.73240397135417); (1.5 : 10.9431469726562); (3.5 : 10.9431469726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Persoana/Persoana_Bibliotecar" />
       <nodes>
         <classShapeMoniker Id="7017e176-8403-4af5-b64c-52a22277666c" />
@@ -136,6 +109,33 @@
       <nodes>
         <classShapeMoniker Id="7017e176-8403-4af5-b64c-52a22277666c" />
         <classShapeMoniker Id="cb7764b1-7da9-42eb-af28-b109b29a704d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0ec45552-7baf-4d44-aefc-a348070d07ef" absoluteBounds="3.375, 3.875, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f65268b8-a3ca-4aab-a2ae-be17c69a702a" absoluteBounds="3.39, 4.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.375 : 4.69314697265625); (5.79166666666667 : 4.69314697265625 : JumpStart); (5.95833333333333 : 4.69314697265625 : JumpEnd); (6.25 : 4.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Stoc" />
+      <nodes>
+        <classShapeMoniker Id="0ec45552-7baf-4d44-aefc-a348070d07ef" />
+        <classShapeMoniker Id="19a78ce2-e74b-4427-8411-1a7ac6c23066" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.40625 : 3.875); (3.40625 : 0.96875); (6.25 : 0.96875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Recenzie" />
+      <nodes>
+        <classShapeMoniker Id="0ec45552-7baf-4d44-aefc-a348070d07ef" />
+        <classShapeMoniker Id="8e4c35fa-7586-4fe2-9709-f895dfb6f2dd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.40625 : 6.79970540364583); (3.40625 : 7.11860320182292); (6.25 : 7.11860320182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BibliotecaElectronicaClassesDataContext/Carte/Carte_Imprumut" />
+      <nodes>
+        <classShapeMoniker Id="0ec45552-7baf-4d44-aefc-a348070d07ef" />
+        <classShapeMoniker Id="134c18a2-ae75-42ac-9969-6b1d8e402ce4" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

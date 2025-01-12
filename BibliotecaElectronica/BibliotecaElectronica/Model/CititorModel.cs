@@ -16,14 +16,14 @@ namespace BibliotecaElectronica.Model
 {
     public class CititorModel : PersoanaModel
     {
-        static private BibliotecaElectronicaClassesDataContext db;
+
         private int idReader;
         private DateTime registerDate;
         private int? nrOfBooks;
 
         public string Email
         {
-            get => base.EmailAddress; // Corelare cu moștenirea
+            get => base.EmailAddress; 
             set
             {
                 base.EmailAddress = value;
@@ -59,7 +59,7 @@ namespace BibliotecaElectronica.Model
         public CititorModel() { }
         public override PersoanaModel LoginClient(string _username, string _password)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaClassesDataContext();
 
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
@@ -120,6 +120,7 @@ namespace BibliotecaElectronica.Model
 
         public override bool AdaugaClient()
         {
+            var db = new BibliotecaElectronicaClassesDataContext();
             if (this.Username == "Username" || this.Password == "Parolă" ||
                 this.Username == string.Empty || this.Password == string.Empty)
                 throw new NoUsernameOrPasswordException();
@@ -137,10 +138,11 @@ namespace BibliotecaElectronica.Model
                 Username = this.Username
             };
             cititor_db.Persoana = persoana;
-            db.Persoanas.InsertOnSubmit(cititor_db.Persoana);
-            db.Cititors.InsertOnSubmit(cititor_db);
             try
             {
+                db.Persoanas.InsertOnSubmit(cititor_db.Persoana);
+                db.Cititors.InsertOnSubmit(cititor_db);
+   
                 db.SubmitChanges();
                 return true;
             }
@@ -154,8 +156,7 @@ namespace BibliotecaElectronica.Model
         public static ObservableCollection<CititorModel> LoadAllReaders()
         {
 
-            db = new BibliotecaElectronicaClassesDataContext();
-
+            var db = new BibliotecaElectronicaClassesDataContext();
             var allreadersData = db.Cititors
         .Join(db.Persoanas,
             cititor => cititor.ID_Persoana,
@@ -199,7 +200,7 @@ namespace BibliotecaElectronica.Model
 
         public static void DeleteReader(CititorModel readerToDelete)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaClassesDataContext();
 
             var cititorDb = db.Cititors.SingleOrDefault(c => c.ID_Persoana == readerToDelete.idPerson);
 

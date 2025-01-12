@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BibliotecaElectronica" Class="BibliotecaElectronicaClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=Alexia;Initial Catalog=BibliotecaElectronica;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="BibliotecaElectronica.Properties.Settings" SettingsPropertyName="BibliotecaElectronicaConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GABRIELA\SQLEXPRESS04;Initial Catalog=BibliotecaElectronica;Integrated Security=True" SettingsObjectName="BibliotecaElectronica.Properties.Settings" SettingsPropertyName="BibliotecaElectronicaConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.TaskLogs" Member="TaskLogs">
     <Type Name="TaskLog">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -88,6 +88,23 @@
       <Association Name="Persoana_Administrator" Member="Persoana" ThisKey="ID_Persoana" OtherKey="ID" Type="Persoana" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Persoana" Member="Persoanas">
+    <Type Name="Persoana">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenume" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Parola" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Adresa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DataNasterii" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="StareCont" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Persoana_Cititor" Member="Cititors" ThisKey="ID" OtherKey="ID_Persoana" Type="Cititor" />
+      <Association Name="Persoana_Bibliotecar" Member="Bibliotecars" ThisKey="ID" OtherKey="ID_Persoana" Type="Bibliotecar" />
+      <Association Name="Persoana_Administrator" Member="Administrators" ThisKey="ID" OtherKey="ID_Persoana" Type="Administrator" />
+    </Type>
+  </Table>
   <Table Name="dbo.Carte" Member="Cartes">
     <Type Name="Carte">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -104,23 +121,6 @@
       <Association Name="Carte_Stoc" Member="Stocs" ThisKey="ID" OtherKey="ID_Carte" Type="Stoc" />
       <Association Name="Carte_Recenzie" Member="Recenzies" ThisKey="ID" OtherKey="ID_Carte" Type="Recenzie" />
       <Association Name="Carte_Imprumut" Member="Imprumuts" ThisKey="ID" OtherKey="ID_Carte" Type="Imprumut" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Persoana" Member="Persoanas">
-    <Type Name="Persoana">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nume" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Prenume" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Parola" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Telefon" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Adresa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="DataNasterii" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="StareCont" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Persoana_Cititor" Member="Cititors" ThisKey="ID" OtherKey="ID_Persoana" Type="Cititor" />
-      <Association Name="Persoana_Bibliotecar" Member="Bibliotecars" ThisKey="ID" OtherKey="ID_Persoana" Type="Bibliotecar" />
-      <Association Name="Persoana_Administrator" Member="Administrators" ThisKey="ID" OtherKey="ID_Persoana" Type="Administrator" />
     </Type>
   </Table>
 </Database>
