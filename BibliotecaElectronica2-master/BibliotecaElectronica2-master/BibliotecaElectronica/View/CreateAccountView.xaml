@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.CreateAccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaElectronica.View"
+             xmlns:view="clr-namespace BibliotecaElectronica.ViewModel"
+             xmlns:userControl="clr-namespace:BibliotecaElectronica.View.UserControls" 
+             xmlns:viewmodel="clr-namespace:BibliotecaElectronica.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="600">
+    <UserControl.Resources>
+        <Style x:Key="UnderlineButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock Text="{TemplateBinding Content}" 
+                 Foreground="{TemplateBinding Foreground}" 
+                 FontSize="{TemplateBinding FontSize}" 
+                 FontWeight="{TemplateBinding FontWeight}" 
+                 TextDecorations="Underline"
+                 HorizontalAlignment="Center" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+      
+
+    </UserControl.Resources>
+    <Grid>
+        
+            <Canvas Width="600" Height="700">
+                <Ellipse Width="220" Height="220" Fill="YellowGreen" Opacity="0.3" Canvas.Left="30" Canvas.Top="10"/>
+                <Ellipse Width="160" Height="160" Fill="Pink" Opacity="0.3" Canvas.Left="450" Canvas.Top="60"/>
+                <Ellipse Width="270" Height="270" Fill="MediumBlue" Opacity="0.3" Canvas.Left="150" Canvas.Top="400"/>
+                <Ellipse Width="120" Height="120" Fill="PaleTurquoise" Opacity="0.3" Canvas.Left="470" Canvas.Top="350"/>
+                <Ellipse Width="200" Height="200" Fill="LightCoral" Opacity="0.3" Canvas.Left="0" Canvas.Top="350"/>
+            </Canvas>
+        
+        <Border HorizontalAlignment="Center" CornerRadius="15" Background="White" BorderBrush="#cccccc" BorderThickness="1" Padding="30" 
+         VerticalAlignment="Center" Width="400">
+            <StackPanel >
+                <Image Source="logo2.png" Width="300" Height="150" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+                <Grid >
+                    <TextBox x:Name="txtLastName" Padding="5" Width="330" Height="40" Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                    FontSize="16" FontWeight="Light" Foreground="Gray" Background="Transparent" GotFocus="txtLastName_GotFocus" LostFocus="txtLastName_LostFocus" />
+
+                    <Button x:Name="btnClear1"  Command="{Binding ClearTextBoxCommand}" CommandParameter="LastName" Height="40" Content="X" Margin="10" Width="30" HorizontalAlignment="Right"
+                     Foreground="LightGray" Background="Transparent"  BorderThickness="0" FontSize="16" Style="{x:Null}"  />
+                </Grid>
+
+                <Grid >
+                    <TextBox x:Name="txtFirstName" Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}" Width="330" Height="40" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                    FontSize="16"  Foreground="Gray" Padding="5" FontWeight="Light" Background="Transparent" GotFocus="txtFirstName_GotFocus" LostFocus="txtFirstName_LostFocus"  />
+
+                    <Button x:Name="btnClear2"  Command="{Binding ClearTextBoxCommand}" CommandParameter="FirstName" Height="40" Content="X" Margin="10" Width="30" HorizontalAlignment="Right"
+                     Foreground="LightGray" Background="Transparent"  BorderThickness="0" FontSize="16" Style="{x:Null}" />
+                </Grid>
+                
+                <Grid >
+                    <TextBox x:Name="txtEmail" Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"  Width="330" Height="40" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                     FontSize="16" FontWeight="Light" Background="Transparent" Padding="5" GotFocus="txtEmail_GotFocus" LostFocus="txtEmail_LostFocus" />
+
+                    <Button x:Name="btnClear3"  Command="{Binding ClearTextBoxCommand}" CommandParameter="Email" Height="40" Content="X" Margin="10" Width="30" HorizontalAlignment="Right"
+                        Foreground="LightGray" Background="Transparent"  BorderThickness="0" FontSize="16" Style="{x:Null}" />
+                </Grid>
+                <Grid >
+                    <TextBox x:Name="txtAddress" Padding="5" Width="330" Height="40" VerticalContentAlignment="Center" Text="{Binding Address,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" 
+                    FontSize="16"  Foreground="Gray" FontWeight="Light" Background="Transparent" GotFocus="txtAddress_GotFocus" LostFocus="txtAddress_LostFocus"  />
+
+                    <Button x:Name="btnClear4"  Command="{Binding ClearTextBoxCommand}" CommandParameter="Address" Height="40" Content="X" Margin="10" Width="30" HorizontalAlignment="Right"
+                    Foreground="LightGray" Background="Transparent"  BorderThickness="0" FontSize="16" Style="{x:Null}" />
+                </Grid>
+                <Grid >
+                    <TextBox x:Name="txtPhone" Padding="5" Text="{Binding Phone,UpdateSourceTrigger=PropertyChanged}"  Width="330" Height="40" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                    FontSize="16" Foreground="Gray" FontWeight="Light" Background="Transparent" GotFocus="txtPhone_GotFocus" LostFocus="txtPhone_LostFocus"  />
+
+                    <Button x:Name="btnClear5"  Command="{Binding ClearTextBoxCommand}" CommandParameter="Phone" Height="40" Content="X" Margin="10" Width="30" HorizontalAlignment="Right"
+                    Foreground="LightGray" Background="Transparent"  BorderThickness="0" FontSize="16" Style="{x:Null}" />
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label  x:Name="BirthLabel"  Width="110" Content="Data nașterii:" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="Gray"/>
+                    <ComboBox x:Name="DayComboBox" FontWeight="Light"   FontSize="16" Foreground="Gray"  ItemsSource="{Binding Days, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="0" SelectedItem="{Binding Day,Mode=TwoWay}" Width="35" Margin="5" />
+                    <ComboBox x:Name="MonthComboBox" FontSize="16" FontWeight="Light"  Foreground="Gray"  ItemsSource="{Binding Months, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="0" SelectedItem="{Binding Month, Mode=TwoWay}" Width="105" Margin="5" />
+                    <ComboBox x:Name="YearComboBox" FontSize="16" FontWeight="Light" Foreground="Gray"  ItemsSource="{Binding Years,UpdateSourceTrigger=PropertyChanged}" SelectedIndex="0" SelectedItem="{Binding Year,Mode=TwoWay}" Width="60" Margin="5" />
+                </StackPanel>
+
+                <DockPanel >
+                    <Button x:Name="btnBack" DockPanel.Dock="Left" Width="140" Content="Înapoi" Foreground="LightSkyBlue" Background="#FFF8F1F1" BorderThickness="0" FontSize="20" 
+                    FontWeight="Bold" Margin="15,10,0,10" Cursor="Hand" Style="{StaticResource UnderlineButtonStyle}" Command="{Binding BackToLoginCommand}" FontFamily="Calibri Light"   />
+                    <Button x:Name="btnNext" DockPanel.Dock="Right" Width="100" Content="Mai departe" Foreground="LightSkyBlue" Background="Transparent" BorderThickness="0" FontSize="20" 
+                     FontWeight="Bold" Margin="0,10,0,0" Cursor="Hand" Style="{StaticResource UnderlineButtonStyle}"  Command="{Binding ContinueCreatingAccountCommand}" FontFamily="Calibri Light"  />
+                </DockPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

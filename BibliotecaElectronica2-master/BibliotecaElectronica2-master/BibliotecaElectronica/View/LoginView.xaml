@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BibliotecaElectronica.View"
+        xmlns:view="clr-namespace BibliotecaElectronica.ViewModel"
+        xmlns:components="clr-namespace:BibliotecaElectronica.Components"
+             mc:Ignorable="d"
+        Height="650" Width="600">
+    <UserControl.Resources>
+        <Style x:Key="UnderlineButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock Text="{TemplateBinding Content}" 
+                            Foreground="{TemplateBinding Foreground}" 
+                            FontSize="{TemplateBinding FontSize}" 
+                            FontWeight="{TemplateBinding FontWeight}" 
+                            TextDecorations="Underline"
+                            HorizontalAlignment="Center" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+    <Grid>
+        <!-- Fundal cu elipse -->
+        <Canvas>
+            <Ellipse Width="220" Height="220" Fill="YellowGreen" Opacity="0.3" Canvas.Left="30" Canvas.Top="10"/>
+            <Ellipse Width="160" Height="160" Fill="Pink" Opacity="0.3" Canvas.Left="450" Canvas.Top="60"/>
+            <Ellipse Width="270" Height="270" Fill="MediumBlue" Opacity="0.3" Canvas.Left="150" Canvas.Top="400"/>
+            <Ellipse Width="120" Height="120" Fill="PaleTurquoise" Opacity="0.3" Canvas.Left="470" Canvas.Top="350"/>
+            <Ellipse Width="200" Height="200" Fill="LightCoral" Opacity="0.3" Canvas.Left="0" Canvas.Top="350"/>
+        </Canvas>
+
+        <!-- Card pentru login -->
+        <Border CornerRadius="15" Background="White" BorderBrush="#cccccc" BorderThickness="1" Padding="30" 
+            VerticalAlignment="Center" HorizontalAlignment="Center" Width="420">
+            <StackPanel>
+                <!-- Logo -->
+                <Image Source="logo2.png" Width="300" Height="150" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                <!-- Username Field -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
+                    <Image Source="account1.png" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
+                    <TextBox x:Name="txtUsername" Width="280" Height="35" Margin="5" Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}" Foreground="Gray" 
+                         BorderBrush="#cccccc" Tag="Username"  Background="White" Padding="5" FontFamily="Calibri Light" FontSize="18" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" />
+                </StackPanel>
+
+                <!-- Password Field -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
+                    <Image Source="password1.png" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
+
+                    <components:BindablePasswordBox HorizontalAlignment="Center" x:Name="txtPassword" Width="290" Height="45" 
+              Password="{Binding Password, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" BorderBrush="#cccccc" Background="White" Padding="5" FontFamily="Calibri Light" FontSize="16"/>
+                </StackPanel>
+
+                <!-- Selectarea calității de user -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <Image Source="user.png" Width="50" Height="50" VerticalAlignment="Center" Margin="5"/>
+                    <ComboBox x:Name="cmbRole" Width="280" Height="35" Margin="5" Background="White" 
+                          BorderBrush="#cccccc" SelectedIndex="0" FontFamily="Calibri Light" FontSize="18" ItemsSource="{Binding Roles,UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding SelectedRole, Mode=TwoWay}" Style="{x:Null}">
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Login Button -->
+                <Button x:Name="btnLogin" Command="{Binding SignInCommand}" Content="Conectează-te!" Background="LightSkyBlue" Foreground="White" FontSize="20" FontWeight="Bold" 
+                    Height="40" Width="152" HorizontalAlignment="Center" Margin="0,0,0,10" RenderTransformOrigin="0,0" FontFamily="Calibri Light" />
+
+
+                <!-- Sign-Up Button -->
+                <Button Content="Nu ai cont? Înregistrează-te!" Command="{Binding CreateAccountCommand}" Foreground="LightSkyBlue" Background="Transparent" BorderThickness="0" FontSize="20" 
+                    FontWeight="Bold" Margin="0,10,0,0" Cursor="Hand" Style="{StaticResource UnderlineButtonStyle}" FontFamily="Calibri Light" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

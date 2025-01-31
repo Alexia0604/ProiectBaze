@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8448A47-AD52-487F-AD51-364247451DD3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BibliotecaElectronica</RootNamespace>
+    <AssemblyName>BibliotecaElectronica</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommunityToolkit.Mvvm, Version=8.3.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommunityToolkit.Mvvm.8.3.2\lib\netstandard2.0\CommunityToolkit.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.6.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.3.1.0\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=5.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.5.1.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.6.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.6.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.6.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.6.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.6.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BibliotecaElectronicaClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BibliotecaElectronicaClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\AddBooksClickButtonCommand.cs" />
+    <Compile Include="Commands\BackToAllBooksCommand.cs" />
+    <Compile Include="Commands\BackToCreateAccountCommand.cs" />
+    <Compile Include="Commands\BackToLoginCommand.cs" />
+    <Compile Include="Commands\BestBooksClickButtonCommand.cs" />
+    <Compile Include="Commands\BorrowBookCommand.cs" />
+    <Compile Include="Commands\ClickOnBookImage.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\ContinueCreatingAccountCommand.cs" />
+    <Compile Include="Commands\CreateAccountCommand.cs" />
+    <Compile Include="Commands\CustomerClickButtonCommand.cs" />
+    <Compile Include="Commands\DislikeCommand.cs" />
+    <Compile Include="Commands\HomeClickButtonCommand.cs" />
+    <Compile Include="Commands\InboxClickButtonCommmand.cs" />
+    <Compile Include="Commands\LikeCommand.cs" />
+    <Compile Include="Commands\ListLibrariansClickButtonCommand.cs" />
+    <Compile Include="Commands\ListReadersClickButtonCommand.cs" />
+    <Compile Include="Commands\OrdersClickButtonCommand.cs" />
+    <Compile Include="Commands\ProductsClickButtonCommand.cs" />
+    <Compile Include="Commands\RegisterCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Commands\ReturneazaCarteCommand.cs" />
+    <Compile Include="Commands\SignInCommand.cs" />
+    <Compile Include="Commands\SubmitReviewCommand.cs" />
+    <Compile Include="Commands\TopBooksClickButtonCommand.cs" />
+    <Compile Include="Commands\VizualizeazaReturnariCommand.cs" />
+    <Compile Include="Components\BindablePasswordBox.xaml.cs">
+      <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\AccountException.cs" />
+    <Compile Include="Exceptions\ClosedAccountException.cs" />
+    <Compile Include="Exceptions\DataBaseException.cs" />
+    <Compile Include="Exceptions\DateTimeException.cs" />
+    <Compile Include="Exceptions\EmailException.cs" />
+    <Compile Include="Exceptions\EmptyFiledsException.cs" />
+    <Compile Include="Exceptions\MatchingPasswordsFailed.cs" />
+    <Compile Include="Exceptions\NoUsernameOrPasswordException.cs" />
+    <Compile Include="Exceptions\NrException.cs" />
+    <Compile Include="Exceptions\PasswordException.cs" />
+    <Compile Include="Exceptions\SignInException.cs" />
+    <Compile Include="Exceptions\SignInWrongCredentialsException.cs" />
+    <Compile Include="Exceptions\UsernameException.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Administrator.cs" />
+    <Compile Include="Model\BibliotecarModel.cs" />
+    <Compile Include="Model\CarteModel.cs" />
+    <Compile Include="Model\CititorModel.cs" />
+    <Compile Include="Model\ClientRepository.cs" />
+    <Compile Include="Model\ImprumutModel.cs" />
+    <Compile Include="Model\NotificareModel.cs" />
+    <Compile Include="Model\PersoanaModel.cs" />
+    <Compile Include="Model\RecenzieModel.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Utilities\Btn.cs" />
+    <Compile Include="Utilities\ByteArrayToImageConverter.cs" />
+    <Compile Include="Utilities\CountToVisibilityConverter.cs" />
+    <Compile Include="Utilities\ExemplareToButtonEnabledConverter.cs" />
+    <Compile Include="Utilities\IntConverter.cs" />
+    <Compile Include="Utilities\NotificariBackgroundWorker.cs" />
+    <Compile Include="Utilities\PercentageConverter.cs" />
+    <Compile Include="Utilities\PercentageToWidthConverter.cs" />
+    <Compile Include="Utilities\RatingDistributionItem.cs" />
+    <Compile Include="Utilities\StarColorConverter.cs" />
+    <Compile Include="Utilities\StarsReviewConverter.cs" />
+    <Compile Include="Utilities\TextToVisibilityConverter .cs" />
+    <Compile Include="Utilities\Utility.cs" />
+    <Compile Include="ViewModel\AddBooksViewModel.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\BestBooksViewModel.cs" />
+    <Compile Include="ViewModel\BibliotecariViewModel.cs" />
+    <Compile Include="ViewModel\CartiViewModel.cs" />
+    <Compile Include="ViewModel\CititoriViewModel.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\CreateAccountViewModel.cs" />
+    <Compile Include="ViewModel\CreateAccountViewModel2.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\DetaliiCarteViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\InboxViewModel.cs" />
+    <Compile Include="ViewModel\LibrarianViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\OrdersViewModel.cs" />
+    <Compile Include="ViewModel\ReturnariViewModel.cs" />
+    <Compile Include="ViewModel\TopViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AddBooksView.xaml.cs">
+      <DependentUpon>AddBooksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminView.xaml.cs">
+      <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BestBooksView.xaml.cs">
+      <DependentUpon>BestBooksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BibliotecariView.xaml.cs">
+      <DependentUpon>BibliotecariView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CartiView.xaml.cs">
+      <DependentUpon>CartiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CititoriView.xaml.cs">
+      <DependentUpon>CititoriView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClientView.xaml.cs">
+      <DependentUpon>ClientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateAccountView.xaml.cs">
+      <DependentUpon>CreateAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateAccountView2.xaml.cs">
+      <DependentUpon>CreateAccountView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DetaliiCarteView.xaml.cs">
+      <DependentUpon>DetaliiCarteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditableField.xaml.cs">
+      <DependentUpon>EditableField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InboxView.xaml.cs">
+      <DependentUpon>InboxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LibrarianView.xaml.cs">
+      <DependentUpon>LibrarianView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrdersView.xaml.cs">
+      <DependentUpon>OrdersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReturnariView.xaml.cs">
+      <DependentUpon>ReturnariView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TopView.xaml.cs">
+      <DependentUpon>TopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ClearableTextBox.xaml.cs">
+      <DependentUpon>ClearableTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Components\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Model\NotificareModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Text.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddBooksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BestBooksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BibliotecariView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CartiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CititoriView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateAccountView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DetaliiCarteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditableField.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InboxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LibrarianView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrdersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReturnariView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TopView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ClearableTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\Rubik-Medium.ttf" />
+    <Resource Include="Fonts\Rubik-Regular.ttf" />
+    <None Include="BibliotecaElectronicaClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>BibliotecaElectronicaClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BibliotecaElectronicaClasses.dbml.layout">
+      <DependentUpon>BibliotecaElectronicaClasses.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\account1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\password1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\eyeIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HideEyeIcon.png.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\img_customer.png" />
+    <Resource Include="View\img_home.png" />
+    <Resource Include="View\img_order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\product_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\img_carte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\img_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\whatsapp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\books.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\books2.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\CommunityToolkit.Mvvm.8.3.2\build\CommunityToolkit.Mvvm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CommunityToolkit.Mvvm.8.3.2\build\CommunityToolkit.Mvvm.targets'))" />
+  </Target>
+  <Import Project="..\packages\CommunityToolkit.Mvvm.8.3.2\build\CommunityToolkit.Mvvm.targets" Condition="Exists('..\packages\CommunityToolkit.Mvvm.8.3.2\build\CommunityToolkit.Mvvm.targets')" />
+</Project>

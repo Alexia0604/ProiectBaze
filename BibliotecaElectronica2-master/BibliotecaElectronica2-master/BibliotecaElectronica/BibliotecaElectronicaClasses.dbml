@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BibliotecaElectronica" Class="BibliotecaElectronicaClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Alexia;Initial Catalog=BibliotecaElectronica;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="BibliotecaElectronica.Properties.Settings" SettingsPropertyName="BibliotecaElectronicaConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Administrator" Member="Administrators">
+    <Type Name="Administrator">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Persoana" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Persoana_Administrator" Member="Persoana" ThisKey="ID_Persoana" OtherKey="ID" Type="Persoana" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bibliotecar" Member="Bibliotecars">
+    <Type Name="Bibliotecar">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Persoana" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DataAngajare" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Persoana_Bibliotecar" Member="Persoana" ThisKey="ID_Persoana" OtherKey="ID" Type="Persoana" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Carte" Member="Cartes">
+    <Type Name="Carte">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Titlu" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Autor" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AnPublicare" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ISBN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Imagine" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Descriere" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="NumarPagini" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dimensiune" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Editura" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Categorie" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Carte_Imprumut" Member="Imprumuts" ThisKey="ID" OtherKey="ID_Carte" Type="Imprumut" />
+      <Association Name="Carte_Recenzie" Member="Recenzies" ThisKey="ID" OtherKey="ID_Carte" Type="Recenzie" />
+      <Association Name="Carte_Stoc" Member="Stocs" ThisKey="ID" OtherKey="ID_Carte" Type="Stoc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cititor" Member="Cititors">
+    <Type Name="Cititor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Persoana" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DataInregistrare" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="NrCartiImprumutate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Cititor_Imprumut" Member="Imprumuts" ThisKey="ID" OtherKey="ID_Cititor" Type="Imprumut" />
+      <Association Name="Cititor_Notificare" Member="Notificares" ThisKey="ID" OtherKey="ID_Cititor" Type="Notificare" />
+      <Association Name="Cititor_Recenzie" Member="Recenzies" ThisKey="ID" OtherKey="ID_Cititor" Type="Recenzie" />
+      <Association Name="Persoana_Cititor" Member="Persoana" ThisKey="ID_Persoana" OtherKey="ID" Type="Persoana" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Feedback" Member="Feedbacks">
+    <Type Name="Feedback">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Recenzie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NrLike" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NrDislike" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Recenzie_Feedback" Member="Recenzie" ThisKey="ID_Recenzie" OtherKey="ID" Type="Recenzie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Imprumut" Member="Imprumuts">
+    <Type Name="Imprumut">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Cititor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Carte" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DataImprumut" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TermenLimita" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DataReturnare" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Stare" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DataCerereReturnare" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Carte_Imprumut" Member="Carte" ThisKey="ID_Carte" OtherKey="ID" Type="Carte" IsForeignKey="true" />
+      <Association Name="Cititor_Imprumut" Member="Cititor" ThisKey="ID_Cititor" OtherKey="ID" Type="Cititor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Persoana" Member="Persoanas">
+    <Type Name="Persoana">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenume" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Parola" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Adresa" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DataNasterii" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="StareCont" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Persoana_Administrator" Member="Administrators" ThisKey="ID" OtherKey="ID_Persoana" Type="Administrator" />
+      <Association Name="Persoana_Bibliotecar" Member="Bibliotecars" ThisKey="ID" OtherKey="ID_Persoana" Type="Bibliotecar" />
+      <Association Name="Persoana_Cititor" Member="Cititors" ThisKey="ID" OtherKey="ID_Persoana" Type="Cititor" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Notificare" Member="Notificares">
+    <Type Name="Notificare">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Cititor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Tip_Notificare" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Mesaj" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="DataTrimitere" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Stare" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Cititor_Notificare" Member="Cititor" ThisKey="ID_Cititor" OtherKey="ID" Type="Cititor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recenzie" Member="Recenzies">
+    <Type Name="Recenzie">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Cititor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Carte" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nota" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comentariu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DataRecenzie" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Recenzie_Feedback" Member="Feedbacks" ThisKey="ID" OtherKey="ID_Recenzie" Type="Feedback" />
+      <Association Name="Carte_Recenzie" Member="Carte" ThisKey="ID_Carte" OtherKey="ID" Type="Carte" IsForeignKey="true" />
+      <Association Name="Cititor_Recenzie" Member="Cititor" ThisKey="ID_Cititor" OtherKey="ID" Type="Cititor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stoc" Member="Stocs">
+    <Type Name="Stoc">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Carte" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NrExemplare" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Carte_Stoc" Member="Carte" ThisKey="ID_Carte" OtherKey="ID" Type="Carte" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaskLogs" Member="TaskLogs">
+    <Type Name="TaskLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LastRunTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

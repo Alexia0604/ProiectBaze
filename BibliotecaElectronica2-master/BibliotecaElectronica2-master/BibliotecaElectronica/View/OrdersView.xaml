@@ -1,0 +1,177 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.OrdersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaElectronica.View"
+             xmlns:vms="clr-namespace:BibliotecaElectronica.ViewModel"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+
+             xmlns:utilities ="clr-namespace:BibliotecaElectronica.Utilities"
+             
+             
+             mc:Ignorable="d" d:DesignWidth="800" Height="600"
+            Style="{StaticResource Page_Style}">
+
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <utilities:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
+    </UserControl.Resources>
+   
+    <Border Padding="0" Background="Transparent" CornerRadius="8" BorderBrush="#E0E0E0" BorderThickness="0">
+        <Grid>
+            <!-- Mesaj pentru lista goală -->
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="Gray">
+                <fa:IconImage Icon="ban" Height="20" Width="20" />-->
+            <TextBlock Text="Nu există împrumuturi!"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   Foreground="Gray"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Visibility="{Binding CartiImprumutate.Count, Converter={StaticResource CountToVisibilityConverter}}" />
+            <!--</StackPanel>-->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ListBox ItemsSource="{Binding CartiImprumutate}" BorderThickness="0"
+                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="5" Width="590" Padding="10" Background="White" CornerRadius="5" BorderBrush="#efdaf7" BorderThickness="1">
+                                <Grid Margin="0,0,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="200" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Column="0" Source="{Binding Key.BitmapImage}" Margin="0,0,10,0" Width="150" Height="200" HorizontalAlignment="Left" />
+
+                                    <StackPanel Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Titlu:" FontWeight="Bold" />
+                                                <TextBlock VerticalAlignment="Center" 
+                                           Text="{Binding Key.Title}" 
+                                           FontSize="16" 
+                                           FontFamily="Calibri"
+                                           FontStyle="Italic"
+                                           Foreground="#5E3B76" />
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Autor:" FontWeight="Bold" />
+                                                <TextBlock VerticalAlignment="Center"
+                                            Text="{Binding Key.Author}" 
+                                            FontSize="14"
+                                            FontFamily="Calibri"
+                                            Foreground="#7D3C98" />
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Stare:" FontWeight="Bold" />
+                                                <TextBlock VerticalAlignment="Center"
+                                            FontFamily="Calibri"
+                                            FontSize="14"
+                                            Foreground="#7D3C98"
+                                           Text="{Binding Value.Stare, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Data împrumut:"
+                                       FontWeight="Bold" />
+                                                <TextBlock VerticalAlignment="Center"
+                                           FontFamily="Calibri"
+                                           FontSize="14"
+                                           Foreground="#7D3C98"
+                                           Text="{Binding Value.DataImprumut, StringFormat='{}{0:dd.MM.yyyy}',UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Termen limită:"
+                                       FontWeight="Bold" />
+                                                <TextBlock VerticalAlignment="Center"
+                                           FontFamily="Calibri"
+                                           FontSize="14"
+                                           Foreground="#7D3C98"
+                                           Text="{Binding Value.DataLimita, StringFormat='{}{0:dd.MM.yyyy}',UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Data returnare:"
+                                       FontWeight="Bold" />
+                                                <TextBlock VerticalAlignment="Center"
+                                           FontFamily="Calibri"
+                                           FontSize="14"
+                                           Foreground="#7D3C98"
+                                           Text="{Binding Value.DataReturnareAfisata,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Grid.ColumnSpan="2">
+                                        <Button Content="Returnează!" 
+                                            Command="{Binding DataContext.ReturneazaCarteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding }" 
+                                            Visibility="{Binding Value.IsImprumutActiv,Converter={StaticResource BooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                            Background="Transparent" 
+                                            Foreground="#42adf5" 
+                                            BorderBrush="LightBlue"
+                                            Margin="5,150,10,10"
+                                            Width="120"
+                                            Height="30"
+                                            />
+                                        <Button Content="Prelungește termenul aici" 
+                                             Command="{Binding DataContext.PrelungesteTermenCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                             CommandParameter="{Binding }" 
+                                             Visibility="{Binding Value.IsImprumutActiv,Converter={StaticResource BooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                             Background="Transparent"
+                                             Foreground="#ad4ef5"
+                                            BorderBrush="#d8bbfc"
+                                             Margin="0,0,0,0"
+                                             Width="200"
+                                             Height="30"
+                                             />
+                                        <Popup Name="PrelungirePopup"
+                                           Width="250"
+                                           IsOpen="{Binding Value.IsPopupOpen,Mode=TwoWay}"
+                                           Placement="Center">
+                                            <Border Background="White" 
+                                                BorderBrush="#d8bbfc" 
+                                                BorderThickness="1" 
+                                                Padding="20">
+                                                <StackPanel>
+                                                    <TextBlock Text="Introduceți noua dată:" 
+                                                           FontWeight="Bold" 
+                                                           Margin="0,0,0,10" />
+                                                    <DatePicker SelectedDate="{Binding DataContext.NouaData, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                                                        <Button Content="Confirmă"
+                                                             CommandParameter="{Binding }" 
+                                                            Command="{Binding DataContext.ConfirmaPrelungireCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                            Margin="0,0,10,0"
+                                                            Width="100"
+                                                            Background="#ad4ef5"
+                                                            Foreground="White"
+                                                            FontWeight="Bold" />
+                                                        <Button Content="Anulează" 
+                                                             CommandParameter="{Binding }" 
+                                                            Command="{Binding DataContext.AnuleazaPrelungireCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                            Width="100"
+                                                            Background="Gray"
+                                                            Foreground="White" />
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </Popup>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>

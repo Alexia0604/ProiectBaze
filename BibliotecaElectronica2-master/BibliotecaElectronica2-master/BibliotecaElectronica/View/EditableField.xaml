@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.EditableField"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal" >
+        <!-- Etichetă (Nume, Prenume, etc.) -->
+        <TextBlock Text="{Binding Label, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                   FontWeight="Bold"
+                   Foreground="#4B4B4B"
+                   Margin="0,0,5,0" />
+
+        <!-- Grid pentru comutarea între TextBlock și TextBox -->
+        <Grid Width="314">
+            <!-- TextBlock (afișat când nu este în editare) -->
+            <TextBlock Text="{Binding Text, Mode=OneWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                       Foreground="#6B6B6B">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEditing, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <!-- TextBox (afișat când este în editare) -->
+            <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}, UpdateSourceTrigger=PropertyChanged}"
+                     Foreground="#6B6B6B">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEditing, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </Grid>
+
+        <!-- Butoane -->
+        <!-- Buton "Modifică" -->
+        <Button Content="Modifică"
+                Width="80"
+                Height="20"
+                Background="LightGray"
+                BorderThickness="0"
+                FontSize="10"
+                Command="{Binding StartEditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                CommandParameter="{Binding CommandParameter, RelativeSource={RelativeSource AncestorType=UserControl}}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsEditing, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <!-- Butoane "✔" și "✖" -->
+        <StackPanel Orientation="Horizontal">
+            <!-- Buton "✔" -->
+            <Button Content="✔"
+                    Width="30"
+                    Height="20"
+                    Background="LightGray"
+                    BorderThickness="0"
+                    FontSize="10"
+                    Command="{Binding SaveEditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    CommandParameter="{Binding CommandParameter, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEditing, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Buton "✖" -->
+            <Button Content="✖"
+                    Width="30"
+                    Height="20"
+                    Background="LightGray"
+                    BorderThickness="0"
+                    FontSize="10"
+                    Command="{Binding CancelEditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    CommandParameter="{Binding CommandParameter, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEditing, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

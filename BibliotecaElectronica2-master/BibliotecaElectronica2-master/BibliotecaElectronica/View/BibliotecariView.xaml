@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.BibliotecariView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaElectronica.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="622">
+    <Grid>
+        <Grid>
+            <DataGrid ItemsSource="{Binding Librarians}" AutoGenerateColumns="False" 
+              CanUserAddRows="False" IsReadOnly="True"
+              RowHeight="40"
+              MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=UserControl}, FallbackValue=400}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding IdPerson}" />
+                    <DataGridTextColumn Header="Nume" Binding="{Binding Nume}" />
+                    <DataGridTextColumn Header="Prenume" Binding="{Binding Prenume}" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Adresă" Binding="{Binding Adresa}" />
+                    <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}" />
+                    <DataGridTemplateColumn Header="Ștergere">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Width="60"
+                                Height="20"
+                                Background="white"
+                                BorderThickness="2"
+                                BorderBrush="#e2b0ff"
+                                Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding IdPerson}"
+                                Content="Șterge"
+                                FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                                        Background="{TemplateBinding Background}"
+                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        CornerRadius="10">
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                                          VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

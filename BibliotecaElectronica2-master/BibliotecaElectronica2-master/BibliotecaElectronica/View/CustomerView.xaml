@@ -1,0 +1,1289 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.CustomerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaElectronica.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="622"
+             Style="{StaticResource Page_Style}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid >
+            <Border Background="#efdaf7"
+                    CornerRadius="20"
+                    Padding="10"
+                    Width="500" 
+                    Height="Auto"
+         
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="#CCCC"
+                    BorderThickness="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+
+
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Nume -->
+                    <Border Background="#FFFFFF"
+                            CornerRadius="10"
+                            BorderBrush="#DDDDDD"
+                            BorderThickness="1"
+                            Padding="10"
+                            Margin="5"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Nume:"
+                                       FontWeight="Bold"
+                                       Foreground="#4B4B4B"
+                                       Margin="0,0,5,0" />
+
+                            <!-- Grid pentru comutarea între TextBlock și TextBox -->
+                            <Grid Width="318">
+                                <!-- TextBlock (afișat când nu este în editare) -->
+                                <TextBlock 
+                                    Text="{Binding CustomerFirstName}"
+                                           Foreground="#6B6B6B">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingFirstName}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <!-- TextBox (afișat când este în editare) -->
+                                <TextBox Text="{Binding CustomerFirstName, UpdateSourceTrigger=PropertyChanged}"
+                                         Foreground="#6B6B6B">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingFirstName}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+
+
+                            <!-- Butoane "✔" și "✖" (afișate când este în editare) -->
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Buton "✔" -->
+                                <Button Width="30"
+                                        Grid.Column="2"
+                                        Height="20"
+                                        Background="white"
+                                        BorderThickness="2"
+                                        BorderBrush="#e2b0ff"
+                                        Command="{Binding SaveEditCommand}"
+                                        CommandParameter="FirstName"
+                                        Content="✔"
+                                        FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                                           Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                             VerticalAlignment="Top"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingFirstName}"
+                                                         Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
+                                        Height="20"
+                                        Background="white"
+                                        BorderThickness="2"
+                                        BorderBrush="#e2b0ff"
+                                        Command="{Binding CancelEditCommand}"
+                                        CommandParameter="FirstName"
+                                        Content="✖"
+                                        FontSize="8">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                                                 Background="{TemplateBinding Background}"
+                                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                                  BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                                                VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingFirstName}"
+                                                            Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+
+                            <Button Width="60"
+                                    Height="20"
+                                    Background="white"
+                                    BorderThickness="2"
+                                    BorderBrush="#e2b0ff"
+                                    Command="{Binding StartEditCommand}"
+                                    CommandParameter="FirstName"
+                                    Content="Modifică"
+                                    FontSize="10">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
+                                                         Background="{TemplateBinding Background}"
+                                                         BorderBrush="{TemplateBinding BorderBrush}"
+                                                         BorderThickness="{TemplateBinding BorderThickness}"
+                                                         CornerRadius="10">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                       VerticalAlignment="Center"/>
+                                                    </Border>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingFirstName}"
+                                                     Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Prenume -->
+                    <Border Background="#FFFFFF"
+                            CornerRadius="10"
+                            BorderBrush="#DDDDDD"
+                            BorderThickness="1"
+                            Padding="10"
+                            Margin="5"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Prenume:"
+                                        FontWeight="Bold"
+                                        Foreground="#4B4B4B"
+                                        Margin="0,0,5,0" />
+
+                            <!-- Grid pentru comutarea între TextBlock și TextBox -->
+                            <Grid Width="300">
+                                <!-- TextBlock (afișat când nu este în editare) -->
+                                <TextBlock Text="{Binding CustomerLastName}"
+               Foreground="#6B6B6B" HorizontalAlignment="Left" Width="253">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingLastName}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <!-- TextBox (afișat când este în editare) -->
+                                <TextBox Text="{Binding CustomerLastName, UpdateSourceTrigger=PropertyChanged}"
+             Foreground="#6B6B6B">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingLastName}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button   Width="60"
+                                      Height="20"
+                                      Background="white"
+                                      BorderThickness="2"
+                                      BorderBrush="#e2b0ff"
+                                      Command="{Binding StartEditCommand}"
+                                      CommandParameter="LastName"
+                                      Content="Modifică"
+                                      FontSize="10">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
+                                                             Background="{TemplateBinding Background}"
+                                                             BorderBrush="{TemplateBinding BorderBrush}"
+                                                             BorderThickness="{TemplateBinding BorderThickness}"
+                                                             CornerRadius="10">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                                                    </Border>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingLastName}"
+                                                         Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                            </Button>
+
+                            <!-- Butoane -->
+                            <!-- Buton "Modifică" (afișat când nu este în editare) -->
+
+                            <!-- Butoane "✔" și "✖" (afișate când este în editare) -->
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="30"
+                                    Grid.Column="2"
+                                    Height="20"
+                                    Background="white"
+                                    BorderThickness="2"
+                                    BorderBrush="#e2b0ff"
+                                    Command="{Binding SaveEditCommand}"
+                                    CommandParameter="LastName"
+                                    Content="✔"
+                                    FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                                           Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Top"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingLastName}"
+                             Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding CancelEditCommand}"
+            CommandParameter="LastName"
+            Content="✖"
+            FontSize="8">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                     Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingLastName}"
+                                Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+
+                    <!-- Email -->
+                    <Border Background="#FFFFFF"
+CornerRadius="10"
+BorderBrush="#DDDDDD"
+BorderThickness="1"
+Padding="10"
+Margin="5"
+Grid.Row="2"
+Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Email:"
+           FontWeight="Bold"
+           Foreground="#4B4B4B"
+           Margin="0,0,5,0" />
+
+                            <!-- Grid pentru comutarea între TextBlock și TextBox -->
+                            <Grid Width="320">
+                                <!-- TextBlock (afișat când nu este în editare) -->
+                                <TextBlock Text="{Binding Email}"
+               Foreground="#6B6B6B" Margin="0,0,30,0">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingEmail}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <!-- TextBox (afișat când este în editare) -->
+                                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+             Foreground="#6B6B6B">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingEmail}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button Width="60"
+                                      Height="20"
+                                      Background="white"
+                                      BorderThickness="2"
+                                      BorderBrush="#e2b0ff"
+                                      Command="{Binding StartEditCommand}"
+                                      CommandParameter="Email"
+                                      Content="Modifică"
+                                      FontSize="10">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
+                                                             Background="{TemplateBinding Background}"
+                                                             BorderBrush="{TemplateBinding BorderBrush}"
+                                                             BorderThickness="{TemplateBinding BorderThickness}"
+                                                             CornerRadius="10">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                                                    </Border>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingEmail}"
+                                                        Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                            </Button>
+
+                            <!-- Butoane -->
+                            <!-- Buton "Modifică" (afișat când nu este în editare) -->
+
+                            <!-- Butoane "✔" și "✖" (afișate când este în editare) -->
+                            <StackPanel  Orientation="Horizontal">
+                                <Button Width="30"
+            Grid.Column="2"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding SaveEditCommand}"
+            CommandParameter="Email"
+            Content="✔"
+            FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                               Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingEmail}"
+                             Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding CancelEditCommand}"
+            CommandParameter="Email"
+            Content="✖"
+            FontSize="8">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                     Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingEmail}"
+                                Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Telefon -->
+                    <Border Background="#FFFFFF"
+CornerRadius="10"
+BorderBrush="#DDDDDD"
+BorderThickness="1"
+Padding="10"
+Margin="5"
+Grid.Row="3"
+Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Telefon:"
+           FontWeight="Bold"
+           Foreground="#4B4B4B"
+           Margin="0,0,5,0" />
+
+                            <!-- Grid pentru comutarea între TextBlock și TextBox -->
+                            <Grid Width="309">
+                                <!-- TextBlock (afișat când nu este în editare) -->
+                                <TextBlock Text="{Binding PhoneNumber}"
+               Foreground="#6B6B6B" Margin="0,0,47,0">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingPhoneNumber}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <!-- TextBox (afișat când este în editare) -->
+                                <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"
+             Foreground="#6B6B6B">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingPhoneNumber}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button Width = "60"
+                                  Height="20"
+                                  Background="white"
+                                  BorderThickness="2"
+                                  BorderBrush="#e2b0ff"
+                                  Command="{Binding StartEditCommand}"
+                                  CommandParameter="PhoneNumber"
+                                  Content="Modifică"
+                                  FontSize="10">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
+                                                               Background="{TemplateBinding Background}"
+                                                               BorderBrush="{TemplateBinding BorderBrush}"
+                                                               BorderThickness="{TemplateBinding BorderThickness}"
+                                                               CornerRadius="10">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                                                    </Border>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingPhoneNumber}"
+                                                            Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                            </Button>
+
+                            <!-- Butoane -->
+                            <!-- Buton "Modifică" (afișat când nu este în editare) -->
+
+                            <!-- Butoane "✔" și "✖" (afișate când este în editare) -->
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Buton "✔" -->
+                                <Button Width="30"
+            Grid.Column="2"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding SaveEditCommand}"
+            CommandParameter="PhoneNumber"
+            Content="✔"
+            FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                               Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingPhoneNumber}"
+                             Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding CancelEditCommand}"
+            CommandParameter="PhoneNumber"
+            Content="✖"
+            FontSize="8">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                     Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingPhoneNumber}"
+                                Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Adresa -->
+                    <Border Background="#FFFFFF"
+CornerRadius="10"
+BorderBrush="#DDDDDD"
+BorderThickness="1"
+Padding="10"
+Margin="5"
+Grid.Row="4"
+Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Adresa:"
+           FontWeight="Bold"
+           Foreground="#4B4B4B"
+           Margin="0,0,5,0" />
+
+                            <!-- Grid pentru comutarea între TextBlock și TextBox -->
+                            <Grid Width="311">
+                                <!-- TextBlock (afișat când nu este în editare) -->
+                                <TextBlock Text="{Binding Address}"
+               Foreground="#6B6B6B" Margin="0,0,47,0">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingAddress}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <!-- TextBox (afișat când este în editare) -->
+                                <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"
+             Foreground="#6B6B6B">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingAddress}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button Width="60"
+                                      Height="20"
+                                      Background="white"
+                                      BorderThickness="2"
+                                      BorderBrush="#e2b0ff"
+                                      Command="{Binding StartEditCommand}"
+                                      CommandParameter="Address"
+                                      Content="Modifică"
+                                      FontSize="10">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
+                                                               Background="{TemplateBinding Background}"
+                                                               BorderBrush="{TemplateBinding BorderBrush}"
+                                                               BorderThickness="{TemplateBinding BorderThickness}"
+                                                               CornerRadius="10">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                                                    </Border>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingAddress}"
+                                                        Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                            </Button>
+
+                            <!-- Butoane -->
+                            <!-- Buton "Modifică" (afișat când nu este în editare) -->
+
+                            <!-- Butoane "✔" și "✖" (afișate când este în editare) -->
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Buton "✔" -->
+                                <Button Width="30"
+            Grid.Column="2"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding SaveEditCommand}"
+            CommandParameter="Address"
+            Content="✔"
+            FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                               Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingAddress}"
+                             Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding CancelEditCommand}"
+            CommandParameter="Address"
+            Content="✖"
+            FontSize="8">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                                 Background="{TemplateBinding Background}"
+                                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                                  BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingAddress}"
+                                                                Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Data Nașterii -->
+                    <Border Background="#FFFFFF"
+                CornerRadius="10"
+                BorderBrush="#DDDDDD"
+                BorderThickness="1"
+                Padding="10"
+                Margin="5"
+                Grid.Row="5"
+                Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Data Nașterii:"
+                           FontWeight="Bold"
+                           Foreground="#4B4B4B"
+                           Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding BirthDate, Mode=TwoWay}"
+                           Foreground="#6B6B6B" Width="275" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Data Angajării -->
+                    <Border Background="#FFFFFF"
+                            CornerRadius="10"
+                            BorderBrush="#DDDDDD"
+                            BorderThickness="1"
+                            Padding="10"
+                            Margin="5"
+                            Grid.Row="6"
+                            Grid.ColumnSpan="2"
+                            Visibility="{Binding IsSectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Data Angajării:"
+                                           FontWeight="Bold"
+                                           Foreground="#4B4B4B"
+                                           Margin="0,0,5,0" />
+                            <TextBlock Text="{Binding HireDate, Mode=TwoWay}"
+                                           Foreground="#6B6B6B" Width="275" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Username -->
+                    <Border Background="#FFFFFF"
+CornerRadius="10"
+BorderBrush="#DDDDDD"
+BorderThickness="1"
+Padding="10"
+Margin="5,5,5,5"
+Grid.Row="7"
+Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Username:"
+           FontWeight="Bold"
+           Foreground="#4B4B4B"
+           Margin="0,0,5,0" />
+
+                            <!-- Grid pentru comutarea între TextBlock și TextBox -->
+                            <Grid Width="294">
+                                <!-- TextBlock (afișat când nu este în editare) -->
+                                <TextBlock Text="{Binding Username}"
+               Foreground="#6B6B6B" Margin="0,0,47,0">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingUsername}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <!-- TextBox (afișat când este în editare) -->
+                                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+             Foreground="#6B6B6B">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingUsername}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button Width="60"
+                                      Height="20"
+                                      Background="white"
+                                      BorderThickness="2"
+                                      BorderBrush="#e2b0ff"
+                                      Command="{Binding StartEditCommand}"
+                                      CommandParameter="Username"
+                                      Content="Modifică"
+                                      FontSize="10">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border  x:Name="Border"
+                                                               Background="{TemplateBinding Background}"
+                                                               BorderBrush="{TemplateBinding BorderBrush}"
+                                                               BorderThickness="{TemplateBinding BorderThickness}"
+                                                               CornerRadius="10">
+                                                        <ContentPresenter HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                                                    </Border>
+
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="Border" Property="Background" Value="#e2b0ff"/>
+
+                                                            <Setter TargetName="Border" Property="BorderBrush" Value="#5f0aa1"/>
+
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsEditingUsername}"
+                                                            Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                            </Button>
+
+                            <!-- Butoane -->
+                            <!-- Buton "Modifică" (afișat când nu este în editare) -->
+
+                            <!-- Butoane "✔" și "✖" (afișate când este în editare) -->
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Buton "✔" -->
+                                <Button Width="30"
+            Grid.Column="2"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding SaveEditCommand}"
+            CommandParameter="Username"
+            Content="✔"
+            FontSize="10">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                               Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                 VerticalAlignment="Top"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#78fa7a"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#089e0a"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingUsername}"
+                             Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Buton "✖" -->
+                                <Button Width="30"
+            Height="20"
+            Background="white"
+            BorderThickness="2"
+            BorderBrush="#e2b0ff"
+            Command="{Binding CancelEditCommand}"
+            CommandParameter="Username"
+            Content="✖"
+            FontSize="8">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border  x:Name="Border"
+                                     Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}">
+
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="Border" Property="Background" Value="#fc4c4c"/>
+
+                                                                <Setter TargetName="Border" Property="BorderBrush" Value="#ba1321"/>
+
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsEditingUsername}"
+                                Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                </Grid>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>

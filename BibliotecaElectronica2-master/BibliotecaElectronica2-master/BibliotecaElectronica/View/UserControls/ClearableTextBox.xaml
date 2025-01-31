@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="BibliotecaElectronica.View.UserControls.ClearableTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BibliotecaElectronica.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="330">
+    <Grid Background="White">
+        <TextBox x:Name="txtInput" Height="50" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+          FontSize="16" FontWeight="Light" Background="Transparent" TextChanged="txtInput_TextChanged"/>
+        <TextBlock x:Name="tbPlaceHolder" Text="{Binding PlaceHolder}" FontSize="16" FontWeight="Light"
+            Foreground="DarkGray" VerticalAlignment="Center" Margin="5,0,0,0" Panel.ZIndex="-1"/>
+        <Button x:Name="btnClear" Width="30" HorizontalAlignment="Right" Content="X"
+         Background="Transparent" Foreground="LightGray" BorderThickness="0" Click="btnClear_Click"/>
+    </Grid>
+</UserControl>
