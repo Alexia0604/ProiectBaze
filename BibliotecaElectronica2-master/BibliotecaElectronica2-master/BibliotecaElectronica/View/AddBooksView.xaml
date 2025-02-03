@@ -12,6 +12,8 @@
     <UserControl.Resources>
         <utilities:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
         <utilities:IntConverter x:Key="IntConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
     </UserControl.Resources>
     
     <Grid>
@@ -37,13 +39,43 @@
                         <TextBlock Text="ISBN" Margin="0,10,0,5" FontWeight="Bold"/>
                         <TextBox Text="{Binding ISBN, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5" FontSize="14" Background="#f9f7fc"/>
 
-                        <!-- Category -->
+                        <!-- Categorie-->
                         <TextBlock Text="Categorie" Margin="0,10,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5" FontSize="14" Background="#f9f7fc"/>
+                        <ComboBox 
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding Category, UpdateSourceTrigger=PropertyChanged}" 
+                        Margin="0,0,0,10" 
+                        Padding="5" 
+                        FontSize="14" 
+                        Background="#f9f7fc">
+                        </ComboBox>
+                        <TextBox 
+                        Visibility="{Binding IsCategoryOtherVisible, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                        Text="{Binding CategoryOther, UpdateSourceTrigger=PropertyChanged}" 
+                        Margin="0,0,0,10" 
+                        Padding="5" 
+                        FontSize="14" 
+                        Background="#f9f7fc"/>
 
                         <!-- Publisher -->
+                        <!--<TextBlock Text="Editura" Margin="0,10,0,5" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Publisher, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5" FontSize="14" Background="#f9f7fc"/>-->
                         <TextBlock Text="Editura" Margin="0,10,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Publisher, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" Padding="5" FontSize="14" Background="#f9f7fc"/>
+                        <ComboBox 
+                        ItemsSource="{Binding Publishers}"
+                        SelectedItem="{Binding Publisher, UpdateSourceTrigger=PropertyChanged}" 
+                        Margin="0,0,0,10" 
+                        Padding="5" 
+                        FontSize="14" 
+                        Background="#f9f7fc">
+                        </ComboBox>
+                        <TextBox 
+                        Visibility="{Binding IsPublisherOtherVisible, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                        Text="{Binding PublisherOther, UpdateSourceTrigger=PropertyChanged}" 
+                        Margin="0,0,0,10" 
+                        Padding="5" 
+                        FontSize="14" 
+                        Background="#f9f7fc"/>
 
                         <!-- Page Count -->
                         <TextBlock Text="Număr Pagini" Margin="0,10,0,5" FontWeight="Bold"/>

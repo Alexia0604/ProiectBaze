@@ -539,5 +539,29 @@ namespace BibliotecaElectronica.Model
             return db.Cartes.Any(c => c.ISBN == isbn);
         }
 
+        public static ObservableCollection<string> GetCategories()
+        {
+            var db = new BibliotecaElectronicaEntities3();
+            var categories = db.Cartes
+                               .Select(c => c.Categorie)
+                               .Distinct()
+                               .ToList();
+
+            return new ObservableCollection<string>(categories);
+        }
+
+        public static ObservableCollection<string> GetPublishers()
+        {
+            var db = new BibliotecaElectronicaEntities3();
+            var publishers = db.Cartes
+                               .Select(c => c.Editura)
+                               .Distinct()
+                               .ToList();
+
+            return new ObservableCollection<string>(publishers);
+        }
+
+
+
     }
 }

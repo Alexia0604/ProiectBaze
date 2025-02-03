@@ -45,7 +45,7 @@ CREATE TABLE Persoana (
     Nume NVARCHAR(100) NOT NULL,
     Prenume NVARCHAR(100) NOT NULL,
     Username NVARCHAR(50) UNIQUE NOT NULL,
-    Parola NVARCHAR(256) NOT NULL, -- Se recomandă criptarea parolelor
+    Parola NVARCHAR(256) NOT NULL, -- Se recomanda criptarea parolelor
     Email NVARCHAR(100) UNIQUE NOT NULL,
     Telefon NVARCHAR(20),
     Adresa NVARCHAR(255),
@@ -82,7 +82,7 @@ CREATE TABLE Carte (
     Titlu NVARCHAR(200) NOT NULL,
     Autor NVARCHAR(100) NOT NULL,
     AnPublicare INT,
-    ISBN NVARCHAR(20) NOT NULL UNIQUE, -- Adăugat câmpul ISBN
+    ISBN NVARCHAR(20) NOT NULL UNIQUE, -- Adaugat campul ISBN
     Descriere NVARCHAR(50) 
 );
 
@@ -111,9 +111,9 @@ CREATE TABLE Imprumut (
 CREATE TABLE Notificare (
     ID INT PRIMARY KEY IDENTITY,
     ID_Cititor INT FOREIGN KEY REFERENCES Cititor(ID),
-    Tip_Notificare NVARCHAR(100) NOT NULL, -- Tipul notificării (ex: "Returnare întârziată")
+    Tip_Notificare NVARCHAR(100) NOT NULL, -- Tipul notificării (ex: "Returnare intarziata")
     Mesaj NVARCHAR(500) NOT NULL, -- Mesajul notificării
-    DataTrimitere DATE NOT NULL, -- Data trimiterii notificării
+    DataTrimitere DATE NOT NULL, -- Data trimiterii notificarii
     Stare NVARCHAR(50) NOT NULL DEFAULT 'Necitit' -- Exemplu: 'Necitit', 'Citit'
 );
 
@@ -360,7 +360,7 @@ ON Imprumut
 AFTER INSERT
 AS
 BEGIN
-    -- Actualizează numărul de cărți împrumutate pentru fiecare cititor
+    -- Actualizeaza numarul de carti imprumutate pentru fiecare cititor
    UPDATE Cititor
     SET NrCartiImprumutate = NrCartiImprumutate + (
         SELECT COUNT(*) 
@@ -391,7 +391,7 @@ VALUES
 CREATE PROCEDURE SetFinalizatPentruImprumuturiFinalizate
 AS
 BEGIN
-    -- Actualizează starea la 'Finalizat' pentru înregistrările care au DataReturnare nenulă
+    -- Actualizeaza starea la 'Finalizat' pentru inregistrarile care au DataReturnare nenula
     UPDATE Imprumut
     SET Stare = 'Finalizat'
     WHERE DataReturnare IS NOT NULL;
@@ -427,13 +427,13 @@ select * from Recenzie
 select * from Carte
 
 ALTER TABLE Carte
-ADD NumarPagini INT, -- Numărul de pagini
-    Dimensiune NVARCHAR(50), -- Dimensiunea cărții (ex: "20x25cm")
+ADD NumarPagini INT, -- Numarul de pagini
+    Dimensiune NVARCHAR(50), -- Dimensiunea cartii
     Editura NVARCHAR(100); -- Numele editurii
 
 UPDATE Carte
-SET NumarPagini = 200, -- Numărul de pagini
-    Dimensiune = '15x22cm', -- Dimensiunea cărții
+SET NumarPagini = 200, -- Numarul de pagini
+    Dimensiune = '15x22cm', -- Dimensiunea cartii
     Editura = 'Editura Humanitas' -- Numele editurii
 WHERE ID = 1; -- Cartea cu ID=1
 
@@ -447,14 +447,14 @@ ON Imprumut
 AFTER INSERT
 AS
 BEGIN
-    -- Actualizează numărul de exemplare din tabelul Stoc
+    -- Actualizeaza numarul de exemplare din tabelul Stoc
     UPDATE Stoc
     SET NrExemplare = NrExemplare - 1
     FROM Stoc
     INNER JOIN inserted ON Stoc.ID_Carte = inserted.ID_Carte
-    WHERE Stoc.NrExemplare > 0; -- Asigură că nu scade sub 0
+    WHERE Stoc.NrExemplare > 0; -- Asigura că nu scade sub 0
 
-    -- Opțional: gestionează situațiile în care nu există stoc disponibil
+	--gestioneaza situatiile in care nu exista stoc disponibil
     IF EXISTS (
         SELECT 1
         FROM Stoc
@@ -477,7 +477,7 @@ CREATE TABLE Feedback (
 select * from Recenzie
 
 
--- Adăugarea unor valori în tabela Feedback
+-- Adaugarea unor valori in tabela Feedback
 INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (1, 15, 3);
 
 INSERT INTO Feedback (ID_Recenzie, NrLike, NrDislike) VALUES (2, 15, 3);
@@ -554,7 +554,7 @@ ALTER TABLE Notificare
 ALTER COLUMN DataTrimitere DATETIME NOT NULL;
 
 UPDATE Notificare
-SET DataTrimitere = DATEADD(HOUR, 17, DataTrimitere) -- Adaugă ora 12:00 pentru toate intrările
+SET DataTrimitere = DATEADD(HOUR, 17, DataTrimitere) -- Adauga ora 12:00 pentru toate intrarile
 WHERE CAST(DataTrimitere AS TIME) = '00:00:00';
 
 
@@ -601,50 +601,50 @@ WHERE ID=4;
 
 UPDATE Carte
 SET Categorie = 'dezvoltare personala'
-WHERE ID=5; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=5; -- Prima si a doua carte sunt asociate cu categoria 1
 
 UPDATE Carte
 SET Categorie = 'aventura'
-WHERE ID=6; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=6; -- Prima si a doua carte sunt asociate cu categoria 1
 
 UPDATE Carte
 SET Categorie = 'clasic aventura'
-WHERE ID=7; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=7; -- Prima si a doua carte sunt asociate cu categoria 1
 
 UPDATE Carte
 SET Categorie = 'biografie'
-WHERE ID=8; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=8; -- Prima si a doua carte sunt asociate cu categoria 1
 
 UPDATE Carte
 SET Categorie = 'clasic romantic dragoste'
-WHERE ID=9; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=9; -- Prima si a doua carte sunt asociate cu categoria 1
 
 UPDATE Carte
 SET Categorie = 'aventura fantastic'
-WHERE ID=10; -- Prima și a doua carte sunt asociate cu categoria 1
+WHERE ID=10; -- Prima si a doua carte sunt asociate cu categoria 1
 
 select * from Carte
 
 UPDATE Carte
 SET ID_Categorie = 2
-WHERE ID IN (3, 4); -- A treia și a patra carte sunt asociate cu categoria 2
+WHERE ID IN (3, 4); -- A treia si a patra carte sunt asociate cu categoria 2
 
 UPDATE Carte
 SET ID_Categorie = 3
-WHERE ID IN (5, 6); -- A cincea și a șasea carte sunt asociate cu categoria 3
+WHERE ID IN (5, 6); -- A cincea si a șasea carte sunt asociate cu categoria 3
 
 UPDATE Carte
 SET ID_Categorie = 4
-WHERE ID IN (7, 8); -- A șaptea și a opta carte sunt asociate cu categoria 4
+WHERE ID IN (7, 8); -- A șaptea si a opta carte sunt asociate cu categoria 4
 
 UPDATE Carte
 SET ID_Categorie = 5
-WHERE ID IN (9, 10); -- A noua și a zecea carte sunt asociate cu categoria 5
+WHERE ID IN (9, 10); -- A noua si a zecea carte sunt asociate cu categoria 5
 
 
 -- de aici incepi
 ALTER TABLE Persoana
-ADD StareCont INT DEFAULT 1; -- 1 înseamnă "activ", 0 înseamnă "închis"
+ADD StareCont INT DEFAULT 1; -- 1 inseamna "activ", 0 inseamna "inchis"
 
 select * from Persoana
 
@@ -734,7 +734,7 @@ ON Persoana
 AFTER INSERT
 AS
 BEGIN
-    -- Actualizează StareCont la 1 pentru fiecare persoană nouă inserată
+    -- Actualizeaza StareCont la 1 pentru fiecare persoana noua inserata
     UPDATE p
     SET p.StareCont = 1
     FROM Persoana p
@@ -777,7 +777,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Actualizăm media notelor pentru fiecare carte pe baza recenziilor existente
+    -- Actualizam media notelor pentru fiecare carte pe baza recenziilor existente
     UPDATE Carte
     SET Nota = (
         SELECT AVG(CAST(Nota AS FLOAT))
@@ -788,3 +788,42 @@ BEGIN
 END;
 
 exec ActualizeazaMediaNotelor;
+
+--trgigger pentru varsta bibliotecarului
+CREATE TRIGGER trg_CheckBibliotecarAge
+ON Bibliotecar
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        JOIN Persoana p ON i.ID_Persoana = p.ID
+        WHERE DATEDIFF(YEAR, p.DataNasterii, GETDATE()) < 18
+    )
+    BEGIN
+        RAISERROR ('Bibliotecarul trebuie să aibă cel puțin 18 ani!', 16, 1);
+        RETURN;
+    END
+    
+    INSERT INTO Bibliotecar (ID, ID_Persoana, DataAngajare)
+    SELECT ID, ID_Persoana, DataAngajare FROM inserted;
+END;
+
+select * from Persoana
+
+-- Populare tabel Persoana
+INSERT INTO Persoana (Nume, Prenume, Username, Parola, Email, Telefon, Adresa, DataNasterii)
+VALUES
+('Dragomir', 'Antonia', 'diva', 'Parola2@', 'karimari.dragomir@gmail.com', '0712345678', 'Str. Exemplu, Nr. 1', '2008-09-01');
+
+delete from Persoana where Id=47
+
+select * from Bibliotecar
+
+-- Populare tabel Bibliotecar
+INSERT INTO Bibliotecar (ID, ID_Persoana, DataAngajare)
+VALUES 
+(3, 50, '2025-02-03');

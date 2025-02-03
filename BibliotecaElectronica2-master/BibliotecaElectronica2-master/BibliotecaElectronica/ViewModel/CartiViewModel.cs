@@ -136,7 +136,7 @@ namespace BibliotecaElectronica.ViewModel
                 {
                     Titlu = c.Titlu,    
                     Autor = c.Autor,
-                    Imagine = c.Imagine.ToArray()
+                    Imagine = c.Imagine
 
                 }).ToList();
 

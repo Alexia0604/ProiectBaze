@@ -9,6 +9,7 @@ using System.IO;
 using CommunityToolkit.Mvvm.Input;
 using BibliotecaElectronica.Model;
 using BibliotecaElectronica.Exceptions;
+using System.Collections.ObjectModel;
 
 namespace BibliotecaElectronica.ViewModel
 {
@@ -22,11 +23,45 @@ namespace BibliotecaElectronica.ViewModel
         bool _valid = true;
         public bool HasErrors => _propertyErrors.Count > 0;
 
+        // Nou: Comandă pentru a gestiona selecția categoriei
+        public ICommand AddCategorySelectedCommand { get; }
+
+        // Nou: Comandă pentru a gestiona selecția editurii
+        public ICommand AddPublisherSelectedCommand { get; }
+
+        private void OnCategorySelected(string category)
+        {
+            IsCategoryOtherVisible = (category == "Altele");
+
+            if (category != "Altele")
+            {
+                CategoryOther = string.Empty;
+            }
+        }
+        private void OnPublisherSelected(string publisher)
+        {
+            IsPublisherOtherVisible = (publisher == "Altele");
+
+            if (publisher != "Altele")
+            {
+                PublisherOther = string.Empty;
+            }
+        }
+
         public AddBooksViewModel(LibrarianViewModel librarianViewModel)
         {
             _librarianViewModel = librarianViewModel;
             SelectImageCommand = new RelayCommand(SelectImage);
             AddBookCommand = new RelayCommand(AddBook);
+
+            // Încărcăm categoriile la inițializare
+            LoadCategories();
+            LoadPublishers();
+
+            // Adăugăm un eveniment pentru a gestiona selecția categoriei
+            AddCategorySelectedCommand = new RelayCommand<string>(OnCategorySelected);
+            // Adăugăm un eveniment pentru a gestiona selecția categoriei
+            AddPublisherSelectedCommand = new RelayCommand<string>(OnPublisherSelected);
         }
 
 
@@ -87,6 +122,7 @@ namespace BibliotecaElectronica.ViewModel
             set
             {
                 _category = value;
+                OnCategorySelected(value); // Apelează metoda pentru a actualiza vizibilitatea câmpului „Altele”
                 ValidateProperty(nameof(Category), value);
                 OnPropertyChanged(nameof(Category));
             }
@@ -100,6 +136,7 @@ namespace BibliotecaElectronica.ViewModel
             set
             {
                 _publisher = value;
+                OnPublisherSelected(value); // Apelează metoda pentru a actualiza vizibilitatea câmpului „Altele”
                 ValidateProperty(nameof(Publisher), value);
                 OnPropertyChanged(nameof(Publisher));
             }
@@ -165,6 +202,77 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
+        // Nou: Proprietate pentru categorii
+        private ObservableCollection<string> _categories;
+        public ObservableCollection<string> Categories
+        {
+            get => _categories;
+            set
+            {
+                _categories = value;
+                OnPropertyChanged(nameof(Categories));
+            }
+        }
+
+        // Nou: Proprietate pentru categorii
+        private ObservableCollection<string> _publishers;
+        public ObservableCollection<string> Publishers
+        {
+            get => _publishers;
+            set
+            {
+                _publishers = value;
+                OnPropertyChanged(nameof(Publishers));
+            }
+        }
+
+        // Nou: Proprietate pentru a permite introducerea manuală a categoriei
+        private bool _isCategoryOtherVisible;
+        public bool IsCategoryOtherVisible
+        {
+            get => _isCategoryOtherVisible;
+            set
+            {
+                _isCategoryOtherVisible = value;
+                OnPropertyChanged(nameof(IsCategoryOtherVisible));
+            }
+        }
+
+        // Nou: Proprietate pentru a permite introducerea manuală a categoriei
+        private bool _isPublisherOtherVisible;
+        public bool IsPublisherOtherVisible
+        {
+            get => _isPublisherOtherVisible;
+            set
+            {
+                _isPublisherOtherVisible = value;
+                OnPropertyChanged(nameof(IsPublisherOtherVisible));
+            }
+        }
+
+        private string _categoryOther;
+        public string CategoryOther
+        {
+            get => _categoryOther;
+            set
+            {
+                _categoryOther = value;
+                OnPropertyChanged(nameof(CategoryOther));
+            }
+        }
+
+        private string _publisherOther;
+        public string PublisherOther
+        {
+            get => _publisherOther;
+            set
+            {
+                _publisherOther = value;
+                OnPropertyChanged(nameof(PublisherOther));
+            }
+        }
+
+
         public ICommand SelectImageCommand { get; }
         public ICommand AddBookCommand { get; }
 
@@ -174,6 +282,30 @@ namespace BibliotecaElectronica.ViewModel
                 return null;
 
             return _propertyErrors[propertyName];
+        }
+
+        // Nou: Metodă pentru a încărca categoriile
+        private void LoadCategories()
+        {
+            Categories = CarteModel.GetCategories();
+
+            // Adăugăm opțiunea "Altele" pentru a permite introducerea manuală
+            if (!Categories.Contains("Altele"))
+            {
+                Categories.Add("Altele");
+            }
+        }
+
+        // Nou: Metodă pentru a încărca categoriile
+        private void LoadPublishers()
+        {
+            Publishers = CarteModel.GetPublishers();
+
+            // Adăugăm opțiunea "Altele" pentru a permite introducerea manuală
+            if (!Publishers.Contains("Altele"))
+            {
+                Publishers.Add("Altele");
+            }
         }
 
         private void ValidateProperty(string propertyName, object value)
@@ -329,6 +461,19 @@ namespace BibliotecaElectronica.ViewModel
 
         private void AddBook()
         {
+            // Setăm categoria fie cea selectată, fie cea introdusă manual
+            if (Category == "Altele" && !string.IsNullOrWhiteSpace(CategoryOther))
+            {
+                Category = CategoryOther;
+            }
+
+            // Setăm editura fie cea selectată, fie cea introdusă manual
+            if (Publisher == "Altele" && !string.IsNullOrWhiteSpace(PublisherOther))
+            {
+                Publisher = PublisherOther;
+            }
+
+
             if (HasErrors)
             {
                 MessageBox.Show("Cartea nu poate fi adăugată!", "Error", MessageBoxButton.OK, MessageBoxImage.Error );
