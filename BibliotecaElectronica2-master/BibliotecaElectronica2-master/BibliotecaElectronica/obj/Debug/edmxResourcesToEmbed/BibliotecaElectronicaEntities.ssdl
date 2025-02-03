@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BibliotecaElectronicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_Persoana" Type="int" />
+  </EntityType>
+  <EntityType Name="Bibliotecar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_Persoana" Type="int" />
+    <Property Name="DataAngajare" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titlu" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Autor" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AnPublicare" Type="int" />
+    <Property Name="ISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Imagine" Type="varbinary(max)" />
+    <Property Name="Descriere" Type="nvarchar" MaxLength="1000" />
+    <Property Name="NumarPagini" Type="int" />
+    <Property Name="Dimensiune" Type="nvarchar" MaxLength="50" />
+    <Property Name="Editura" Type="nvarchar" MaxLength="100" />
+    <Property Name="Categorie" Type="nvarchar" MaxLength="100" />
+    <Property Name="Nota" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nume" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cititor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Persoana" Type="int" />
+    <Property Name="DataInregistrare" Type="date" Nullable="false" />
+    <Property Name="NrCartiImprumutate" Type="int" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Recenzie" Type="int" Nullable="false" />
+    <Property Name="NrLike" Type="int" Nullable="false" />
+    <Property Name="NrDislike" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Imprumut">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Cititor" Type="int" />
+    <Property Name="ID_Carte" Type="int" />
+    <Property Name="DataImprumut" Type="date" Nullable="false" />
+    <Property Name="TermenLimita" Type="date" Nullable="false" />
+    <Property Name="DataReturnare" Type="date" />
+    <Property Name="Stare" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DataCerereReturnare" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Notificare">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Cititor" Type="int" />
+    <Property Name="Tip_Notificare" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Mesaj" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DataTrimitere" Type="datetime" Nullable="false" />
+    <Property Name="Stare" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persoana">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nume" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Prenume" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parola" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+    <Property Name="Adresa" Type="nvarchar" MaxLength="255" />
+    <Property Name="DataNasterii" Type="date" />
+    <Property Name="StareCont" Type="int" />
+  </EntityType>
+  <EntityType Name="Recenzie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Cititor" Type="int" />
+    <Property Name="ID_Carte" Type="int" />
+    <Property Name="Nota" Type="int" />
+    <Property Name="Comentariu" Type="nvarchar" MaxLength="500" />
+    <Property Name="DataRecenzie" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stoc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Carte" Type="int" />
+    <Property Name="NrExemplare" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TaskLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastRunTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Administr__ID_Pe__5441852A">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Administrator" Type="Self.Administrator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Administrator">
+        <PropertyRef Name="ID_Persoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bibliotec__ID_Pe__5165187F">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Bibliotecar" Type="Self.Bibliotecar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bibliotecar">
+        <PropertyRef Name="ID_Persoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cititor__ID_Pers__151B244E">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cititor">
+        <PropertyRef Name="ID_Persoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback__ID_Rec__65370702">
+    <End Role="Recenzie" Type="Self.Recenzie" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recenzie">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="ID_Recenzie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Imprumut__ID_Car__31B762FC">
+    <End Role="Carte" Type="Self.Carte" Multiplicity="0..1" />
+    <End Role="Imprumut" Type="Self.Imprumut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Imprumut">
+        <PropertyRef Name="ID_Carte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Imprumut__ID_Cit__30C33EC3">
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="0..1" />
+    <End Role="Imprumut" Type="Self.Imprumut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cititor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Imprumut">
+        <PropertyRef Name="ID_Cititor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificar__ID_Ci__0A688BB1">
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="0..1" />
+    <End Role="Notificare" Type="Self.Notificare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cititor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notificare">
+        <PropertyRef Name="ID_Cititor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Recenzie__ID_Car__367C1819">
+    <End Role="Carte" Type="Self.Carte" Multiplicity="0..1" />
+    <End Role="Recenzie" Type="Self.Recenzie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Recenzie">
+        <PropertyRef Name="ID_Carte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Recenzie__ID_Cit__3587F3E0">
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="0..1" />
+    <End Role="Recenzie" Type="Self.Recenzie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cititor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Recenzie">
+        <PropertyRef Name="ID_Cititor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stoc__ID_Carte__2CF2ADDF">
+    <End Role="Carte" Type="Self.Carte" Multiplicity="0..1" />
+    <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stoc">
+        <PropertyRef Name="ID_Carte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ActualizeazaMediaNotelor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="SetFinalizatPentruImprumuturiFinalizate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="BibliotecaElectronicaModelStoreContainer">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bibliotecar" EntityType="Self.Bibliotecar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carte" EntityType="Self.Carte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cititor" EntityType="Self.Cititor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Imprumut" EntityType="Self.Imprumut" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notificare" EntityType="Self.Notificare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persoana" EntityType="Self.Persoana" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recenzie" EntityType="Self.Recenzie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stoc" EntityType="Self.Stoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskLogs" EntityType="Self.TaskLogs" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Administr__ID_Pe__5441852A" Association="Self.FK__Administr__ID_Pe__5441852A">
+      <End Role="Persoana" EntitySet="Persoana" />
+      <End Role="Administrator" EntitySet="Administrator" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bibliotec__ID_Pe__5165187F" Association="Self.FK__Bibliotec__ID_Pe__5165187F">
+      <End Role="Persoana" EntitySet="Persoana" />
+      <End Role="Bibliotecar" EntitySet="Bibliotecar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cititor__ID_Pers__151B244E" Association="Self.FK__Cititor__ID_Pers__151B244E">
+      <End Role="Persoana" EntitySet="Persoana" />
+      <End Role="Cititor" EntitySet="Cititor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback__ID_Rec__65370702" Association="Self.FK__Feedback__ID_Rec__65370702">
+      <End Role="Recenzie" EntitySet="Recenzie" />
+      <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Imprumut__ID_Car__31B762FC" Association="Self.FK__Imprumut__ID_Car__31B762FC">
+      <End Role="Carte" EntitySet="Carte" />
+      <End Role="Imprumut" EntitySet="Imprumut" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Imprumut__ID_Cit__30C33EC3" Association="Self.FK__Imprumut__ID_Cit__30C33EC3">
+      <End Role="Cititor" EntitySet="Cititor" />
+      <End Role="Imprumut" EntitySet="Imprumut" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificar__ID_Ci__0A688BB1" Association="Self.FK__Notificar__ID_Ci__0A688BB1">
+      <End Role="Cititor" EntitySet="Cititor" />
+      <End Role="Notificare" EntitySet="Notificare" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Recenzie__ID_Car__367C1819" Association="Self.FK__Recenzie__ID_Car__367C1819">
+      <End Role="Carte" EntitySet="Carte" />
+      <End Role="Recenzie" EntitySet="Recenzie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Recenzie__ID_Cit__3587F3E0" Association="Self.FK__Recenzie__ID_Cit__3587F3E0">
+      <End Role="Cititor" EntitySet="Cititor" />
+      <End Role="Recenzie" EntitySet="Recenzie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stoc__ID_Carte__2CF2ADDF" Association="Self.FK__Stoc__ID_Carte__2CF2ADDF">
+      <End Role="Carte" EntitySet="Carte" />
+      <End Role="Stoc" EntitySet="Stoc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -139,20 +139,11 @@
                                 Tag="#8228a6">
                         <StackPanel Orientation="Horizontal" >
                             <fa:IconImage Icon="RankingStar" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Top Cărți Citite" Style="{StaticResource  menuButtonText}" Height="18" Width="112"/>
+                            <TextBlock Text="Top cărți" Style="{StaticResource  menuButtonText}" Height="18" Width="112"/>
 
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton Margin="0,0,0,0" Style="{StaticResource BtnStyle}" HorizontalAlignment="Center"
-                                Command="{Binding BestBooksClickButtonCommand}"
-                                Tag="#8228a6">
-                        <StackPanel Orientation="Horizontal" >
-                            <fa:IconImage Icon="RankingStar" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Top Cărți Admirate" Style="{StaticResource  menuButtonText}" Height="18" Width="112"/>
-
-                        </StackPanel>
-                    </RadioButton>
 
                 </StackPanel>
             </Grid>
@@ -180,9 +171,7 @@
                     <DataTemplate DataType="{x:Type vms:TopViewModel}">
                         <views:TopView/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type vms:BestBooksViewModel}">
-                        <views:BestBooksView/>
-                    </DataTemplate>
+                   
                 </Grid.Resources>
 
                 <ContentControl Margin="10" Content="{Binding CurrentRightViewModel}"/>

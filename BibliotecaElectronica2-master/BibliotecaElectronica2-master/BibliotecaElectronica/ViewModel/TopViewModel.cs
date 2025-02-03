@@ -16,7 +16,21 @@ namespace BibliotecaElectronica.ViewModel
     public class TopViewModel : ViewModelBase
     {
         private ObservableCollection<CarteModel> topBooks;
+        private ObservableCollection<CarteModel> topRatedBooks;
         private ClientViewModel _clientViewModel;
+
+        private int rank = 1;
+        public int Rank
+        {
+            get => rank;
+            set
+            {
+                rank = value;
+                OnPropertyChanged(nameof(Rank));
+
+            }
+        }
+
 
         public ObservableCollection<CarteModel> TopBooks
         {
@@ -25,6 +39,17 @@ namespace BibliotecaElectronica.ViewModel
             {
                 topBooks = value;
                 OnPropertyChanged(nameof(TopBooks));
+            
+            }
+        }
+
+        public ObservableCollection<CarteModel> TopRatedBooks
+        {
+            get => topRatedBooks;
+            set
+            {
+                topRatedBooks = value;
+                OnPropertyChanged(nameof(TopRatedBooks));
             }
         }
 
@@ -60,11 +85,17 @@ namespace BibliotecaElectronica.ViewModel
 
             SelectBookCommand = new RelayCommand<CarteModel>(SelectBook);
             LoadTopBooks();
+            LoadTopRatedBooks();
         }
 
         public void LoadTopBooks()
         {
             TopBooks = new ObservableCollection<CarteModel>(CarteModel.LoadTopBooks());
+        }
+
+        public void LoadTopRatedBooks()
+        {
+            TopRatedBooks = new ObservableCollection<CarteModel>(CarteModel.LoadTopRatedBooks());
         }
     }
 }

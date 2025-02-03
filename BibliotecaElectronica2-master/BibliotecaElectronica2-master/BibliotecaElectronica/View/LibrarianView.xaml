@@ -24,7 +24,7 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions >
-                <ColumnDefinition  Width="188" />
+                <ColumnDefinition  Width="194" />
                 <ColumnDefinition />
 
             </Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions >
 
-                <ColumnDefinition  Width="188" />
+                <ColumnDefinition  Width="194" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
@@ -111,8 +111,30 @@
                                 Command="{Binding VizualizeazaReturnariCommand}"
                                 Tag="#8228a6">
                         <StackPanel Orientation="Horizontal" >
+                            <fa:IconImage Icon="ListCheck" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{Binding Persoana.NrNotificariNecitite, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Foreground="red">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Persoana.NrNotificariNecitite, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Value="0">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text="Aprobă returnări" Style="{StaticResource  menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Margin="0,20,0,-20" Style="{StaticResource BtnStyle}" HorizontalAlignment="Center"
+             Command="{Binding VizualizeazaReturnariTodayCommand}"
+             Tag="#8228a6">
+                        <StackPanel Orientation="Horizontal" >
                             <fa:IconImage Icon="List" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Returnări" Style="{StaticResource  menuButtonText}"/>
+                           
+                            <TextBlock Text="Retururi zi curentă" Style="{StaticResource  menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
@@ -138,6 +160,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vms:ReturnariViewModel}">
                         <views:ReturnariView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:TodayReturnariViewModel}">
+                        <views:TodayReturnariView/>
                     </DataTemplate>
                 </Grid.Resources>
 

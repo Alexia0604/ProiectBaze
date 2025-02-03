@@ -102,15 +102,25 @@ namespace BibliotecaElectronica.Model
         {
             this.Stare = "Citit";
             this.IsPopupOpen = false;
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var notificare = db.Notificares.Where(n => n.ID == this.ID).FirstOrDefault();
             notificare.Stare = "Citit";
-            db.SubmitChanges();
+            db.SaveChanges();
         }
 
         public static int getNrMesajeNecitite(int userID)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
+
+            var bibliotecar = db.Bibliotecars.FirstOrDefault(b => b.ID_Persoana == userID);
+
+            if (bibliotecar != null)
+            {
+                
+                int numar= db.Imprumuts.Count(i => i.Stare == "Returnare în așteptare");
+                
+                return numar;
+            }
 
             int cititorID = db.Cititors.Where(c => c.ID_Persoana == userID).FirstOrDefault().ID;
 
@@ -122,7 +132,7 @@ namespace BibliotecaElectronica.Model
         }
         public static ObservableCollection<NotificareModel> getNotifications(int userID)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
 
             int cititorID = db.Cititors.Where(c => c.ID_Persoana == userID).FirstOrDefault().ID;
 

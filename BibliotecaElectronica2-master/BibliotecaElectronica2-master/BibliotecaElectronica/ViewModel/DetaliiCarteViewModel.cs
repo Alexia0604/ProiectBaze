@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -56,6 +57,18 @@ namespace BibliotecaElectronica.ViewModel
                
             }
         }
+
+        private int _borrowedCount = 0;
+        public int BorrowedCount
+        {
+            get => _borrowedCount;
+            set
+            {
+                _borrowedCount = value;
+                OnPropertyChanged(nameof(BorrowedCount));
+            }
+        }
+
         public ICommand BorrowBook { get; }
         public ICommand BackToAllBooks { get; }
 
@@ -185,10 +198,22 @@ namespace BibliotecaElectronica.ViewModel
             }
         }
 
+        private bool isButtonPressed;
+        public bool IsButtonPressed
+        {
+            get => isButtonPressed;
+            set
+            {
+                isButtonPressed = value;
+                OnPropertyChanged(nameof(IsButtonPressed));
+                CommandManager.InvalidateRequerySuggested();
+            }
+        }
        
         public DetaliiCarteViewModel(CarteModel selectedBook, ClientViewModel clientViewModel)
         {
-           // IsButtonVisible = true;
+            // IsButtonVisible = true;
+            IsButtonPressed = !ImprumutModel.verificaImprumut(selectedBook.idBook,clientViewModel.Persoana.IdPerson);
             _isSectionVisible= true;
             ratings =selectedBook.getRatingDistributions();
             averageRating = GetPercentage();
@@ -199,7 +224,7 @@ namespace BibliotecaElectronica.ViewModel
             _selectedBook.populeazaRecenziile();
             recenzii=new ObservableCollection<RecenzieModel>();
             recenzii = _selectedBook.populeazaRecenziile();
-            BorrowBook = new BorrowBookCommand(selectedBook, clientViewModel.Persoana);
+            BorrowBook = new BorrowBookCommand(selectedBook, clientViewModel.Persoana, OnBorrowSuccess);
             LikeCommand = new RelayCommand<RecenzieModel>(likeCommand);
             DislikeCommand = new RelayCommand<RecenzieModel>(dislikeCommand);
             totalReviews = selectedBook.getNrRecenzii();
@@ -209,9 +234,16 @@ namespace BibliotecaElectronica.ViewModel
             SelectStarCommand = new RelayCommand<int>(SelectStar);
         }
 
+        private void OnBorrowSuccess()
+        {
+            IsButtonPressed = false; 
+                                  
+        }
+
         public DetaliiCarteViewModel(CarteModel selectedBook, LibrarianViewModel librarianViewModel)
         {
             _isSectionVisible = false;
+           
             ratings = selectedBook.getRatingDistributions();
             averageRating = GetPercentage();
             stars = GetStars(averageRating);

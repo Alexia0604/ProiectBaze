@@ -1,4 +1,5 @@
 ﻿using BibliotecaElectronica.Exceptions;
+using BibliotecaElectronica.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -187,7 +188,7 @@ namespace BibliotecaElectronica.Model
         }
         public bool updateTermenLimita(DateTime newDate)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var imprumut = db.Imprumuts.Where(i => i.ID == this.idImprumut).FirstOrDefault();
             if(imprumut!=null)
             {
@@ -195,7 +196,7 @@ namespace BibliotecaElectronica.Model
                 imprumut.TermenLimita=newDate;
                 try
                 {
-                    db.SubmitChanges();
+                    db.SaveChanges();
                     this.DataLimita = newDate;
                     return true;
                 }
@@ -209,7 +210,7 @@ namespace BibliotecaElectronica.Model
         
         public static  ImprumutModel getImprumuturi(int ID_imprumut)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var imprumut = db.Imprumuts.Where(i => i.ID==ID_imprumut).FirstOrDefault();
             if (imprumut != null)
             {
@@ -226,8 +227,9 @@ namespace BibliotecaElectronica.Model
                    
                 };
                 var numeCititor = db.Cititors.Where(c => c.ID == imprumutModel.idCititor).FirstOrDefault().Persoana.Nume;
-                if(numeCititor != null)
-                    imprumutModel.Cititor=numeCititor;
+                var prenumeCititor = db.Cititors.Where(c => c.ID == imprumutModel.idCititor).FirstOrDefault().Persoana.Prenume;
+                if (numeCititor != null)
+                    imprumutModel.Cititor=numeCititor+" "+prenumeCititor;
                 if (imprumutModel.stare == "Activ")
                     imprumutModel.isImprumutActiv = true;
                 else
@@ -238,9 +240,15 @@ namespace BibliotecaElectronica.Model
             return null;
         }
 
+        public static bool verificaImprumut(int idBook, int IdPerson)
+        {
+            var db = new BibliotecaElectronicaEntities3();
+            int id_cititor = db.Cititors.Where(c=>c.ID_Persoana==IdPerson).FirstOrDefault().ID;
+            return db.Imprumuts.Any(i => i.ID_Carte == idBook && i.ID_Cititor == id_cititor && i.Stare=="Activ");
+        }
         public static bool adaugaImprumut(CarteModel carte,PersoanaModel persoana)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
 
             int idCititor = db.Cititors.Where(c => c.ID_Persoana == persoana.IdPerson).FirstOrDefault().ID;
 
@@ -259,10 +267,10 @@ namespace BibliotecaElectronica.Model
                 Stare = imprumut.stare
             };
             carte.NrExemplare--;
-            db.Imprumuts.InsertOnSubmit(imprumut1);
+            db.Imprumuts.Add(imprumut1);
             try
             {
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch (Exception e)

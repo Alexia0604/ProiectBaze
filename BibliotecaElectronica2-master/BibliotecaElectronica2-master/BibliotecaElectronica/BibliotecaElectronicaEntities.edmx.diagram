@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b5e8eb51ad4464d91409c0e63ef4d4a" Name="Diagram1">
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Administrator" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Bibliotecar" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Carte" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Categorie" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Cititor" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Feedback" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Imprumut" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Notificare" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Persoana" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Recenzie" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.Stoc" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BibliotecaElectronicaModel.TaskLog" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Administr__ID_Pe__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Bibliotec__ID_Pe__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Imprumut__ID_Car__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Recenzie__ID_Car__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Stoc__ID_Carte__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Cititor__ID_Pers__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Imprumut__ID_Cit__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Notificar__ID_Ci__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Recenzie__ID_Cit__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="BibliotecaElectronicaModel.FK__Feedback__ID_Rec__65370702" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

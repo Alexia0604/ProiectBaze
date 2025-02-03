@@ -43,7 +43,7 @@ namespace BibliotecaElectronica.Model
 
         public override PersoanaModel LoginClient(string _username, string _password)
         {
-
+            var db = new BibliotecaElectronicaEntities3();
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
             {

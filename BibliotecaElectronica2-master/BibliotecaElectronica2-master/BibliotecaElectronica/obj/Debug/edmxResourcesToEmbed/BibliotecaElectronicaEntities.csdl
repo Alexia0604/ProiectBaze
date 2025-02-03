@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BibliotecaElectronicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_Persoana" Type="Int32" />
+    <NavigationProperty Name="Persoana" Relationship="Self.FK__Administr__ID_Pe__5441852A" FromRole="Administrator" ToRole="Persoana" />
+  </EntityType>
+  <EntityType Name="Bibliotecar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID_Persoana" Type="Int32" />
+    <Property Name="DataAngajare" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Persoana" Relationship="Self.FK__Bibliotec__ID_Pe__5165187F" FromRole="Bibliotecar" ToRole="Persoana" />
+  </EntityType>
+  <EntityType Name="Carte">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titlu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Autor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AnPublicare" Type="Int32" />
+    <Property Name="ISBN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imagine" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Descriere" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="NumarPagini" Type="Int32" />
+    <Property Name="Dimensiune" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Editura" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Categorie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Nota" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Imprumuts" Relationship="Self.FK__Imprumut__ID_Car__31B762FC" FromRole="Carte" ToRole="Imprumut" />
+    <NavigationProperty Name="Recenzies" Relationship="Self.FK__Recenzie__ID_Car__367C1819" FromRole="Carte" ToRole="Recenzie" />
+    <NavigationProperty Name="Stocs" Relationship="Self.FK__Stoc__ID_Carte__2CF2ADDF" FromRole="Carte" ToRole="Stoc" />
+  </EntityType>
+  <EntityType Name="Categorie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cititor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Persoana" Type="Int32" />
+    <Property Name="DataInregistrare" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NrCartiImprumutate" Type="Int32" />
+    <NavigationProperty Name="Persoana" Relationship="Self.FK__Cititor__ID_Pers__151B244E" FromRole="Cititor" ToRole="Persoana" />
+    <NavigationProperty Name="Imprumuts" Relationship="Self.FK__Imprumut__ID_Cit__30C33EC3" FromRole="Cititor" ToRole="Imprumut" />
+    <NavigationProperty Name="Notificares" Relationship="Self.FK__Notificar__ID_Ci__0A688BB1" FromRole="Cititor" ToRole="Notificare" />
+    <NavigationProperty Name="Recenzies" Relationship="Self.FK__Recenzie__ID_Cit__3587F3E0" FromRole="Cititor" ToRole="Recenzie" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Recenzie" Type="Int32" Nullable="false" />
+    <Property Name="NrLike" Type="Int32" Nullable="false" />
+    <Property Name="NrDislike" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Recenzie" Relationship="Self.FK__Feedback__ID_Rec__65370702" FromRole="Feedback" ToRole="Recenzie" />
+  </EntityType>
+  <EntityType Name="Imprumut">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Cititor" Type="Int32" />
+    <Property Name="ID_Carte" Type="Int32" />
+    <Property Name="DataImprumut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TermenLimita" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DataReturnare" Type="DateTime" Precision="0" />
+    <Property Name="Stare" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataCerereReturnare" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Carte" Relationship="Self.FK__Imprumut__ID_Car__31B762FC" FromRole="Imprumut" ToRole="Carte" />
+    <NavigationProperty Name="Cititor" Relationship="Self.FK__Imprumut__ID_Cit__30C33EC3" FromRole="Imprumut" ToRole="Cititor" />
+  </EntityType>
+  <EntityType Name="Notificare">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Cititor" Type="Int32" />
+    <Property Name="Tip_Notificare" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mesaj" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataTrimitere" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Stare" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cititor" Relationship="Self.FK__Notificar__ID_Ci__0A688BB1" FromRole="Notificare" ToRole="Cititor" />
+  </EntityType>
+  <EntityType Name="Persoana">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Parola" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DataNasterii" Type="DateTime" Precision="0" />
+    <Property Name="StareCont" Type="Int32" />
+    <NavigationProperty Name="Administrators" Relationship="Self.FK__Administr__ID_Pe__5441852A" FromRole="Persoana" ToRole="Administrator" />
+    <NavigationProperty Name="Bibliotecars" Relationship="Self.FK__Bibliotec__ID_Pe__5165187F" FromRole="Persoana" ToRole="Bibliotecar" />
+    <NavigationProperty Name="Cititors" Relationship="Self.FK__Cititor__ID_Pers__151B244E" FromRole="Persoana" ToRole="Cititor" />
+  </EntityType>
+  <EntityType Name="Recenzie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Cititor" Type="Int32" />
+    <Property Name="ID_Carte" Type="Int32" />
+    <Property Name="Nota" Type="Int32" />
+    <Property Name="Comentariu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DataRecenzie" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Carte" Relationship="Self.FK__Recenzie__ID_Car__367C1819" FromRole="Recenzie" ToRole="Carte" />
+    <NavigationProperty Name="Cititor" Relationship="Self.FK__Recenzie__ID_Cit__3587F3E0" FromRole="Recenzie" ToRole="Cititor" />
+    <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__ID_Rec__65370702" FromRole="Recenzie" ToRole="Feedback" />
+  </EntityType>
+  <EntityType Name="Stoc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Carte" Type="Int32" />
+    <Property Name="NrExemplare" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Carte" Relationship="Self.FK__Stoc__ID_Carte__2CF2ADDF" FromRole="Stoc" ToRole="Carte" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaskLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastRunTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK__Administr__ID_Pe__5441852A">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Administrator" Type="Self.Administrator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Administrator">
+        <PropertyRef Name="ID_Persoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bibliotec__ID_Pe__5165187F">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Bibliotecar" Type="Self.Bibliotecar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bibliotecar">
+        <PropertyRef Name="ID_Persoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Imprumut__ID_Car__31B762FC">
+    <End Role="Carte" Type="Self.Carte" Multiplicity="0..1" />
+    <End Role="Imprumut" Type="Self.Imprumut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Imprumut">
+        <PropertyRef Name="ID_Carte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Recenzie__ID_Car__367C1819">
+    <End Role="Carte" Type="Self.Carte" Multiplicity="0..1" />
+    <End Role="Recenzie" Type="Self.Recenzie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Recenzie">
+        <PropertyRef Name="ID_Carte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stoc__ID_Carte__2CF2ADDF">
+    <End Role="Carte" Type="Self.Carte" Multiplicity="0..1" />
+    <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Stoc">
+        <PropertyRef Name="ID_Carte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cititor__ID_Pers__151B244E">
+    <End Role="Persoana" Type="Self.Persoana" Multiplicity="0..1" />
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persoana">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cititor">
+        <PropertyRef Name="ID_Persoana" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Imprumut__ID_Cit__30C33EC3">
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="0..1" />
+    <End Role="Imprumut" Type="Self.Imprumut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cititor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Imprumut">
+        <PropertyRef Name="ID_Cititor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificar__ID_Ci__0A688BB1">
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="0..1" />
+    <End Role="Notificare" Type="Self.Notificare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cititor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notificare">
+        <PropertyRef Name="ID_Cititor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Recenzie__ID_Cit__3587F3E0">
+    <End Role="Cititor" Type="Self.Cititor" Multiplicity="0..1" />
+    <End Role="Recenzie" Type="Self.Recenzie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cititor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Recenzie">
+        <PropertyRef Name="ID_Cititor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback__ID_Rec__65370702">
+    <End Role="Recenzie" Type="Self.Recenzie" Multiplicity="1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recenzie">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="ID_Recenzie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BibliotecaElectronicaEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+    <EntitySet Name="Bibliotecars" EntityType="Self.Bibliotecar" />
+    <EntitySet Name="Cartes" EntityType="Self.Carte" />
+    <EntitySet Name="Categories" EntityType="Self.Categorie" />
+    <EntitySet Name="Cititors" EntityType="Self.Cititor" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="Imprumuts" EntityType="Self.Imprumut" />
+    <EntitySet Name="Notificares" EntityType="Self.Notificare" />
+    <EntitySet Name="Persoanas" EntityType="Self.Persoana" />
+    <EntitySet Name="Recenzies" EntityType="Self.Recenzie" />
+    <EntitySet Name="Stocs" EntityType="Self.Stoc" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TaskLogs" EntityType="Self.TaskLog" />
+    <AssociationSet Name="FK__Administr__ID_Pe__5441852A" Association="Self.FK__Administr__ID_Pe__5441852A">
+      <End Role="Persoana" EntitySet="Persoanas" />
+      <End Role="Administrator" EntitySet="Administrators" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bibliotec__ID_Pe__5165187F" Association="Self.FK__Bibliotec__ID_Pe__5165187F">
+      <End Role="Persoana" EntitySet="Persoanas" />
+      <End Role="Bibliotecar" EntitySet="Bibliotecars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Imprumut__ID_Car__31B762FC" Association="Self.FK__Imprumut__ID_Car__31B762FC">
+      <End Role="Carte" EntitySet="Cartes" />
+      <End Role="Imprumut" EntitySet="Imprumuts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Recenzie__ID_Car__367C1819" Association="Self.FK__Recenzie__ID_Car__367C1819">
+      <End Role="Carte" EntitySet="Cartes" />
+      <End Role="Recenzie" EntitySet="Recenzies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stoc__ID_Carte__2CF2ADDF" Association="Self.FK__Stoc__ID_Carte__2CF2ADDF">
+      <End Role="Carte" EntitySet="Cartes" />
+      <End Role="Stoc" EntitySet="Stocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cititor__ID_Pers__151B244E" Association="Self.FK__Cititor__ID_Pers__151B244E">
+      <End Role="Persoana" EntitySet="Persoanas" />
+      <End Role="Cititor" EntitySet="Cititors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Imprumut__ID_Cit__30C33EC3" Association="Self.FK__Imprumut__ID_Cit__30C33EC3">
+      <End Role="Cititor" EntitySet="Cititors" />
+      <End Role="Imprumut" EntitySet="Imprumuts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificar__ID_Ci__0A688BB1" Association="Self.FK__Notificar__ID_Ci__0A688BB1">
+      <End Role="Cititor" EntitySet="Cititors" />
+      <End Role="Notificare" EntitySet="Notificares" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Recenzie__ID_Cit__3587F3E0" Association="Self.FK__Recenzie__ID_Cit__3587F3E0">
+      <End Role="Cititor" EntitySet="Cititors" />
+      <End Role="Recenzie" EntitySet="Recenzies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback__ID_Rec__65370702" Association="Self.FK__Feedback__ID_Rec__65370702">
+      <End Role="Recenzie" EntitySet="Recenzies" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <FunctionImport Name="ActualizeazaMediaNotelor" />
+    <FunctionImport Name="SetFinalizatPentruImprumuturiFinalizate" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BibliotecaElectronicaModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BibliotecaElectronicaModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\draga\Desktop\BibliotecaElectronica2-master\BibliotecaElectronica2-master\BibliotecaElectronica2-master\BibliotecaElectronica\obj\Debug\
+C:\Users\gabso\OneDrive\Desktop\Proiect baze 2\ProiectBaze\BibliotecaElectronica2-master\BibliotecaElectronica2-master\BibliotecaElectronica\obj\Debug\
 BibliotecaElectronica
 none
 false
 DEBUG;TRACE
-C:\Users\draga\Desktop\BibliotecaElectronica2-master\BibliotecaElectronica2-master\BibliotecaElectronica2-master\BibliotecaElectronica\App.xaml
-27-2036757314
-
-111494840780
-35870805026
-Components\BindablePasswordBox.xaml;MainWindow.xaml;Model\NotificareModel.xaml;Styles\Button.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;View\AddBooksView.xaml;View\AdminView.xaml;View\BestBooksView.xaml;View\BibliotecariView.xaml;View\CartiView.xaml;View\CititoriView.xaml;View\ClientView.xaml;View\CreateAccountView.xaml;View\CreateAccountView2.xaml;View\CustomerView.xaml;View\DetaliiCarteView.xaml;View\EditableField.xaml;View\HomeView.xaml;View\InboxView.xaml;View\LibrarianView.xaml;View\LoginView.xaml;View\OrdersView.xaml;View\ReturnariView.xaml;View\TopView.xaml;View\UserControls\ClearableTextBox.xaml;
+C:\Users\gabso\OneDrive\Desktop\Proiect baze 2\ProiectBaze\BibliotecaElectronica2-master\BibliotecaElectronica2-master\BibliotecaElectronica\App.xaml
+27520851757
+2-93572705
+127-140655433
+39-1533260092
+Components\BindablePasswordBox.xaml;MainWindow.xaml;Model\NotificareModel.xaml;Styles\Button.xaml;Styles\Image.xaml;Styles\Page.xaml;Styles\Text.xaml;View\AddBooksView.xaml;View\AdminView.xaml;View\BibliotecariView.xaml;View\CartiView.xaml;View\CititoriView.xaml;View\ClientView.xaml;View\CreateAccountView.xaml;View\CreateAccountView2.xaml;View\CustomerView.xaml;View\DetaliiCarteView.xaml;View\EditableField.xaml;View\HomeView.xaml;View\InboxView.xaml;View\LibrarianView.xaml;View\LoginView.xaml;View\OrdersView.xaml;View\ReturnariView.xaml;View\TodayReturnariView.xaml;View\TopView.xaml;View\UserControls\ClearableTextBox.xaml;
 
 True
 

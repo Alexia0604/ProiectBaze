@@ -85,12 +85,17 @@
             <StackPanel Grid.Row="0" Grid.Column="1">
                 <Button Content="Împrumută!" 
                         Background="Transparent"
-                         IsEnabled="{Binding SelectedBook.NrExemplare, Converter={StaticResource ExemplareToButtonEnabledConverter}}" 
-                        Visibility="{Binding IsSectionVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Foreground="#ad4ef5"
-                          Command="{Binding BorrowBook}"  
-                         Width="110" Height="30" Margin="0,90,10,0"/>
-                <StackPanel Orientation="Horizontal">
+                        Command="{Binding BorrowBook}"  
+                        Width="110" Height="30" Margin="0,90,10,0">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource ExemplareToButtonEnabledConverter}">
+                            <Binding Path="SelectedBook.NrExemplare" />
+                            <Binding Path="IsButtonPressed" />
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
+                    <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Exemplare disponibile: " 
                            Margin="80,20,0,0"
                            FontSize="14" 

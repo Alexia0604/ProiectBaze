@@ -15,7 +15,6 @@ namespace BibliotecaElectronica.Model
 {
     public class BibliotecarModel : PersoanaModel
     {
-        static private BibliotecaElectronicaClassesDataContext db;
         private int IDBibliotecar;
         private DateTime hiredDate;
 
@@ -52,6 +51,7 @@ namespace BibliotecaElectronica.Model
 
         public DateTime getHireDate(int idPersoana)
         {
+            var db = new BibliotecaElectronicaEntities3();
             return db.Bibliotecars.Where(c => c.ID_Persoana == idPersoana).FirstOrDefault().DataAngajare;
         }
 
@@ -80,8 +80,7 @@ namespace BibliotecaElectronica.Model
 
         public override PersoanaModel LoginClient(string _username, string _password)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
-
+            var db = new BibliotecaElectronicaEntities3();
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
             {
@@ -121,11 +120,8 @@ namespace BibliotecaElectronica.Model
 
         public static ObservableCollection<BibliotecarModel> LoadAllLibrarians()
         {
-
-            db = new BibliotecaElectronicaClassesDataContext();
-
-            var allLibrariansData = db.Bibliotecars
-        .Join(db.Persoanas,
+            var db = new BibliotecaElectronicaEntities3();
+            var allLibrariansData = db.Bibliotecars.Join(db.Persoanas,
             bibliotecar => bibliotecar.ID_Persoana,
             persoana => persoana.ID,
             (bibliotecar, persoana) => new
@@ -166,8 +162,7 @@ namespace BibliotecaElectronica.Model
 
         public static void DeleteLibrarian(BibliotecarModel librarianToDelete)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
-
+            var db = new BibliotecaElectronicaEntities3();
             var bibliotecarDb = db.Bibliotecars.SingleOrDefault(c => c.ID_Persoana == librarianToDelete.idPerson);
 
             if (bibliotecarDb != null)
@@ -175,7 +170,7 @@ namespace BibliotecaElectronica.Model
                 try
                 {
                     bibliotecarDb.Persoana.StareCont = 0;
-                    db.SubmitChanges();
+                    db.SaveChanges();
 
                     MessageBox.Show("Cititorul a fost șters cu succes!");
                 }

@@ -743,6 +743,8 @@ END;
 
 select * from Persoana
 select * from Cititor
+select * from Bibliotecar
+select * from Imprumut
 
 UPDATE Persoana
 SET Parola = 'a80b568a237f50391d2f1f97beaf99564e33d2e1c8a2e5cac21ceda701570312'
@@ -764,3 +766,25 @@ ADD DataCerereReturnare DATETIME NULL;
 select * from Cititor
 select * from Recenzie
 select * from Carte
+
+ALTER TABLE Carte
+ADD Nota  FLOAT NOT NULL DEFAULT 0;
+
+select * from Recenzie
+
+CREATE PROCEDURE ActualizeazaMediaNotelor
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Actualizăm media notelor pentru fiecare carte pe baza recenziilor existente
+    UPDATE Carte
+    SET Nota = (
+        SELECT AVG(CAST(Nota AS FLOAT))
+        FROM Recenzie
+        WHERE Recenzie.ID_Carte = Carte.ID
+    )
+    WHERE ID IN (SELECT DISTINCT ID_Carte FROM Recenzie);
+END;
+
+exec ActualizeazaMediaNotelor;

@@ -54,6 +54,8 @@ namespace BibliotecaElectronica.ViewModel
             {
                 item.Key.aprobaReturnareCarte(item.Value.IDImprumut);
                 item.Value.finalizareImprumutByBibliotecar();
+                if (_librarianViewModel.Persoana.NrNotificariNecitite > 0)
+                    _librarianViewModel.Persoana.NrNotificariNecitite--;
             }
             catch (DataBaseException e)
             {
@@ -67,6 +69,8 @@ namespace BibliotecaElectronica.ViewModel
             {
                 item.Key.respingeReturnareCarte(item.Value.IDImprumut);
                 item.Value.respingereFinalizareImprumut();
+                if (_librarianViewModel.Persoana.NrNotificariNecitite > 0)
+                    _librarianViewModel.Persoana.NrNotificariNecitite--;
             }
             catch (DataBaseException e)
             {

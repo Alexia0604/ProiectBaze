@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:BibliotecaElectronica.View"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <!-- Stil pentru top -->
         <Style x:Key="TopCartiStyle" TargetType="Border">
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderBrush" Value="#DDDDDD"/>
@@ -24,38 +22,97 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
- 
-        <TextBlock Text="Top 3 cele mai citite cărți" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
-
-       
         <ScrollViewer Grid.Row="1">
-            <ListBox ItemsSource="{Binding TopBooks}" Margin="20"
-                     SelectedItem="{Binding SelectedBook, Mode=TwoWay}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border Style="{StaticResource TopCartiStyle}" Height="400" Width="200">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                                <Button Command="{Binding DataContext.SelectBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <!-- Top 3 cele mai citite cărți -->
+                <TextBlock Text="Top 3 cele mai citite cărți" FontSize="24" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="20" Foreground="#613687"/>
+
+                <ListBox ItemsSource="{Binding TopBooks}" Margin="20"
+                     SelectedItem="{Binding SelectedBook, Mode=TwoWay}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource TopCartiStyle}" Height="400" Width="200">
+                                <Grid>
+                                    <!-- Indicator poziție în colțul stânga-sus -->
+                                    <!--<Border Background="Red" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Padding="5" 
+                    Margin="5" 
+                    Width="30" 
+                    Height="30" 
+                    CornerRadius="15">
+                                        <TextBlock Text="{Binding Rank}" 
+                           Foreground="White" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           TextAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"/>
+                                    </Border>-->
+
+                                    <!-- Conținutul cărții -->
+                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                                        <Button Command="{Binding DataContext.SelectBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CommandParameter="{Binding}" BorderThickness="0" Background="Transparent"
+                        Height="300" Width="200">
+                                            <Image Source="{Binding BitmapImage}" Stretch="Uniform" Height="250" Width="150" Cursor="Hand"/>
+                                        </Button>
+
+                                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap"
+                           FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="5"/>
+                                        <TextBlock Text="{Binding Author}" TextWrapping="Wrap" FontSize="14"
+                           FontStyle="Italic" TextAlignment="Center" Margin="0,0,0,5"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Top cele mai apreciate cărți -->
+                <TextBlock Text="Top 3 cele mai apreciate cărți" FontSize="24" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="20"/>
+
+                <ListBox ItemsSource="{Binding TopRatedBooks}" Margin="20"
+                     SelectedItem="{Binding SelectedBook, Mode=TwoWay}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource TopCartiStyle}" Height="400" Width="200">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                                    <Button Command="{Binding DataContext.SelectBookCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                         CommandParameter="{Binding}" BorderThickness="0" Background="Transparent"
                                         Height="300" Width="200">
-                                    <Image Source="{Binding BitmapImage}" Stretch="Uniform" Height="250" Width="150" Cursor="Hand"/>
-                                </Button>
+                                        <Image Source="{Binding BitmapImage}" Stretch="Uniform" Height="250" Width="150" Cursor="Hand"/>
+                                    </Button>
 
-                                <TextBlock Text="{Binding Title}"  TextWrapping="Wrap"
+                                    <TextBlock Text="{Binding Title}"  TextWrapping="Wrap"
                                            FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="5"/>
-                                <TextBlock Text="{Binding Author}"  TextWrapping="Wrap" FontSize="14" FontStyle="Italic" TextAlignment="Center" Margin="0,0,0,5"/>
-
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                    <TextBlock Text="{Binding Author}"  TextWrapping="Wrap" FontSize="14"
+                                           FontStyle="Italic" TextAlignment="Center" Margin="0,0,0,5"/>
+                                    <!--<TextBlock Text="{Binding Nota}" TextWrapping="Wrap" FontSize="14"
+                                           FontWeight="Bold" TextAlignment="Center" Foreground="Goldenrod"/>-->
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </UserControl>

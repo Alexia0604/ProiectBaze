@@ -13,7 +13,6 @@ namespace BibliotecaElectronica.ViewModel
 {
     public class CartiViewModel : ViewModelBase
     {
-        private readonly BibliotecaElectronicaClassesDataContext _context;
 
         private ClientViewModel _clientViewModel;
 
@@ -68,7 +67,7 @@ namespace BibliotecaElectronica.ViewModel
         public CartiViewModel(ClientViewModel clientViewModel)
         {
             _clientViewModel = clientViewModel;
-            _context = new BibliotecaElectronicaClassesDataContext();
+           
             Books = new ObservableCollection<CarteModel>();
 
             SearchCommand = new RelayCommand(SearchBooks);
@@ -80,7 +79,7 @@ namespace BibliotecaElectronica.ViewModel
         public CartiViewModel(LibrarianViewModel librarianViewModel)
         {
             _librarianViewModel = librarianViewModel;
-            _context = new BibliotecaElectronicaClassesDataContext();
+           
             Books = new ObservableCollection<CarteModel>();
 
             SearchCommand = new RelayCommand(SearchBooks);
@@ -92,7 +91,7 @@ namespace BibliotecaElectronica.ViewModel
         public CartiViewModel(AdminViewModel adminViewModel)
         {
             _adminViewModel = adminViewModel;
-            _context = new BibliotecaElectronicaClassesDataContext();
+            
             Books = new ObservableCollection<CarteModel>();
 
             SearchCommand = new RelayCommand(SearchBooks);
@@ -130,12 +129,12 @@ namespace BibliotecaElectronica.ViewModel
         }
         private void SearchBooks()
         {
-
+            var _context = new BibliotecaElectronicaEntities3();
             var filteredBooksData = _context.Cartes
                 .Where(c => c.Titlu.Contains(SearchText) || c.Autor.Contains(SearchText) || c.Categorie.Contains(SearchText))
                 .Select(c => new
                 {
-                    Titlu = c.Titlu,
+                    Titlu = c.Titlu,    
                     Autor = c.Autor,
                     Imagine = c.Imagine.ToArray()
 

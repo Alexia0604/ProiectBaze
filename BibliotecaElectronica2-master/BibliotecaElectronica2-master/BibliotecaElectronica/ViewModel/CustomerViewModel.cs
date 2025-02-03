@@ -19,7 +19,7 @@ namespace BibliotecaElectronica.ViewModel
         private PersoanaModel persoana;
         private LibrarianViewModel _librarianViewModel;
         private AdminViewModel _adminViewModel;
-        private BibliotecaElectronicaClassesDataContext _dbContext;
+       
 
         private string _lastName;
         private string _firstName;
@@ -202,9 +202,9 @@ namespace BibliotecaElectronica.ViewModel
            
             _clientViewModel = clientViewModel;
             _isSectionVisible = false;
-            _dbContext = new BibliotecaElectronicaClassesDataContext();
+            var _dbContext = new BibliotecaElectronicaEntities3();
 
-            if (clientViewModel != null && clientViewModel.Persoana != null)
+            if (clientViewModel != null && clientViewModel.Persoana != null)    
             {
                 this.persoana = clientViewModel.Persoana;
                 CustomerLastName = clientViewModel.Persoana.Nume;
@@ -226,7 +226,7 @@ namespace BibliotecaElectronica.ViewModel
         {
             _librarianViewModel = librarianViewModel;
             _isSectionVisible = true;
-            _dbContext = new BibliotecaElectronicaClassesDataContext();
+            var _dbContext = new BibliotecaElectronicaEntities3();
 
             BibliotecarModel bibliotecar = new BibliotecarModel();
 
@@ -252,7 +252,7 @@ namespace BibliotecaElectronica.ViewModel
         {
             _adminViewModel = adminViewModel;
             _isSectionVisible = false;
-            _dbContext = new BibliotecaElectronicaClassesDataContext();
+            var _dbContext = new BibliotecaElectronicaEntities3();
 
             AdministratorModel administrator = new AdministratorModel();
 
@@ -305,6 +305,7 @@ namespace BibliotecaElectronica.ViewModel
 
         private void SaveEdit(string field)
         {
+            var _dbContext = new BibliotecaElectronicaEntities3();
             var persoana = _dbContext.Persoanas.FirstOrDefault(p => p.ID ==this.persoana.IdPerson);
             if (persoana == null) return;
             try
@@ -370,7 +371,7 @@ namespace BibliotecaElectronica.ViewModel
                 MessageBox.Show("Username indisponibil!!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            _dbContext.SubmitChanges();
+            _dbContext.SaveChanges();
         }
 
 
@@ -405,8 +406,6 @@ namespace BibliotecaElectronica.ViewModel
                     break;
             }
         }
-
-
 
         public CustomerViewModel()
         {

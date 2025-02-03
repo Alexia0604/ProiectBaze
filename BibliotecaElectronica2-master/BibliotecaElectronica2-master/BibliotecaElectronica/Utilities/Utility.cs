@@ -69,7 +69,7 @@ namespace BibliotecaElectronica.Utilities
         }
         public bool IsValidUsername(string username)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var persoana=db.Persoanas.Where(p=>p.Username==username).FirstOrDefault();
             if (persoana != null)
                 return false;

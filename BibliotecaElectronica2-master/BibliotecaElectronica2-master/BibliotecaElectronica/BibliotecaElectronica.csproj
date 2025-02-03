@@ -40,6 +40,12 @@
     <Reference Include="CommunityToolkit.Mvvm, Version=8.3.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
       <HintPath>..\packages\CommunityToolkit.Mvvm.8.3.2\lib\netstandard2.0\CommunityToolkit.Mvvm.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.6.6.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -75,6 +81,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -112,16 +120,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BibliotecaElectronicaClasses.designer.cs">
+    <Compile Include="Administrator.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BibliotecaElectronicaEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotecaElectronicaClasses.dbml</DependentUpon>
+      <DependentUpon>BibliotecaElectronicaEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BibliotecaElectronicaEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BibliotecaElectronicaEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BibliotecaElectronicaEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecar.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Carte.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Categorie.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cititor.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Commands\AddBooksClickButtonCommand.cs" />
     <Compile Include="Commands\BackToAllBooksCommand.cs" />
     <Compile Include="Commands\BackToCreateAccountCommand.cs" />
     <Compile Include="Commands\BackToLoginCommand.cs" />
-    <Compile Include="Commands\BestBooksClickButtonCommand.cs" />
     <Compile Include="Commands\BorrowBookCommand.cs" />
     <Compile Include="Commands\ClickOnBookImage.cs" />
     <Compile Include="Commands\CommandBase.cs" />
@@ -143,6 +175,7 @@
     <Compile Include="Commands\SubmitReviewCommand.cs" />
     <Compile Include="Commands\TopBooksClickButtonCommand.cs" />
     <Compile Include="Commands\VizualizeazaReturnariCommand.cs" />
+    <Compile Include="Commands\VizualizeazaReturnariTodayCommand.cs" />
     <Compile Include="Components\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
@@ -159,6 +192,12 @@
     <Compile Include="Exceptions\SignInException.cs" />
     <Compile Include="Exceptions\SignInWrongCredentialsException.cs" />
     <Compile Include="Exceptions\UsernameException.cs" />
+    <Compile Include="Feedback.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imprumut.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -166,13 +205,36 @@
     <Compile Include="Model\BibliotecarModel.cs" />
     <Compile Include="Model\CarteModel.cs" />
     <Compile Include="Model\CititorModel.cs" />
-    <Compile Include="Model\ClientRepository.cs" />
     <Compile Include="Model\ImprumutModel.cs" />
     <Compile Include="Model\NotificareModel.cs" />
     <Compile Include="Model\PersoanaModel.cs" />
     <Compile Include="Model\RecenzieModel.cs" />
+    <Compile Include="Notificare.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persoana.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recenzie.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stoc.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskLog.cs">
+      <DependentUpon>BibliotecaElectronicaEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Btn.cs" />
     <Compile Include="Utilities\ByteArrayToImageConverter.cs" />
     <Compile Include="Utilities\CountToVisibilityConverter.cs" />
@@ -188,7 +250,6 @@
     <Compile Include="Utilities\Utility.cs" />
     <Compile Include="ViewModel\AddBooksViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
-    <Compile Include="ViewModel\BestBooksViewModel.cs" />
     <Compile Include="ViewModel\BibliotecariViewModel.cs" />
     <Compile Include="ViewModel\CartiViewModel.cs" />
     <Compile Include="ViewModel\CititoriViewModel.cs" />
@@ -204,6 +265,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\OrdersViewModel.cs" />
     <Compile Include="ViewModel\ReturnariViewModel.cs" />
+    <Compile Include="ViewModel\TodayReturnariViewModel.cs" />
     <Compile Include="ViewModel\TopViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AddBooksView.xaml.cs">
@@ -211,9 +273,6 @@
     </Compile>
     <Compile Include="View\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BestBooksView.xaml.cs">
-      <DependentUpon>BestBooksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BibliotecariView.xaml.cs">
       <DependentUpon>BibliotecariView.xaml</DependentUpon>
@@ -260,6 +319,9 @@
     <Compile Include="View\ReturnariView.xaml.cs">
       <DependentUpon>ReturnariView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TodayReturnariView.xaml.cs">
+      <DependentUpon>TodayReturnariView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TopView.xaml.cs">
       <DependentUpon>TopView.xaml</DependentUpon>
     </Compile>
@@ -303,10 +365,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AdminView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\BestBooksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,6 +428,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\TodayReturnariView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TopView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -399,13 +461,12 @@
     </EmbeddedResource>
     <Resource Include="Fonts\Rubik-Medium.ttf" />
     <Resource Include="Fonts\Rubik-Regular.ttf" />
-    <None Include="BibliotecaElectronicaClasses.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>BibliotecaElectronicaClasses.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BibliotecaElectronicaClasses.dbml.layout">
-      <DependentUpon>BibliotecaElectronicaClasses.dbml</DependentUpon>
+    <EntityDeploy Include="BibliotecaElectronicaEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BibliotecaElectronicaEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BibliotecaElectronicaEntities.edmx.diagram">
+      <DependentUpon>BibliotecaElectronicaEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -418,6 +479,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\account1.png" />
@@ -468,6 +530,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\books2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BibliotecaElectronicaEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BibliotecaElectronicaEntities.edmx</DependentUpon>
+      <LastGenOutput>BibliotecaElectronicaEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BibliotecaElectronicaEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BibliotecaElectronicaEntities.edmx</DependentUpon>
+      <LastGenOutput>BibliotecaElectronicaEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

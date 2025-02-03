@@ -11,7 +11,7 @@ namespace BibliotecaElectronica.Utilities
     {
         private Timer _timer;
         private readonly TimeSpan _interval = TimeSpan.FromHours(24);
-        private BibliotecaElectronicaClassesDataContext db;
+       
 
         private static readonly Lazy<NotificariBackgroundWorker> _instance =
          new Lazy<NotificariBackgroundWorker>(() => new NotificariBackgroundWorker());
@@ -28,7 +28,7 @@ namespace BibliotecaElectronica.Utilities
             {
                 try
                 {
-                        var db = new BibliotecaElectronicaClassesDataContext();
+                        var db = new BibliotecaElectronicaEntities3();
                         var returnariIntarziate = (from imprumut in db.Imprumuts
                                                    join cititor in db.Cititors on imprumut.ID_Cititor equals cititor.ID
                                                    where imprumut.DataReturnare == null && imprumut.TermenLimita < DateTime.Now
@@ -51,12 +51,12 @@ namespace BibliotecaElectronica.Utilities
                                 Stare = "Necitit"
                             };
 
-                            db.Notificares.InsertOnSubmit(notificare);
+                            db.Notificares.Add(notificare);
 
                         }
 
                         UpdateLastRunTime();
-                        db.SubmitChanges();
+                        db.SaveChanges();
                     
                    
                 }
@@ -72,7 +72,7 @@ namespace BibliotecaElectronica.Utilities
         {
             if (_timer != null)
                 return;
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var lastRunTime = GetLastRunTime();
             var elapsed = DateTime.Now - lastRunTime;
 
@@ -88,7 +88,7 @@ namespace BibliotecaElectronica.Utilities
 
         private DateTime GetLastRunTime()
         {
-           
+            var db = new BibliotecaElectronicaEntities3();
             var taskLog = db.TaskLogs.FirstOrDefault(t => t.TaskName == "Verificare Returnari");
             if(taskLog==null)
             {
@@ -97,8 +97,8 @@ namespace BibliotecaElectronica.Utilities
                     TaskName = "Verificare Returnari",
                     LastRunTime = DateTime.Now
                 };
-                db.TaskLogs.InsertOnSubmit(taskLog);
-                db.SubmitChanges();
+                db.TaskLogs.Add(taskLog);
+                db.SaveChanges();
                 return DateTime.MinValue;
 
             }
@@ -107,6 +107,7 @@ namespace BibliotecaElectronica.Utilities
 
         private void UpdateLastRunTime()
         {
+            var db = new BibliotecaElectronicaEntities3();
             var taskLog = db.TaskLogs.FirstOrDefault(t => t.TaskName == "Verificare Returnari");
             if (taskLog != null)
             {
@@ -114,55 +115,15 @@ namespace BibliotecaElectronica.Utilities
             }
             else
             {
-               db.TaskLogs.InsertOnSubmit(new TaskLog
+               db.TaskLogs.Add(new TaskLog
                 {
                     TaskName = "Verificare Returnari",
                     LastRunTime = DateTime.Now
                 });
             }
-            db.SubmitChanges();
+            db.SaveChanges();
             return;
         }
-
-        //private void VerificaNotificari(object state)
-        //{
-        //    try
-        //    {
-        //        var db = new BibliotecaElectronicaClassesDataContext();
-        //        var returnariIntarziate = (from imprumut in db.Imprumuts
-        //                                   join cititor in db.Cititors on imprumut.ID_Cititor equals cititor.ID
-        //                                   where imprumut.DataReturnare == null && imprumut.TermenLimita < DateTime.Now
-        //                                   select new
-        //                                   {
-        //                                       Imprumut = imprumut,
-        //                                       Cititor = cititor
-        //                                   }).ToList();
-
-
-        //        foreach (var item in returnariIntarziate)
-        //        {
-        //            var carte = db.Cartes.Where(c => c.ID == item.Imprumut.ID_Carte).FirstOrDefault();
-        //            var notificare = new Notificare
-        //            {
-        //                ID_Cititor = item.Imprumut.ID_Cititor,
-        //                Tip_Notificare="Returnare intarziata",
-        //                Mesaj = $"Ați întârziat cu returnarea cărții  {carte.Titlu}, de {carte.Autor}. Vă rugăm să o returnați cât mai curând!",
-        //                DataTrimitere = DateTime.Now,
-        //                Stare = "Necitit"
-        //            };
-
-        //            db.Notificares.InsertOnSubmit(notificare);
-   
-        //        }
-
-        //        UpdateLastRunTime();
-        //        db.SubmitChanges();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new DataBaseException();
-        //    }
-        //}
 
         public void Stop()
         {

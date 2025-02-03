@@ -24,7 +24,7 @@ namespace BibliotecaElectronica.Model
         protected int Status;
 
 
-        protected BibliotecaElectronicaClassesDataContext db = new BibliotecaElectronicaClassesDataContext();
+    //    protected  db = new BibliotecaElectronicaClassesDataContext();
 
         public int IdPerson
         {
@@ -133,6 +133,8 @@ namespace BibliotecaElectronica.Model
 
         public int getClientID()
         {
+            var db = new BibliotecaElectronicaEntities3();
+
             int id=db.Cititors.Where(c=>c.ID_Persoana==this.idPerson).FirstOrDefault().ID;
             return id;
         }

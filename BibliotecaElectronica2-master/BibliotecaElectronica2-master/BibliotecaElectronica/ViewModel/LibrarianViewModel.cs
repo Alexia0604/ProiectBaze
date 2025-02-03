@@ -57,6 +57,7 @@ namespace BibliotecaElectronica.ViewModel
         public ICommand AddBooksClickButtonCommand { get; }
 
         public ICommand VizualizeazaReturnariCommand { get; }
+        public ICommand VizualizeazaReturnariTodayCommand { get; }
 
         public LibrarianViewModel(Stores.NavigationStore navigationStore, PersoanaModel persoana)
         {
@@ -64,11 +65,13 @@ namespace BibliotecaElectronica.ViewModel
 
             _currentRightViewModel = new HomeViewModel();
 
+            Persoana.NrNotificariNecitite = NotificareModel.getNrMesajeNecitite(persoana.IdPerson);
             HomeClickButtonCommand = new HomeClickButtonCommand(this);
             CustomerClickButtonCommand = new CustomerClickButtonCommand(this);
             ProductsClickButtonCommand = new ProductsClickButtonCommand(this);
             AddBooksClickButtonCommand = new AddBooksClickButtonCommand(this);
             VizualizeazaReturnariCommand = new VizualizeazaReturnariCommand(this);
+            VizualizeazaReturnariTodayCommand = new VizualizeazaReturnariTodayCommand(this);
         }
     }
 }

@@ -46,7 +46,8 @@ namespace BibliotecaElectronica.Commands
                 }
                 string hashedPassword = EncryptPassword(viewModel.Password2);
 
-                var db = new BibliotecaElectronicaClassesDataContext();
+                var db = new BibliotecaElectronicaEntities3();
+              
                 var username = db.Persoanas.Where(p => p.Username == viewModel.Username2).FirstOrDefault();
                 if (username == null)
                 {

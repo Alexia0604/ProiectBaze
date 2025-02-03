@@ -58,8 +58,6 @@ namespace BibliotecaElectronica.ViewModel
 
         public ICommand TopBooksClickButtonCommand { get; }
 
-        public ICommand BestBooksClickButtonCommand { get; }
-
         public ClientViewModel(Stores.NavigationStore navigationStore,PersoanaModel persoana)
         {
             _persoana = persoana; 
@@ -73,7 +71,6 @@ namespace BibliotecaElectronica.ViewModel
             OrdersClickButtonCommmand = new OrdersClickButtonCommand(persoana,this);
             InboxClickButtonCommmand = new InboxClickButtonCommmand(persoana,this);
             TopBooksClickButtonCommand = new TopBooksClickButtonCommand(this);
-            BestBooksClickButtonCommand = new BestBooksClickButtonCommand(this);
         }
     }
 }

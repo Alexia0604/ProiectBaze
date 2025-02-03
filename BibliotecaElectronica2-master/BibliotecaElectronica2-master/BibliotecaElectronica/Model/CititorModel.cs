@@ -68,7 +68,7 @@ namespace BibliotecaElectronica.Model
         public CititorModel() { }
         public override PersoanaModel LoginClient(string _username, string _password)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
 
             var user = db.Persoanas.SingleOrDefault(u => u.Username == _username && u.Parola == _password);
             if (user != null)
@@ -131,7 +131,7 @@ namespace BibliotecaElectronica.Model
 
         public override bool AdaugaClient()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             if (this.Username == "Username" || this.Password == "Parolă" ||
                 this.Username == string.Empty || this.Password == string.Empty)
                 throw new NoUsernameOrPasswordException();
@@ -151,10 +151,10 @@ namespace BibliotecaElectronica.Model
             cititor_db.Persoana = persoana;
             try
             {
-                db.Persoanas.InsertOnSubmit(cititor_db.Persoana);
-                db.Cititors.InsertOnSubmit(cititor_db);
+                db.Persoanas.Add(cititor_db.Persoana);
+                db.Cititors.Add(cititor_db);
    
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch(Exception e)
@@ -166,10 +166,8 @@ namespace BibliotecaElectronica.Model
 
         public static ObservableCollection<CititorModel> LoadAllReaders()
         {
-
-            var db = new BibliotecaElectronicaClassesDataContext();
-            var allreadersData = db.Cititors
-        .Join(db.Persoanas,
+            var db = new BibliotecaElectronicaEntities3();
+            var allreadersData = db.Cititors.Join(db.Persoanas,
             cititor => cititor.ID_Persoana,
             persoana => persoana.ID,
             (cititor, persoana) => new
@@ -187,8 +185,8 @@ namespace BibliotecaElectronica.Model
                 DataInregistrare = cititor.DataInregistrare,
                 NrCartiImprumutate = cititor.NrCartiImprumutate
             })
-        .Where(c => c.StareCont == 1)
-        .ToList();
+            .Where(c => c.StareCont == 1)
+            .ToList();
 
             var allreaders = allreadersData.Select(c => new CititorModel
             {
@@ -211,7 +209,7 @@ namespace BibliotecaElectronica.Model
 
         public static void DeleteReader(CititorModel readerToDelete)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
 
             var cititorDb = db.Cititors.SingleOrDefault(c => c.ID_Persoana == readerToDelete.idPerson);
 
@@ -220,7 +218,7 @@ namespace BibliotecaElectronica.Model
                 try
                 {
                     cititorDb.Persoana.StareCont = 0;
-                    db.SubmitChanges();
+                    db.SaveChanges();
 
                     MessageBox.Show("Cititorul a fost șters cu succes!");
                 }

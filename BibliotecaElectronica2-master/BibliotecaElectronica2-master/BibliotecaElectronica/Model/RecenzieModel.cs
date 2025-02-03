@@ -76,7 +76,7 @@ namespace BibliotecaElectronica.Model
 
         public static ObservableCollection<RecenzieModel> getAllRewies(int idBook)
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var recenzii_db=db.Recenzies.Where(r=>r.ID_Carte==idBook).ToList();
 
             ObservableCollection<RecenzieModel> recenzii=new ObservableCollection<RecenzieModel>();
@@ -104,7 +104,7 @@ namespace BibliotecaElectronica.Model
 
         public bool addNewReview()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             Recenzie recenzie = new Recenzie()
             {
                 ID_Cititor = this.IdCititor,
@@ -113,10 +113,10 @@ namespace BibliotecaElectronica.Model
                 Comentariu = this.Comentariu,
                 DataRecenzie = this.dataComentariu
             };
-            db.Recenzies.InsertOnSubmit(recenzie);
+            db.Recenzies.Add(recenzie);
             try
             {
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -127,7 +127,7 @@ namespace BibliotecaElectronica.Model
         }
         public void getNameUser()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var user=db.Cititors.Where(c=>c.ID==this.IdCititor).First();
             string userLastName = db.Persoanas.Where(p => p.ID == user.ID_Persoana).First().Nume;
             string userFirstName = db.Persoanas.Where(p => p.ID == user.ID_Persoana).First().Prenume;
@@ -136,13 +136,13 @@ namespace BibliotecaElectronica.Model
 
         public bool addLike()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var feedback = db.Feedbacks.Where(f => f.ID_Recenzie == this.ID).FirstOrDefault();
             feedback.NrLike++;
             Like++;
             try
             {
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -154,13 +154,13 @@ namespace BibliotecaElectronica.Model
 
         public bool decrementLike()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var feedback = db.Feedbacks.Where(f => f.ID_Recenzie == this.ID).FirstOrDefault();
             feedback.NrLike--;
             Like--;
             try
             {
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -172,13 +172,13 @@ namespace BibliotecaElectronica.Model
 
         public bool addDislike()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var feedback = db.Feedbacks.Where(f => f.ID_Recenzie == this.ID).FirstOrDefault();
             feedback.NrDislike++;
             Dislike++;
             try
             {
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -189,13 +189,13 @@ namespace BibliotecaElectronica.Model
         }
         public bool decrementDislike()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var feedback = db.Feedbacks.Where(f => f.ID_Recenzie == this.ID).FirstOrDefault();
             feedback.NrDislike--;
             Dislike--;
             try
             {
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
             catch (Exception e)

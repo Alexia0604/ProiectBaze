@@ -14,7 +14,6 @@ namespace BibliotecaElectronica.Model
 {
     public class CarteModel : INotifyPropertyChanged
     {
-        static private  BibliotecaElectronicaClassesDataContext db;
         public int idBook;
         public string title;
         public string author;
@@ -28,7 +27,8 @@ namespace BibliotecaElectronica.Model
         private string dimensiune;
         private string editura;
         private int nrExemplare;
-        public string categorie;
+        private string categorie;
+        public double nota;
       
         public int NrExemplare
         {
@@ -37,6 +37,16 @@ namespace BibliotecaElectronica.Model
             {
                 nrExemplare = value;
                 OnPropertyChanged(nameof(NrExemplare));
+            }
+        }
+
+        public double Nota
+        {
+            get => nota;
+            set
+            {
+                nota = value;
+                OnPropertyChanged(nameof(Nota));
             }
         }
         public int IdBook
@@ -135,7 +145,7 @@ namespace BibliotecaElectronica.Model
 
         public bool returneazaCarteCititor(int idimprumut)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var imprumut=db.Imprumuts.Where(i=>i.ID== idimprumut).FirstOrDefault();
             if(imprumut!=null)
             {
@@ -143,7 +153,7 @@ namespace BibliotecaElectronica.Model
                 imprumut.DataCerereReturnare = DateTime.Now;
                 try
                 {
-                    db.SubmitChanges();
+                    db.SaveChanges();
                    // this.NrExemplare++;
                     return true;
                 }
@@ -157,7 +167,7 @@ namespace BibliotecaElectronica.Model
 
         public bool aprobaReturnareCarte(int idimprumut)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var imprumut = db.Imprumuts.Where(i => i.ID == idimprumut).FirstOrDefault();
             if (imprumut != null)
             {
@@ -166,7 +176,7 @@ namespace BibliotecaElectronica.Model
                 imprumut.DataReturnare = DateTime.Now;
                 try
                 {
-                    db.SubmitChanges();
+                    db.SaveChanges();
                     this.NrExemplare++;
                     return true;
                 }
@@ -180,7 +190,7 @@ namespace BibliotecaElectronica.Model
 
         public bool respingeReturnareCarte(int idimprumut)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();   
             var imprumut = db.Imprumuts.Where(i => i.ID == idimprumut).FirstOrDefault();
             if (imprumut != null)
             {
@@ -188,7 +198,7 @@ namespace BibliotecaElectronica.Model
              //   imprumut.DataReturnare = null;
                 try
                 {
-                    db.SubmitChanges();
+                    db.SaveChanges();
                    // this.NrExemplare++;
                     return true;
                 }
@@ -202,7 +212,7 @@ namespace BibliotecaElectronica.Model
 
         public ObservableCollection<RatingDistributionItem> getRatingDistributions()
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new            BibliotecaElectronicaEntities3();
             ObservableCollection<RatingDistributionItem> ratings = new ObservableCollection<RatingDistributionItem>
                         {
                             new RatingDistributionItem { Key = 5, Value = db.Recenzies.Where(r=>r.ID_Carte==this.IdBook && r.Nota==5).Count() },
@@ -235,8 +245,42 @@ namespace BibliotecaElectronica.Model
 
         public static ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>> getCartiReturnate()
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var imprumuturi_db = db.Imprumuts.Where(i => i.Stare == "Returnare în așteptare").ToList();
+
+            var books = new List<Carte>();
+            List<ImprumutModel> imprumuturi = new List<ImprumutModel>();
+            foreach (var item in imprumuturi_db)
+            {
+                var book = db.Cartes.FirstOrDefault(b => b.ID == item.ID_Carte);
+                if (book != null)
+                {
+                    ImprumutModel imprumut = ImprumutModel.getImprumuturi(item.ID);
+                    imprumuturi.Add(imprumut);
+                    books.Add(book);
+                }
+            }
+
+            var allBooks = new List<CarteModel>(books.Select(c => new CarteModel
+            {
+                Title = c.Titlu,
+                Author = c.Autor,
+                Image = c.Imagine.ToArray()
+            }));
+
+            ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>> cartiReturnate = new ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>>();
+            for (int i = 0; i < allBooks.Count; i++)
+            {
+                cartiReturnate.Add(new KeyValuePair<CarteModel, ImprumutModel>(allBooks[i], imprumuturi[i]));
+            }
+
+            return cartiReturnate;
+        }
+
+        public static ObservableCollection<KeyValuePair<CarteModel, ImprumutModel>> getCartiDeReturnatAstazi()
+        {
+            var db = new BibliotecaElectronicaEntities3();
+            var imprumuturi_db = db.Imprumuts.Where(i => i.Stare == "Activ" && i.TermenLimita==DateTime.Today).ToList();
 
             var books = new List<Carte>();
             List<ImprumutModel> imprumuturi = new List<ImprumutModel>();
@@ -268,7 +312,7 @@ namespace BibliotecaElectronica.Model
         }
         public static  Dictionary<CarteModel,ImprumutModel> getCartiImprumutate(int userID)
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             int cititorID=db.Cititors.Where(c=>c.ID_Persoana==userID).FirstOrDefault().ID;
         
 
@@ -303,20 +347,20 @@ namespace BibliotecaElectronica.Model
 
         public static ObservableCollection<CarteModel>  LoadAllBooks()
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var allBooksData =db.Cartes
                                 .Select(c => new
-            {
-                Dimensiune=c.Dimensiune,
-                Editura=c.Editura,
-                NrPagini=c.NumarPagini,
-                ISBn=c.ISBN,
-                ID=c.ID,
-                Titlu = c.Titlu,
-                Autor = c.Autor,
-                Descriere=c.Descriere,
-                Imagine = c.Imagine.ToArray()
-            }).ToList();
+                                {
+                                    Dimensiune=c.Dimensiune,
+                                    Editura=c.Editura,
+                                    NrPagini=c.NumarPagini,
+                                    ISBn=c.ISBN,
+                                    ID=c.ID,
+                                    Titlu = c.Titlu,
+                                    Autor = c.Autor,
+                                    Descriere=c.Descriere,
+                                    Imagine = c.Imagine
+                                }).ToList();
 
             var allBooks = allBooksData.Select(c => new CarteModel
             {
@@ -341,8 +385,7 @@ namespace BibliotecaElectronica.Model
         }
         public string getDataImprumut()
         {
-            db=new BibliotecaElectronicaClassesDataContext();
-           // db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             var dataImprumut = db.Imprumuts.Where(i => i.ID_Carte == this.IdBook).FirstOrDefault().DataImprumut;
             return dataImprumut.ToString();
         }
@@ -360,7 +403,7 @@ namespace BibliotecaElectronica.Model
 
         private void getNrExemplare()
         {
-            var db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
             int nr=db.Stocs.Where(s=>s.ID_Carte==this.IdBook).FirstOrDefault().NrExemplare;
             this.nrExemplare = nr;
         }
@@ -373,12 +416,9 @@ namespace BibliotecaElectronica.Model
 
         public bool AddCarte(string title, string author, int year, string isbn, string categorie, byte[] image, string description, int nrPagini, string dimensiune, string editura, int nrExemplare)
         {
+            var db = new BibliotecaElectronicaEntities3();
             try
             {
-                if (db == null)
-                    db = new BibliotecaElectronicaClassesDataContext();
-
-              
                 if (IsIsbnExists(isbn))
                 {
                     MessageBox.Show("O carte cu acest ISBN există deja în baza de date.", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -400,8 +440,8 @@ namespace BibliotecaElectronica.Model
                 };
 
               
-                db.Cartes.InsertOnSubmit(newCarte);
-                db.SubmitChanges();
+                db.Cartes.Add(newCarte);
+                db.SaveChanges();
 
             
                 var newStoc = new Stoc
@@ -410,8 +450,8 @@ namespace BibliotecaElectronica.Model
                     NrExemplare = nrExemplare
                 };
 
-                db.Stocs.InsertOnSubmit(newStoc);
-                db.SubmitChanges();
+                db.Stocs.Add(newStoc);
+                db.SaveChanges();
 
                 return true; 
             }
@@ -421,9 +461,45 @@ namespace BibliotecaElectronica.Model
             }
         }
 
+        public static ObservableCollection<CarteModel> LoadTopRatedBooks()
+        {
+            var db = new BibliotecaElectronicaEntities3();
+            db.Database.ExecuteSqlCommand("exec ActualizeazaMediaNotelor");
+
+            var topBooksData = db.Cartes
+                .Select(c => new
+                {
+                    Carte = c,
+                    Nota = c.Nota
+                })
+                .OrderByDescending(c => c.Nota)
+                .Take(3)
+                .ToList();
+
+
+            var topBooks = new ObservableCollection<CarteModel>(
+                topBooksData.Select(c => new CarteModel
+                {
+                    Title = c.Carte.Titlu,
+                    Author = c.Carte.Autor,
+                    Image = c.Carte.Imagine.ToArray(),
+                    Description = c.Carte.Descriere,
+                    idBook = c.Carte.ID,
+                    Isbn = c.Carte.ISBN,
+                    NrPagini = c.Carte.NumarPagini.GetValueOrDefault(),
+                    Dimensiune = c.Carte.Dimensiune,
+                    Editura = c.Carte.Editura,
+                    Nota=c.Nota
+                })
+            );
+
+
+            return topBooks;
+        }
+
         public static ObservableCollection<CarteModel> LoadTopBooks()
         {
-            db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
 
          
             var topBooksData = db.Cartes
@@ -456,10 +532,9 @@ namespace BibliotecaElectronica.Model
             return topBooks;
         }
 
-        public bool IsIsbnExists(string isbn)
+        public bool IsIsbnExists(string isbn)   
         {
-            if (db == null)
-                db = new BibliotecaElectronicaClassesDataContext();
+            var db = new BibliotecaElectronicaEntities3();
 
             return db.Cartes.Any(c => c.ISBN == isbn);
         }
